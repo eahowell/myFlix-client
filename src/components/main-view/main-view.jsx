@@ -1,3 +1,7 @@
+import { useState } from "react";
+import { MovieCard } from "../movie-card/movie-card";
+import { MovieView } from "../movie-view/movie-view.jsx";
+
   const [movies, setMovies] = useState([
     {
       _id: { $oid: "65ea3766ecc7df78687ec893" },
