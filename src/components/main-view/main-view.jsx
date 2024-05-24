@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view.jsx";
 
+export const MainView = () => {
   const [movies, setMovies] = useState([
     {
       _id: { $oid: "65ea3766ecc7df78687ec893" },
@@ -84,3 +85,29 @@ import { MovieView } from "../movie-view/movie-view.jsx";
       Title: "The Goonies",
     },
   ]);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  if (selectedMovie) {
+    return (
+      <MovieView
+        movie={selectedMovie}
+        onBackClick={() => setSelectedMovie(null)}
+      />
+    );
+  }
+  if (movies.length === 0) {
+    return <div>The list is empty.</div>;
+  }
+  return (
+    <div>
+      {movies.map((movie) => (
+        <MovieCard
+          key={movie._id}
+          movie={movie}
+          onMovieClick={(newSelectedMovie) => {
+            setSelectedMovie(newSelectedMovie);
+          }}
+        />
+      ))}
+    </div>
+  );
+};
