@@ -17,6 +17,7 @@ img {
 
 .movie-card {
   box-sizing: border-box;
+  background-color: #ff000042;
   border: 1px solid #000;
   border-radius: 15px;
   padding: 10px;
