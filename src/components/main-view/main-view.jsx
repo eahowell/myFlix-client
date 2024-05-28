@@ -52,18 +52,35 @@ export const MainView = () => {
   }, []);
 
   if (selectedMovie) {
+    let similarMovies = Movies.filter((Movie) => Movie.Genre.Name === selectedMovie.Genre.Name && Movies._id !== selectedMovie._id);
     return (
+      <>
       <MovieView
         Movie={selectedMovie}
         onBackClick={() => setSelectedMovie(null)}
       />
+      <hr />
+      <br />
+      <h2>Similar Movies</h2>
+      <div className="movies-grid">
+      {Movies.map((Movie) => (
+        <MovieCard
+          key={Movie._id}
+          Movie={Movie}
+          onMovieClick={(newSelectedMovie) => {
+            setSelectedMovie(newSelectedMovie);
+          }}
+        />
+      ))}
+    </div>
+      </>
     );
   }
   if (Movies.length === 0) {
     return <div>The list is empty.</div>;
   }
   return (
-    <div>
+    <div className="movies-grid">
       {Movies.map((Movie) => (
         <MovieCard
           key={Movie._id}
