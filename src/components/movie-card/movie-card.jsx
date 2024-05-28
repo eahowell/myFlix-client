@@ -1,20 +1,35 @@
 import PropTypes from "prop-types";
 
-export const MovieCard = ({ movie, onMovieClick }) => {
+export const MovieCard = ({ Movie, onMovieClick }) => {
   return (
     <div
+      className="movie-card"
       onClick={() => {
-        onMovieClick(movie);
+        onMovieClick(Movie);
       }}
     >
-      {movie.Title}
+      {Movie.Title}
     </div>
   );
 };
 
+//Set PropTypes for component
+
 MovieCard.propTypes = {
-  movie: PropTypes.shape({
-    Title: PropTypes.string.isRequired
+  Movie: PropTypes.shape({
+    Genre: PropTypes.shape({
+      Description: PropTypes.string.isRequired,
+      Name: PropTypes.string.isRequired,
+    }),
+    Director: PropTypes.shape({
+      Bio: PropTypes.string.isRequired,
+      Name: PropTypes.string.isRequired,
+    }),
+    _id: PropTypes.string.isRequired,
+    Actors: PropTypes.array,
+    Description: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired,
+    Title: PropTypes.string.isRequired,
   }).isRequired,
-  onMovieClick: PropTypes.func.isRequired
+  onMovieClick: PropTypes.func.isRequired,
 };

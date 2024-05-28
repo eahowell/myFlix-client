@@ -1,4 +1,25 @@
 .my-flix {
   color: #4682b4;
 }
+
+img {
+  width: 350px;
+  height: auto;
+  margin: auto 5%;
+}
+
+.movies-grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  max-width: 1200px;
+  display: grid;
+}
+
+.movie-card {
+  box-sizing: border-box;
+  background-color: #ff000042;
+  border: 1px solid #000;
+  border-radius: 15px;
+  padding: 10px;
+}
 /*# sourceMappingURL=index.2212206d.css.map */

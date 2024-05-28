@@ -1,52 +1,55 @@
 import PropTypes from "prop-types";
 
-export const MovieView = ({ movie, onBackClick }) => {
+export const MovieView = ({ Movie, onBackClick }) => {
   return (
     <div>
       <div>
-        <span>Title: </span>
-        <span>{movie.Title}</span>
+        <h1>Title: {Movie.Title}</h1>
       </div>
       <div>
         <span>Director: </span>
-        <span>{movie.Director.Name}</span>
+        <span>{Movie.Director.Name}</span>
       </div>
       <div>
         <span>Genre: </span>
-        <span>{movie.Genre.Name}</span>
+        <span>{Movie.Genre.Name}</span>
       </div>
       <div>
         <span>Actors: </span>
-        <span>{movie.Actors.Name}</span>
+        <span>{Movie.Actors.join(" , ")}</span>
       </div>
       <div>
         <span>Description: </span>
-        <span>{movie.Description}</span>
+        <span>{Movie.Description}</span>
       </div>
+      <br />
       <button onClick={onBackClick}>Back</button>
+      <br />
+      <br />
       <div>
-        <img src={movie.ImagePath} />
+        <img src={Movie.ImagePath} />
       </div>
+      <br />
     </div>
   );
 };
 
+//Set PropTypes for component
 MovieView.propTypes = {
-  movie: PropTypes.shape({
-    Title: PropTypes.string.isRequired,
-    Director: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Birthday: PropTypes.date,
-      Deathday: PropTypes.date,
-      Bio: PropTypes.string.isRequired 
-    }),
+  Movie: PropTypes.shape({
     Genre: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Description: PropTypes.string.isRequired 
+      Description: PropTypes.string,
+      Name: PropTypes.string,
     }),
-    Actors: PropTypes.array,
+    Director: PropTypes.shape({
+      Bio: PropTypes.string,
+      Name: PropTypes.string.isRequired,
+    }),
+    _id: PropTypes.string.isRequired,
+    Actors: PropTypes.arrayOf(PropTypes.string),
     Description: PropTypes.string.isRequired,
-    ImagePath: PropTypes.string.isRequired
+    ImagePath: PropTypes.string,
+    Title: PropTypes.string.isRequired,
   }).isRequired,
-  onMovieClick: PropTypes.func.isRequired
+  onBackClick: PropTypes.func.isRequired,
 };
