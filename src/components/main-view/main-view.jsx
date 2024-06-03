@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view.jsx";
+import { LoginView } from "../login-view/login-view.jsx";
 
 export const MainView = () => {
   const [Movies, setMovies] = useState([]);
-
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     fetch("https://myflix-eahowell-7d843bf0554c.herokuapp.com/movies/")
@@ -50,6 +51,10 @@ export const MainView = () => {
         // Handle the error here, e.g. display an error message
       });
   }, []);
+  
+  if (!user) {
+    return <LoginView />;
+    }
 
   if (selectedMovie) {
     let similarMovies = Movies.filter(
