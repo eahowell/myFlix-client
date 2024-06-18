@@ -7,11 +7,20 @@ export const MainView = () => {
   const [Movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
 
   useEffect(() => {
-    fetch("https://myflix-eahowell-7d843bf0554c.herokuapp.com/movies/")
+    if (!token){
+      return;
+    }
+    fetch("https://myflix-eahowell-7d843bf0554c.herokuapp.com/movies/", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((response) => {
         if (!response.ok) {
+          console.log(response);
           throw new Error("Failed to fetch movies.");
         }
         return response.json();
@@ -43,18 +52,25 @@ export const MainView = () => {
             ImagePath: Movie.ImagePath,
             Title: Movie.Title,
           };
-        });
+        }, [token]);
         setMovies(moviesFromAPI);
       })
       .catch((error) => {
         console.error(error);
         // Handle the error here, e.g. display an error message
       });
-  }, []);
-  
+  }, [token]);
+
   if (!user) {
-    return <LoginView />;
-    }
+    return (
+      <LoginView
+        onLoggedIn={(user, token) => {
+          setUser(user);
+          setToken(token);
+        }}
+      />
+    );
+  }
 
   if (selectedMovie) {
     let similarMovies = Movies.filter(
@@ -89,16 +105,26 @@ export const MainView = () => {
     return <div>The list is empty.</div>;
   }
   return (
-    <div className="movies-grid">
-      {Movies.map((Movie) => (
-        <MovieCard
-          key={Movie._id}
-          Movie={Movie}
-          onMovieClick={(newSelectedMovie) => {
-            setSelectedMovie(newSelectedMovie);
-          }}
-        />
-      ))}
+    <div>
+    <button id="logout-button"
+      onClick={() => {
+        setUser(null);
+        setToken(null);
+      }}
+    >
+      Logout
+    </button>
+      <div className="movies-grid">
+        {Movies.map((Movie) => (
+          <MovieCard
+            key={Movie._id}
+            Movie={Movie}
+            onMovieClick={(newSelectedMovie) => {
+              setSelectedMovie(newSelectedMovie);
+            }}
+          />
+        ))}
+      </div>
     </div>
   );
 };

@@ -1,8 +1,11 @@
-$color: steelblue;
 
-.my-flix {
-  color: $color;
-}
+$myFlix-Red: #FC4242;
+$myFlix-LightRed: #F5CECE;
+$myFlix-Popcorn: #F7AC08;
+
+
+// .my-flix {
+// }
 
 img{
   width: 350px;
@@ -23,4 +26,16 @@ img{
   background-color: rgba(255, 0, 0, 0.26);
   box-sizing: border-box;
   border-radius: 15px;
+  
+  cursor: pointer;
+}
+
+#logout-button {
+  background-color: $myFlix-Popcorn;
+  color: black;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  size: 25px;
 }
