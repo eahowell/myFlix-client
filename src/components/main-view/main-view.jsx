@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view.jsx";
 import { LoginView } from "../login-view/login-view.jsx";
+import popcornImage from "../../img/popcorn.png";
 
 export const MainView = () => {
   const [Movies, setMovies] = useState([]);
@@ -80,15 +81,19 @@ export const MainView = () => {
     );
     return (
       <>
+      <div id="nav-bar">
+       
+      </div>   
         <MovieView
           Movie={selectedMovie}
           onBackClick={() => setSelectedMovie(null)}
+          className = "movie-view"
         />
         <hr />
         <br />
-        <h2>Similar Movies</h2>
+        <h2>Similar Movies in the {selectedMovie.Genre.Name} Genre</h2>
         <div className="movies-grid">
-          {Movies.map((Movie) => (
+          {similarMovies.map((Movie) => (
             <MovieCard
               key={Movie._id}
               Movie={Movie}
@@ -98,6 +103,8 @@ export const MainView = () => {
             />
           ))}
         </div>
+        <br />
+        <br />
       </>
     );
   }

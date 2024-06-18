@@ -2,10 +2,29 @@
 $myFlix-Red: #FC4242;
 $myFlix-LightRed: #F5CECE;
 $myFlix-Popcorn: #F7AC08;
+$myFlix-Black:#212529;
 
 
-// .my-flix {
-// }
+.my-flix {
+  font-family: 'Roboto', sans-serif;
+  background-color: rgb(189, 189, 189);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding-top: 100px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+header {
+  background-color: rgb(245, 206, 206);
+}
 
 img{
   width: 350px;
@@ -26,16 +45,54 @@ img{
   background-color: rgba(255, 0, 0, 0.26);
   box-sizing: border-box;
   border-radius: 15px;
-  
   cursor: pointer;
 }
 
+.movie-view-text {
+  text-align: left;
+  margin: 10px;
+  padding-left: 15px;
+  max-width: 900px;
+}
+.nav-link {
+  line-height: 1;
+  height: 15px;
+}
+
+.popcorn-icon {
+  width: 25px;
+  height: 25px;
+  margin: 0;
+}
+
 #logout-button {
-  background-color: $myFlix-Popcorn;
-  color: black;
+  background-color: rgb(66, 66, 66);
+  color: white;
   padding: 10px;
+  margin: 25px;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  size: 25px;
+}
+
+#submit-button {
+  background-color: rgb(66, 66, 66);
+  color: white;
+  padding: 10px;
+  margin: 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  size: 25px;
+}
+#back-button {
+  background-color: rgb(66, 66, 66);
+  color: white;
+  padding: 10px;
+  margin: 25px;
+  border: none;
+  border-radius: 10px;
   cursor: pointer;
   size: 25px;
 }

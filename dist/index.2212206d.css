@@ -1,3 +1,25 @@
+.my-flix {
+  background-color: #bdbdbd;
+  font-family: Roboto, sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding-top: 100px;
+}
+
+main {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+header {
+  background-color: #f5cece;
+}
+
 img {
   width: 350px;
   height: auto;
@@ -20,13 +42,54 @@ img {
   padding: 10px;
 }
 
+.movie-view-text {
+  text-align: left;
+  max-width: 900px;
+  margin: 10px;
+  padding-left: 15px;
+}
+
+.nav-link {
+  height: 15px;
+  line-height: 1;
+}
+
+.popcorn-icon {
+  width: 25px;
+  height: 25px;
+  margin: 0;
+}
+
 #logout-button {
-  color: #000;
+  color: #fff;
   cursor: pointer;
   size: 25px;
-  background-color: #f7ac08;
+  background-color: #424242;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
+  margin: 25px;
+  padding: 10px;
+}
+
+#submit-button {
+  color: #fff;
+  cursor: pointer;
+  size: 25px;
+  background-color: #424242;
+  border: none;
+  border-radius: 10px;
+  margin: 15px;
+  padding: 10px;
+}
+
+#back-button {
+  color: #fff;
+  cursor: pointer;
+  size: 25px;
+  background-color: #424242;
+  border: none;
+  border-radius: 10px;
+  margin: 25px;
   padding: 10px;
 }
 /*# sourceMappingURL=index.2212206d.css.map */
