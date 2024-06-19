@@ -2,16 +2,17 @@ import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view.jsx";
 import { LoginView } from "../login-view/login-view.jsx";
-import popcornImage from "../../img/popcorn.png";
 
 export const MainView = () => {
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const storedToken = localStorage.getItem("token");
   const [Movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
 
   useEffect(() => {
-    if (!token){
+    if (!token) {
       return;
     }
     fetch("https://myflix-eahowell-7d843bf0554c.herokuapp.com/movies/", {
@@ -52,13 +53,12 @@ export const MainView = () => {
             Description: Movie.Description,
             ImagePath: Movie.ImagePath,
             Title: Movie.Title,
-          };
-        }, [token]);
+          }
+        });
         setMovies(moviesFromAPI);
       })
       .catch((error) => {
         console.error(error);
-        // Handle the error here, e.g. display an error message
       });
   }, [token]);
 
@@ -81,13 +81,11 @@ export const MainView = () => {
     );
     return (
       <>
-      <div id="nav-bar">
-       
-      </div>   
+        <div id="nav-bar"></div>
         <MovieView
           Movie={selectedMovie}
           onBackClick={() => setSelectedMovie(null)}
-          className = "movie-view"
+          className="movie-view"
         />
         <hr />
         <br />
@@ -113,14 +111,17 @@ export const MainView = () => {
   }
   return (
     <div>
-    <button id="logout-button"
-      onClick={() => {
-        setUser(null);
-        setToken(null);
-      }}
-    >
-      Logout
-    </button>
+      Logged in as: {user.Username}
+      <button
+        id="logout-button"
+        onClick={() => {
+          setUser(null);
+          setToken(null);
+          localStorage.clear();
+        }}
+      >
+        Logout
+      </button>
       <div className="movies-grid">
         {Movies.map((Movie) => (
           <MovieCard

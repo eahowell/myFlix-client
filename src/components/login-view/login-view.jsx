@@ -32,9 +32,11 @@ export const LoginView = ({ onLoggedIn }) => {
         console.log("Login Response: ", data);
         if (data.user) {
           console.log("User " + Username + "logged in successfully.");
+          localStorage.setItem("user", JSON.stringify(data.user));
+          localStorage.setItem("token", data.token);
           onLoggedIn(data.user, data.token);
         } else {
-          alert("No such user.");
+          alert("No user was found with that username and password. Please try again or register as a new");
         }
       })
       .catch((e) => {
