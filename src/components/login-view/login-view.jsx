@@ -36,41 +36,53 @@ export const LoginView = ({ onLoggedIn }) => {
           localStorage.setItem("token", data.token);
           onLoggedIn(data.user, data.token);
         } else {
-          alert("No user was found with that username and password. Please try again or register as a new");
+          alert(
+            "No user was found with that username and password. Please try again or register as a new"
+          );
         }
       })
       .catch((e) => {
-        alert("Something went wrong");
+        alert("Login failed. Verify your username and password are correct.");
       });
   };
   return (
-    <form id="loginForm" onSubmit={handleSubmit}>
-      <label id="usernameLabel">
-        Username  | 
-        <input
-          id="usernameInput"
-          type="text"
-          value={Username}
-          onChange={(e) => setUsername(e.target.value)}
-          minLength={5}
-          required
-        />
-      </label>
+    <form id="loginForm" class="form-group" onSubmit={handleSubmit}>
+      <div class="container mt-5">
+        <h2 class="formTitle">Login</h2>
+        <br />
+        <label id="usernameLabel">
+          Username
+          <input
+            id="usernameInput"
+            type="text"
+            value={Username}
+            class="form-control"
+            onChange={(e) => setUsername(e.target.value)}
+            minLength={5}
+            required
+          />
+        </label>
+        <br />
+        <br />
+        <label id="passwoordLabel">
+          Password
+          <input
+            id="passwoordInput"
+            type="password"
+            value={Password}
+            class="form-control"
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </label>
+        <br />
+        <br />
+        <button id="submit-button" class="btn btn-dark" type="submit">
+          Submit
+        </button>
+      </div>
       <br />
       <br />
-      <label id="passwoordLabel">
-        Password  |  
-        <input
-          id="passwoordInput"
-          type="password"
-          value={Password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <br />
-      <button id="submit-button"
-      type="submit">Submit</button>
     </form>
   );
 };

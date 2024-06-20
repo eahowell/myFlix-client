@@ -83,14 +83,15 @@ export const SignupView = () => {
           </div>
         </div>
         <div class="form-group">
-          <label for="confirmPassword">Re-enter Password
-          <input
-            type="password"
-            class="form-control"
-            id="confirmPassword"
-            name="confirmPassword"
-            required
-          />
+          <label for="confirmPassword">
+            Re-enter Password
+            <input
+              type="password"
+              class="form-control"
+              id="confirmPassword"
+              name="confirmPassword"
+              required
+            />
           </label>
           <div class="invalid-feedback">Passwords must match.</div>
         </div>

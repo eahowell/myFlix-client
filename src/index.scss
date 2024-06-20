@@ -1,16 +1,15 @@
-
-$myFlix-Red: #FC4242;
-$myFlix-LightRed: #F5CECE;
-$myFlix-Popcorn: #F7AC08;
-$myFlix-Black:#212529;
-
+$myFlix-Red: #fc4242;
+$myFlix-LightRed: #f5cece;
+$myFlix-Popcorn: #f7ac08;
+$myFlix-Black: #212529;
 
 .my-flix {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: rgb(189, 189, 189);
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding-top: 100px;
@@ -26,7 +25,7 @@ header {
   background-color: rgb(245, 206, 206);
 }
 
-img{
+img {
   width: 350px;
   height: auto;
   margin: auto 5%;
@@ -65,34 +64,34 @@ img{
   margin: 0;
 }
 
-#logout-button {
-  background-color: rgb(66, 66, 66);
-  color: white;
-  padding: 10px;
-  margin: 25px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  size: 25px;
+.container-signlog {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-#submit-button {
-  background-color: rgb(66, 66, 66);
-  color: white;
-  padding: 10px;
-  margin: 15px;
-  border: none;
+.container-signup {
+  border: 0.5rem outset $myFlix-LightRed;
+  box-shadow: 0 0 0 1rem $myFlix-Black;
   border-radius: 10px;
-  cursor: pointer;
-  size: 25px;
+  font: bold 1rem sans-serif;
+  margin: 1rem;
+  padding: 1rem;
+  outline-offset: 0.5rem;
 }
-#back-button {
-  background-color: rgb(66, 66, 66);
-  color: white;
-  padding: 10px;
-  margin: 25px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  size: 25px;
+
+.orDiv {
+  font: bolder 100px sans-serif;
+}
+
+.formTitle {
+  font: bolder 50px sans-serif;
+  text-decoration: underline;
+}
+
+label {
+  margin: 5px;
 }

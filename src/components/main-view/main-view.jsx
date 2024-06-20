@@ -127,20 +127,21 @@ export const MainView = () => {
   return (
     <div>
       <div class="loggedInAs">
-      Logged in as: {storedUser.Username}
-      <br />
-      <button
-        id="logout-button"
-        class="btn btn-dark"
-        onClick={() => {
-          setUser(null);
-          setToken(null);
-          localStorage.clear();
-        }}
-      >
-        Logout
-      </button>
-      <br /><br />
+        Logged in as: {storedUser.Username}
+        <br />
+        <button
+          id="logout-button"
+          class="btn btn-dark"
+          onClick={() => {
+            setUser(null);
+            setToken(null);
+            localStorage.clear();
+          }}
+        >
+          Logout
+        </button>
+        <br />
+        <br />
       </div>
       <div className="movies-grid">
         {Movies.map((Movie) => (
