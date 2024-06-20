@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view.jsx";
 import { LoginView } from "../login-view/login-view.jsx";
+import { SignupView } from "../signup-view/signup-view.jsx";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -12,12 +13,12 @@ export const MainView = () => {
   const [token, setToken] = useState(null);
 
   useEffect(() => {
-    if (!token) {
+    if (!storedToken) {
       return;
     }
     fetch("https://myflix-eahowell-7d843bf0554c.herokuapp.com/movies/", {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${storedToken}`,
       },
     })
       .then((response) => {
@@ -53,23 +54,37 @@ export const MainView = () => {
             Description: Movie.Description,
             ImagePath: Movie.ImagePath,
             Title: Movie.Title,
-          }
+          };
         });
         setMovies(moviesFromAPI);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, [token]);
+  }, [storedToken]);
 
-  if (!user) {
+  if (!storedUser) {
     return (
-      <LoginView
-        onLoggedIn={(user, token) => {
-          setUser(user);
-          setToken(token);
-        }}
-      />
+      <>
+        <div class="container">
+          <div class="container-signlog">
+            <div class="container-login">
+              <LoginView
+                onLoggedIn={(user, token) => {
+                  setUser(user);
+                  setToken(token);
+                }}
+              />
+            </div>
+            <div class="">
+              <h1 class="text-center orDiv"> OR</h1>
+            </div>
+            <div class="container-signup">
+              <SignupView />
+            </div>
+          </div>
+        </div>
+      </>
     );
   }
 
@@ -111,9 +126,12 @@ export const MainView = () => {
   }
   return (
     <div>
-      Logged in as: {user.Username}
+      <div class="loggedInAs">
+      Logged in as: {storedUser.Username}
+      <br />
       <button
         id="logout-button"
+        class="btn btn-dark"
         onClick={() => {
           setUser(null);
           setToken(null);
@@ -122,6 +140,8 @@ export const MainView = () => {
       >
         Logout
       </button>
+      <br /><br />
+      </div>
       <div className="movies-grid">
         {Movies.map((Movie) => (
           <MovieCard

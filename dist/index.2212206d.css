@@ -60,36 +60,35 @@ img {
   margin: 0;
 }
 
-#logout-button {
-  color: #fff;
-  cursor: pointer;
-  size: 25px;
-  background-color: #424242;
-  border: none;
-  border-radius: 10px;
-  margin: 25px;
-  padding: 10px;
+.container-signlog {
+  text-align: center;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  display: grid;
 }
 
-#submit-button {
-  color: #fff;
-  cursor: pointer;
-  size: 25px;
-  background-color: #424242;
-  border: none;
+.container-signup {
+  outline-offset: .5rem;
+  border: .5rem outset #f5cece;
   border-radius: 10px;
-  margin: 15px;
-  padding: 10px;
+  margin: 1rem;
+  padding: 1rem;
+  font: bold 1rem sans-serif;
+  box-shadow: 0 0 0 1rem #212529;
 }
 
-#back-button {
-  color: #fff;
-  cursor: pointer;
-  size: 25px;
-  background-color: #424242;
-  border: none;
-  border-radius: 10px;
-  margin: 25px;
-  padding: 10px;
+.orDiv {
+  font: bolder 100px sans-serif;
+}
+
+.formTitle {
+  font: bolder 50px sans-serif;
+  text-decoration: underline;
+}
+
+label {
+  margin: 5px;
 }
 /*# sourceMappingURL=index.2212206d.css.map */
