@@ -11,6 +11,10 @@ export const SignupView = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (Password !== event.target[2].value) {
+      alert("Passwords do not match");
+      return;
+    }
     const data = {
       Username: Username,
       Password: Password,
@@ -77,6 +81,18 @@ export const SignupView = () => {
           <div class="invalid-feedback">
             Password must be between 8 and 25 characters long.
           </div>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Re-enter Password
+          <input
+            type="password"
+            class="form-control"
+            id="confirmPassword"
+            name="confirmPassword"
+            required
+          />
+          </label>
+          <div class="invalid-feedback">Passwords must match.</div>
         </div>
         <div class="form-group">
           <label for="Email">
