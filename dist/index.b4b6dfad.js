@@ -27461,7 +27461,7 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-card/movie-card":"bwuIu","../movie-view/movie-view.jsx":"ggaUx","../login-view/login-view.jsx":"9YtA0","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"gsJHn","../signup-view/signup-view.jsx":"4OGiN"}],"bwuIu":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-card/movie-card":"bwuIu","../movie-view/movie-view.jsx":"ggaUx","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"gsJHn","../login-view/login-view.jsx":"9YtA0","../signup-view/signup-view.jsx":"4OGiN"}],"bwuIu":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$67b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -29190,6 +29190,6 @@ $RefreshReg$(_c, "SignupView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"gsJHn","react/jsx-dev-runtime":"iTorj"}],"lJZlQ":[function() {},{}]},["5qvMu","jthtV","d8Dch"], "d8Dch", "parcelRequireaec4")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"gsJHn"}],"lJZlQ":[function() {},{}]},["5qvMu","jthtV","d8Dch"], "d8Dch", "parcelRequireaec4")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
