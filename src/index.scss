@@ -1,10 +1,31 @@
-$color: steelblue;
+$myFlix-Red: #fc4242;
+$myFlix-LightRed: #f5cece;
+$myFlix-Popcorn: #f7ac08;
+$myFlix-Black: #212529;
 
 .my-flix {
-  color: $color;
+  font-family: "Roboto", sans-serif;
+  background-color: rgb(189, 189, 189);
 }
 
-img{
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding-top: 100px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+header {
+  background-color: rgb(245, 206, 206);
+}
+
+img {
   width: 350px;
   height: auto;
   margin: auto 5%;
@@ -23,4 +44,54 @@ img{
   background-color: rgba(255, 0, 0, 0.26);
   box-sizing: border-box;
   border-radius: 15px;
+  cursor: pointer;
+}
+
+.movie-view-text {
+  text-align: left;
+  margin: 10px;
+  padding-left: 15px;
+  max-width: 900px;
+}
+.nav-link {
+  line-height: 1;
+  height: 15px;
+}
+
+.popcorn-icon {
+  width: 25px;
+  height: 25px;
+  margin: 0;
+}
+
+.container-signlog {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.container-signup {
+  border: 0.5rem outset $myFlix-LightRed;
+  box-shadow: 0 0 0 1rem $myFlix-Black;
+  border-radius: 10px;
+  font: bold 1rem sans-serif;
+  margin: 1rem;
+  padding: 1rem;
+  outline-offset: 0.5rem;
+}
+
+.orDiv {
+  font: bolder 100px sans-serif;
+}
+
+.formTitle {
+  font: bolder 50px sans-serif;
+  text-decoration: underline;
+}
+
+label {
+  margin: 5px;
 }

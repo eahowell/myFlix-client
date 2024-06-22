@@ -1,5 +1,23 @@
 .my-flix {
-  color: #4682b4;
+  background-color: #bdbdbd;
+  font-family: Roboto, sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding-top: 100px;
+}
+
+main {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+header {
+  background-color: #f5cece;
 }
 
 img {
@@ -17,9 +35,60 @@ img {
 
 .movie-card {
   box-sizing: border-box;
+  cursor: pointer;
   background-color: #ff000042;
   border: 1px solid #000;
   border-radius: 15px;
   padding: 10px;
+}
+
+.movie-view-text {
+  text-align: left;
+  max-width: 900px;
+  margin: 10px;
+  padding-left: 15px;
+}
+
+.nav-link {
+  height: 15px;
+  line-height: 1;
+}
+
+.popcorn-icon {
+  width: 25px;
+  height: 25px;
+  margin: 0;
+}
+
+.container-signlog {
+  text-align: center;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  display: grid;
+}
+
+.container-signup {
+  outline-offset: .5rem;
+  border: .5rem outset #f5cece;
+  border-radius: 10px;
+  margin: 1rem;
+  padding: 1rem;
+  font: bold 1rem sans-serif;
+  box-shadow: 0 0 0 1rem #212529;
+}
+
+.orDiv {
+  font: bolder 100px sans-serif;
+}
+
+.formTitle {
+  font: bolder 50px sans-serif;
+  text-decoration: underline;
+}
+
+label {
+  margin: 5px;
 }
 /*# sourceMappingURL=index.2212206d.css.map */
