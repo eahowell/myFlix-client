@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Button, Form } from "react-bootstrap";
 
 export const SignupView = () => {
   const [Username, setUsername] = useState("");
@@ -41,127 +42,120 @@ export const SignupView = () => {
   };
 
   return (
-    <form id="registerForm" onSubmit={handleSubmit}>
-      <div class="container mt-5">
-        <h2 class="formTitle">Register</h2>
+    <Form id="registerForm" onSubmit={handleSubmit}>      
+        <h2 className="formTitle">Register</h2>
         <br />
-        <div class="form-group">
-          <label for="Username">
+        <Form.Group controlId="Username">
+          <Form.Label>
             Username
-            <input
+            <Form.Control
               type="text"
               value={Username}
               onChange={(e) => setUsername(e.target.value)}
-              class="form-control"
               id="usernameSignup"
               name="Username"
               pattern="^[a-zA-Z0-9]{5,15}$"
               required
             />
-          </label>
+          </Form.Label>
           <div class="invalid-feedback">
             Username must be alphanumeric and between 5 and 15 characters long.
           </div>
-        </div>
-        <div class="form-group">
-          <label for="Password">
+        </Form.Group>
+        <Form.Group controlId="Password">
+          <Form.Label >
             Password
-            <input
+            <Form.Control
               type="password"
               value={Password}
               onChange={(e) => setPassword(e.target.value)}
-              class="form-control"
               id="passwordSignup"
               name="Password"
               minLength="8"
               maxLength="25"
               required
             />
-          </label>
+          </Form.Label>
           <div class="invalid-feedback">
             Password must be between 8 and 25 characters long.
           </div>
-        </div>
-        <div class="form-group">
-          <label for="confirmPassword">
+        </Form.Group>
+        <Form.Group controlId="confirmPassword" >
+          <Form.Label>
             Re-enter Password
-            <input
+            <Form.Control
               type="password"
               class="form-control"
               id="confirmPassword"
               name="confirmPassword"
               required
             />
-          </label>
-          <div class="invalid-feedback">Passwords must match.</div>
-        </div>
-        <div class="form-group">
-          <label for="Email">
+          </Form.Label>
+          <div className="invalid-feedback">Passwords must match.</div>
+        </Form.Group>
+        <Form.Group controlId="Email">
+          <Form.Label >
             Email
-            <input
+            <Form.Control
               type="email"
               value={Email}
               onChange={(e) => setEmail(e.target.value)}
-              class="form-control"
               id="emailSignup"
               name="Email"
               required
             />
-          </label>
-          <div class="invalid-feedback">
+          </Form.Label>
+          <div className="invalid-feedback">
             Please enter a valid email address.
           </div>
-        </div>
-        <div class="form-group">
-          <label for="Birthday">
+        </Form.Group>
+        <Form.Group controlId="Birthday">
+          <Form.Label >
             Birthday
-            <input
+            <Form.Control
               type="date"
               value={Birthday}
               onChange={(e) => setBirthday(e.target.value)}
-              class="form-control"
               id="birthdaySignup"
               name="Birthday"
             />
-          </label>
-        </div>
-        <div class="form-group">
-          <label for="FirstName">
+          </Form.Label>
+        </Form.Group>
+        <Form.Group controlId="FirstName">
+          <Form.Label >
             First Name
-            <input
+            <Form.Control
               type="text"
               value={FirstName}
               onChange={(e) => setFirstName(e.target.value)}
-              class="form-control"
+              className="form-control"
               id="firstNameSignup"
               name="FirstName"
               required
             />
-          </label>
+          </Form.Label>
 
-          <div class="invalid-feedback">First name is required.</div>
-        </div>
-        <div class="form-group">
-          <label for="LastName">
+          <div className="invalid-feedback">First name is required.</div>
+        </Form.Group>
+        <Form.Group controlId="LastName">
+          <Form.Label>
             Last Name
-            <input
+            <Form.Control
               type="text"
               value={LastName}
               onChange={(e) => setLastName(e.target.value)}
-              class="form-control"
+              className="form-control"
               id="lastNameSignup"
               name="LastName"
               required
             />
-          </label>
-          <div class="invalid-feedback">Last name is required.</div>
-        </div>
-        <br />
-        <button type="submit" class="btn btn-dark">
+          </Form.Label>
+          <div className="invalid-feedback">Last name is required.</div>
+        </Form.Group>
+        <Button type="submit" className="btn btn-dark">
           Register
-        </button>
+        </Button>
         <br />
-      </div>
-    </form>
+    </Form>
   );
 };

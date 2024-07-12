@@ -3,6 +3,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view.jsx";
 import { LoginView } from "../login-view/login-view.jsx";
 import { SignupView } from "../signup-view/signup-view.jsx";
+import { Button, Container, Col, Row } from "react-bootstrap";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -66,9 +67,9 @@ export const MainView = () => {
   if (!storedUser) {
     return (
       <>
-        <div class="container">
-          <div class="container-signlog">
-            <div class="container-login">
+        <div className="container">
+          <div className="container-signlog">
+            <div className="container-login">
               <LoginView
                 onLoggedIn={(user, token) => {
                   setUser(user);
@@ -76,10 +77,10 @@ export const MainView = () => {
                 }}
               />
             </div>
-            <div class="">
-              <h1 class="text-center orDiv"> OR</h1>
+            <div className="">
+              <h1 className="text-center orDiv"> OR</h1>
             </div>
-            <div class="container-signup">
+            <div className="container-signup">
               <SignupView />
             </div>
           </div>
@@ -126,12 +127,12 @@ export const MainView = () => {
   }
   return (
     <div>
-      <div class="loggedInAs">
+      <div className="loggedInAs">
         Logged in as: {storedUser.Username}
         <br />
-        <button
+        <Button
           id="logout-button"
-          class="btn btn-dark"
+          className="btn btn-dark"
           onClick={() => {
             setUser(null);
             setToken(null);
@@ -139,7 +140,7 @@ export const MainView = () => {
           }}
         >
           Logout
-        </button>
+        </Button>
         <br />
         <br />
       </div>

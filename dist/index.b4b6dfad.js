@@ -27187,6 +27187,7 @@ var _movieCard = require("../movie-card/movie-card");
 var _movieViewJsx = require("../movie-view/movie-view.jsx");
 var _loginViewJsx = require("../login-view/login-view.jsx");
 var _signupViewJsx = require("../signup-view/signup-view.jsx");
+var _reactBootstrap = require("react-bootstrap");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
@@ -27249,12 +27250,12 @@ const MainView = ()=>{
     ]);
     if (!storedUser) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            class: "container",
+            className: "container",
             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                class: "container-signlog",
+                className: "container-signlog",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        class: "container-login",
+                        className: "container-login",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginViewJsx.LoginView), {
                             onLoggedIn: (user, token)=>{
                                 setUser(user);
@@ -27262,50 +27263,50 @@ const MainView = ()=>{
                             }
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 72,
+                            lineNumber: 73,
                             columnNumber: 15
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 71,
+                        lineNumber: 72,
                         columnNumber: 13
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        class: "",
+                        className: "",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                            class: "text-center orDiv",
+                            className: "text-center orDiv",
                             children: " OR"
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 80,
+                            lineNumber: 81,
                             columnNumber: 15
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 79,
+                        lineNumber: 80,
                         columnNumber: 13
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        class: "container-signup",
+                        className: "container-signup",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupViewJsx.SignupView), {}, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 83,
+                            lineNumber: 84,
                             columnNumber: 15
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 82,
+                        lineNumber: 83,
                         columnNumber: 13
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 70,
+                lineNumber: 71,
                 columnNumber: 11
             }, undefined)
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 69,
+            lineNumber: 70,
             columnNumber: 9
         }, undefined)
     }, void 0, false);
@@ -27317,7 +27318,7 @@ const MainView = ()=>{
                     id: "nav-bar"
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 99,
+                    lineNumber: 100,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieViewJsx.MovieView), {
@@ -27326,17 +27327,17 @@ const MainView = ()=>{
                     className: "movie-view"
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 100,
+                    lineNumber: 101,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 105,
+                    lineNumber: 106,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 106,
+                    lineNumber: 107,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
@@ -27347,7 +27348,7 @@ const MainView = ()=>{
                     ]
                 }, void 0, true, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 107,
+                    lineNumber: 108,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27359,22 +27360,22 @@ const MainView = ()=>{
                             }
                         }, Movie._id, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 110,
+                            lineNumber: 111,
                             columnNumber: 13
                         }, undefined))
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 108,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                    fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 119,
+                    lineNumber: 109,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
                     lineNumber: 120,
+                    columnNumber: 9
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                    fileName: "src/components/main-view/main-view.jsx",
+                    lineNumber: 121,
                     columnNumber: 9
                 }, undefined)
             ]
@@ -27384,24 +27385,24 @@ const MainView = ()=>{
         children: "The list is empty."
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 125,
+        lineNumber: 126,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                class: "loggedInAs",
+                className: "loggedInAs",
                 children: [
                     "Logged in as: ",
                     storedUser.Username,
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 131,
+                        lineNumber: 132,
                         columnNumber: 9
                     }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                         id: "logout-button",
-                        class: "btn btn-dark",
+                        className: "btn btn-dark",
                         onClick: ()=>{
                             setUser(null);
                             setToken(null);
@@ -27410,23 +27411,23 @@ const MainView = ()=>{
                         children: "Logout"
                     }, void 0, false, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 132,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                        fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 143,
+                        lineNumber: 133,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                         fileName: "src/components/main-view/main-view.jsx",
                         lineNumber: 144,
                         columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                        fileName: "src/components/main-view/main-view.jsx",
+                        lineNumber: 145,
+                        columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 129,
+                lineNumber: 130,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27438,18 +27439,18 @@ const MainView = ()=>{
                         }
                     }, Movie._id, false, {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 148,
+                        lineNumber: 149,
                         columnNumber: 11
                     }, undefined))
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 146,
+                lineNumber: 147,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 128,
+        lineNumber: 129,
         columnNumber: 5
     }, undefined);
 };
@@ -27463,7 +27464,7 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-card/movie-card":"bwuIu","../movie-view/movie-view.jsx":"ggaUx","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"gsJHn","../login-view/login-view.jsx":"9YtA0","../signup-view/signup-view.jsx":"4OGiN"}],"bwuIu":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-card/movie-card":"bwuIu","../movie-view/movie-view.jsx":"ggaUx","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"gsJHn","../login-view/login-view.jsx":"9YtA0","../signup-view/signup-view.jsx":"4OGiN","react-bootstrap":"3AD9A"}],"bwuIu":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$67b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -28819,7 +28820,7 @@ var _toggleButtonGroupDefault = parcelHelpers.interopDefault(_toggleButtonGroup)
 var _tooltip = require("./Tooltip");
 var _tooltipDefault = parcelHelpers.interopDefault(_tooltip);
 
-},{"./Accordion":false,"./AccordionContext":false,"./AccordionCollapse":false,"./AccordionButton":false,"./AccordionBody":false,"./AccordionHeader":false,"./AccordionItem":false,"./Alert":false,"./AlertHeading":false,"./AlertLink":false,"./Anchor":false,"./Badge":false,"./Breadcrumb":false,"./BreadcrumbItem":false,"./Button":"aPzUt","./ButtonGroup":false,"./ButtonToolbar":false,"./Card":"lAynp","./CardBody":false,"./CardFooter":false,"./CardGroup":false,"./CardHeader":false,"./CardImg":false,"./CardImgOverlay":false,"./CardLink":false,"./CardSubtitle":false,"./CardText":false,"./CardTitle":false,"./Carousel":false,"./CarouselCaption":false,"./CarouselItem":false,"./CloseButton":false,"./Col":false,"./Collapse":false,"./Container":false,"./Dropdown":false,"./DropdownButton":false,"./DropdownDivider":false,"./DropdownHeader":false,"./DropdownItem":false,"./DropdownItemText":false,"./DropdownMenu":false,"./DropdownToggle":false,"./Fade":false,"./Figure":false,"./FigureCaption":false,"./FigureImage":false,"./Form":false,"./FormControl":false,"./FormCheck":false,"./FormFloating":false,"./FloatingLabel":false,"./FormGroup":false,"./FormLabel":false,"./FormText":false,"./FormSelect":false,"./Image":false,"./InputGroup":false,"./ListGroup":false,"./ListGroupItem":false,"./Modal":false,"./ModalBody":false,"./ModalDialog":false,"./ModalFooter":false,"./ModalHeader":false,"./ModalTitle":false,"./Nav":false,"./Navbar":false,"./NavbarBrand":false,"./NavbarCollapse":false,"./NavbarOffcanvas":false,"./NavbarText":false,"./NavbarToggle":false,"./NavDropdown":false,"./NavItem":false,"./NavLink":false,"./Offcanvas":false,"./OffcanvasBody":false,"./OffcanvasHeader":false,"./OffcanvasTitle":false,"./OffcanvasToggling":false,"./Overlay":false,"./OverlayTrigger":false,"./PageItem":false,"./Pagination":false,"./Placeholder":false,"./PlaceholderButton":false,"./Popover":false,"./PopoverBody":false,"./PopoverHeader":false,"./ProgressBar":false,"./Ratio":false,"./Row":false,"./Spinner":false,"./SplitButton":false,"./SSRProvider":false,"./Stack":false,"./Tab":false,"./TabContainer":false,"./TabContent":false,"./Table":false,"./TabPane":false,"./Tabs":false,"./ThemeProvider":false,"./Toast":false,"./ToastBody":false,"./ToastContainer":false,"./ToastHeader":false,"./ToggleButton":false,"./ToggleButtonGroup":false,"./Tooltip":false,"@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI"}],"aPzUt":[function(require,module,exports) {
+},{"./Accordion":false,"./AccordionContext":false,"./AccordionCollapse":false,"./AccordionButton":false,"./AccordionBody":false,"./AccordionHeader":false,"./AccordionItem":false,"./Alert":false,"./AlertHeading":false,"./AlertLink":false,"./Anchor":false,"./Badge":false,"./Breadcrumb":false,"./BreadcrumbItem":false,"./Button":"aPzUt","./ButtonGroup":false,"./ButtonToolbar":false,"./Card":"lAynp","./CardBody":false,"./CardFooter":false,"./CardGroup":false,"./CardHeader":false,"./CardImg":false,"./CardImgOverlay":false,"./CardLink":false,"./CardSubtitle":false,"./CardText":false,"./CardTitle":false,"./Carousel":false,"./CarouselCaption":false,"./CarouselItem":false,"./CloseButton":false,"./Col":false,"./Collapse":false,"./Container":false,"./Dropdown":false,"./DropdownButton":false,"./DropdownDivider":false,"./DropdownHeader":false,"./DropdownItem":false,"./DropdownItemText":false,"./DropdownMenu":false,"./DropdownToggle":false,"./Fade":false,"./Figure":false,"./FigureCaption":false,"./FigureImage":false,"./Form":"iBZ80","./FormControl":false,"./FormCheck":false,"./FormFloating":false,"./FloatingLabel":false,"./FormGroup":false,"./FormLabel":false,"./FormText":false,"./FormSelect":false,"./Image":false,"./InputGroup":false,"./ListGroup":false,"./ListGroupItem":false,"./Modal":false,"./ModalBody":false,"./ModalDialog":false,"./ModalFooter":false,"./ModalHeader":false,"./ModalTitle":false,"./Nav":false,"./Navbar":false,"./NavbarBrand":false,"./NavbarCollapse":false,"./NavbarOffcanvas":false,"./NavbarText":false,"./NavbarToggle":false,"./NavDropdown":false,"./NavItem":false,"./NavLink":false,"./Offcanvas":false,"./OffcanvasBody":false,"./OffcanvasHeader":false,"./OffcanvasTitle":false,"./OffcanvasToggling":false,"./Overlay":false,"./OverlayTrigger":false,"./PageItem":false,"./Pagination":false,"./Placeholder":false,"./PlaceholderButton":false,"./Popover":false,"./PopoverBody":false,"./PopoverHeader":false,"./ProgressBar":false,"./Ratio":false,"./Row":false,"./Spinner":false,"./SplitButton":false,"./SSRProvider":false,"./Stack":false,"./Tab":false,"./TabContainer":false,"./TabContent":false,"./Table":false,"./TabPane":false,"./Tabs":false,"./ThemeProvider":false,"./Toast":false,"./ToastBody":false,"./ToastContainer":false,"./ToastHeader":false,"./ToggleButton":false,"./ToggleButtonGroup":false,"./Tooltip":false,"@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI"}],"aPzUt":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -30181,7 +30182,599 @@ const CardTitle = /*#__PURE__*/ _react.forwardRef(({ className, bsPrefix, as: Co
 CardTitle.displayName = "CardTitle";
 exports.default = CardTitle;
 
-},{"react":"21dqq","classnames":"jocGM","./ThemeProvider":"dVixI","./divWithClassName":"eDg7t","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI"}],"d6HH4":[function() {},{}],"ggaUx":[function(require,module,exports) {
+},{"react":"21dqq","classnames":"jocGM","./ThemeProvider":"dVixI","./divWithClassName":"eDg7t","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI"}],"2L2I6":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "useCol", ()=>useCol);
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _react = require("react");
+var _themeProvider = require("./ThemeProvider");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+function useCol({ as, bsPrefix, className, ...props }) {
+    bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "col");
+    const breakpoints = (0, _themeProvider.useBootstrapBreakpoints)();
+    const minBreakpoint = (0, _themeProvider.useBootstrapMinBreakpoint)();
+    const spans = [];
+    const classes = [];
+    breakpoints.forEach((brkPoint)=>{
+        const propValue = props[brkPoint];
+        delete props[brkPoint];
+        let span;
+        let offset;
+        let order;
+        if (typeof propValue === "object" && propValue != null) ({ span, offset, order } = propValue);
+        else span = propValue;
+        const infix = brkPoint !== minBreakpoint ? `-${brkPoint}` : "";
+        if (span) spans.push(span === true ? `${bsPrefix}${infix}` : `${bsPrefix}${infix}-${span}`);
+        if (order != null) classes.push(`order${infix}-${order}`);
+        if (offset != null) classes.push(`offset${infix}-${offset}`);
+    });
+    return [
+        {
+            ...props,
+            className: (0, _classnamesDefault.default)(className, ...spans, ...classes)
+        },
+        {
+            as,
+            bsPrefix,
+            spans
+        }
+    ];
+}
+const Col = /*#__PURE__*/ _react.forwardRef(// Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+(props, ref)=>{
+    const [{ className, ...colProps }, { as: Component = "div", bsPrefix, spans }] = useCol(props);
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+        ...colProps,
+        ref: ref,
+        className: (0, _classnamesDefault.default)(className, !spans.length && bsPrefix)
+    });
+});
+Col.displayName = "Col";
+exports.default = Col;
+
+},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI"}],"iBZ80":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _react = require("react");
+var _formCheck = require("./FormCheck");
+var _formCheckDefault = parcelHelpers.interopDefault(_formCheck);
+var _formControl = require("./FormControl");
+var _formControlDefault = parcelHelpers.interopDefault(_formControl);
+var _formFloating = require("./FormFloating");
+var _formFloatingDefault = parcelHelpers.interopDefault(_formFloating);
+var _formGroup = require("./FormGroup");
+var _formGroupDefault = parcelHelpers.interopDefault(_formGroup);
+var _formLabel = require("./FormLabel");
+var _formLabelDefault = parcelHelpers.interopDefault(_formLabel);
+var _formRange = require("./FormRange");
+var _formRangeDefault = parcelHelpers.interopDefault(_formRange);
+var _formSelect = require("./FormSelect");
+var _formSelectDefault = parcelHelpers.interopDefault(_formSelect);
+var _formText = require("./FormText");
+var _formTextDefault = parcelHelpers.interopDefault(_formText);
+var _switch = require("./Switch");
+var _switchDefault = parcelHelpers.interopDefault(_switch);
+var _floatingLabel = require("./FloatingLabel");
+var _floatingLabelDefault = parcelHelpers.interopDefault(_floatingLabel);
+var _jsxRuntime = require("react/jsx-runtime");
+const propTypes = {
+    /**
+   * The Form `ref` will be forwarded to the underlying element,
+   * which means, unless it's rendered `as` a composite component,
+   * it will be a DOM node, when resolved.
+   *
+   * @type {ReactRef}
+   * @alias ref
+   */ _ref: (0, _propTypesDefault.default).any,
+    /**
+   * Mark a form as having been validated. Setting it to `true` will
+   * toggle any validation styles on the forms elements.
+   */ validated: (0, _propTypesDefault.default).bool,
+    as: (0, _propTypesDefault.default).elementType
+};
+const Form = /*#__PURE__*/ _react.forwardRef(({ className, validated, // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+as: Component = "form", ...props }, ref)=>/*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+        ...props,
+        ref: ref,
+        className: (0, _classnamesDefault.default)(className, validated && "was-validated")
+    }));
+Form.displayName = "Form";
+Form.propTypes = propTypes;
+exports.default = Object.assign(Form, {
+    Group: (0, _formGroupDefault.default),
+    Control: (0, _formControlDefault.default),
+    Floating: (0, _formFloatingDefault.default),
+    Check: (0, _formCheckDefault.default),
+    Switch: (0, _switchDefault.default),
+    Label: (0, _formLabelDefault.default),
+    Text: (0, _formTextDefault.default),
+    Range: (0, _formRangeDefault.default),
+    Select: (0, _formSelectDefault.default),
+    FloatingLabel: (0, _floatingLabelDefault.default)
+});
+
+},{"classnames":"jocGM","prop-types":"7wKI2","react":"21dqq","./FormCheck":"idkr0","./FormControl":"iynMc","./FormFloating":"aj346","./FormGroup":"1qBHH","./FormLabel":"66epi","./FormRange":"8zsCO","./FormSelect":"hHWyB","./FormText":"ffeC7","./Switch":"9O81i","./FloatingLabel":"coYzo","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI"}],"idkr0":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _react = require("react");
+var _feedback = require("./Feedback");
+var _feedbackDefault = parcelHelpers.interopDefault(_feedback);
+var _formCheckInput = require("./FormCheckInput");
+var _formCheckInputDefault = parcelHelpers.interopDefault(_formCheckInput);
+var _formCheckLabel = require("./FormCheckLabel");
+var _formCheckLabelDefault = parcelHelpers.interopDefault(_formCheckLabel);
+var _formContext = require("./FormContext");
+var _formContextDefault = parcelHelpers.interopDefault(_formContext);
+var _themeProvider = require("./ThemeProvider");
+var _elementChildren = require("./ElementChildren");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const FormCheck = /*#__PURE__*/ _react.forwardRef(({ id, bsPrefix, bsSwitchPrefix, inline = false, reverse = false, disabled = false, isValid = false, isInvalid = false, feedbackTooltip = false, feedback, feedbackType, className, style, title = "", type = "checkbox", label, children, // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+as = "input", ...props }, ref)=>{
+    bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "form-check");
+    bsSwitchPrefix = (0, _themeProvider.useBootstrapPrefix)(bsSwitchPrefix, "form-switch");
+    const { controlId } = (0, _react.useContext)((0, _formContextDefault.default));
+    const innerFormContext = (0, _react.useMemo)(()=>({
+            controlId: id || controlId
+        }), [
+        controlId,
+        id
+    ]);
+    const hasLabel = !children && label != null && label !== false || (0, _elementChildren.hasChildOfType)(children, (0, _formCheckLabelDefault.default));
+    const input = /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _formCheckInputDefault.default), {
+        ...props,
+        type: type === "switch" ? "checkbox" : type,
+        ref: ref,
+        isValid: isValid,
+        isInvalid: isInvalid,
+        disabled: disabled,
+        as: as
+    });
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _formContextDefault.default).Provider, {
+        value: innerFormContext,
+        children: /*#__PURE__*/ (0, _jsxRuntime.jsx)("div", {
+            style: style,
+            className: (0, _classnamesDefault.default)(className, hasLabel && bsPrefix, inline && `${bsPrefix}-inline`, reverse && `${bsPrefix}-reverse`, type === "switch" && bsSwitchPrefix),
+            children: children || /*#__PURE__*/ (0, _jsxRuntime.jsxs)((0, _jsxRuntime.Fragment), {
+                children: [
+                    input,
+                    hasLabel && /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _formCheckLabelDefault.default), {
+                        title: title,
+                        children: label
+                    }),
+                    feedback && /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _feedbackDefault.default), {
+                        type: feedbackType,
+                        tooltip: feedbackTooltip,
+                        children: feedback
+                    })
+                ]
+            })
+        })
+    });
+});
+FormCheck.displayName = "FormCheck";
+exports.default = Object.assign(FormCheck, {
+    Input: (0, _formCheckInputDefault.default),
+    Label: (0, _formCheckLabelDefault.default)
+});
+
+},{"classnames":"jocGM","react":"21dqq","./Feedback":"aWeg2","./FormCheckInput":"dPzD9","./FormCheckLabel":"fGhS2","./FormContext":"gjvSt","./ThemeProvider":"dVixI","./ElementChildren":"fdyAp","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI"}],"aWeg2":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _react = require("react");
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _jsxRuntime = require("react/jsx-runtime");
+const propTypes = {
+    /**
+   * Specify whether the feedback is for valid or invalid fields
+   *
+   * @type {('valid'|'invalid')}
+   */ type: (0, _propTypesDefault.default).string,
+    /** Display feedback as a tooltip. */ tooltip: (0, _propTypesDefault.default).bool,
+    as: (0, _propTypesDefault.default).elementType
+};
+const Feedback = /*#__PURE__*/ _react.forwardRef(// Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+({ as: Component = "div", className, type = "valid", tooltip = false, ...props }, ref)=>/*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+        ...props,
+        ref: ref,
+        className: (0, _classnamesDefault.default)(className, `${type}-${tooltip ? "tooltip" : "feedback"}`)
+    }));
+Feedback.displayName = "Feedback";
+Feedback.propTypes = propTypes;
+exports.default = Feedback;
+
+},{"classnames":"jocGM","react":"21dqq","prop-types":"7wKI2","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI"}],"dPzD9":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _react = require("react");
+var _formContext = require("./FormContext");
+var _formContextDefault = parcelHelpers.interopDefault(_formContext);
+var _themeProvider = require("./ThemeProvider");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const FormCheckInput = /*#__PURE__*/ _react.forwardRef(({ id, bsPrefix, className, type = "checkbox", isValid = false, isInvalid = false, // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+as: Component = "input", ...props }, ref)=>{
+    const { controlId } = (0, _react.useContext)((0, _formContextDefault.default));
+    bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "form-check-input");
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+        ...props,
+        ref: ref,
+        type: type,
+        id: id || controlId,
+        className: (0, _classnamesDefault.default)(className, bsPrefix, isValid && "is-valid", isInvalid && "is-invalid")
+    });
+});
+FormCheckInput.displayName = "FormCheckInput";
+exports.default = FormCheckInput;
+
+},{"classnames":"jocGM","react":"21dqq","./FormContext":"gjvSt","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI"}],"gjvSt":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+"use client";
+// TODO
+const FormContext = /*#__PURE__*/ _react.createContext({});
+exports.default = FormContext;
+
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI"}],"fGhS2":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _react = require("react");
+var _formContext = require("./FormContext");
+var _formContextDefault = parcelHelpers.interopDefault(_formContext);
+var _themeProvider = require("./ThemeProvider");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const FormCheckLabel = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, htmlFor, ...props }, ref)=>{
+    const { controlId } = (0, _react.useContext)((0, _formContextDefault.default));
+    bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "form-check-label");
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)("label", {
+        ...props,
+        ref: ref,
+        htmlFor: htmlFor || controlId,
+        className: (0, _classnamesDefault.default)(className, bsPrefix)
+    });
+});
+FormCheckLabel.displayName = "FormCheckLabel";
+exports.default = FormCheckLabel;
+
+},{"classnames":"jocGM","react":"21dqq","./FormContext":"gjvSt","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI"}],"fdyAp":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "map", ()=>map);
+parcelHelpers.export(exports, "forEach", ()=>forEach);
+parcelHelpers.export(exports, "hasChildOfType", ()=>hasChildOfType);
+var _react = require("react");
+/**
+ * Iterates through children that are typically specified as `props.children`,
+ * but only maps over children that are "valid elements".
+ *
+ * The mapFunction provided index will be normalised to the components mapped,
+ * so an invalid component would not increase the index.
+ *
+ */ function map(children, func) {
+    let index = 0;
+    return _react.Children.map(children, (child)=>/*#__PURE__*/ _react.isValidElement(child) ? func(child, index++) : child);
+}
+/**
+ * Iterates through children that are "valid elements".
+ *
+ * The provided forEachFunc(child, index) will be called for each
+ * leaf child with the index reflecting the position relative to "valid components".
+ */ function forEach(children, func) {
+    let index = 0;
+    _react.Children.forEach(children, (child)=>{
+        if (/*#__PURE__*/ _react.isValidElement(child)) func(child, index++);
+    });
+}
+/**
+ * Finds whether a component's `children` prop includes a React element of the
+ * specified type.
+ */ function hasChildOfType(children, type) {
+    return _react.Children.toArray(children).some((child)=>/*#__PURE__*/ _react.isValidElement(child) && child.type === type);
+}
+
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI"}],"iynMc":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _react = require("react");
+var _warning = require("warning");
+var _warningDefault = parcelHelpers.interopDefault(_warning);
+var _feedback = require("./Feedback");
+var _feedbackDefault = parcelHelpers.interopDefault(_feedback);
+var _formContext = require("./FormContext");
+var _formContextDefault = parcelHelpers.interopDefault(_formContext);
+var _themeProvider = require("./ThemeProvider");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const FormControl = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, type, size, htmlSize, id, className, isValid = false, isInvalid = false, plaintext, readOnly, // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+as: Component = "input", ...props }, ref)=>{
+    const { controlId } = (0, _react.useContext)((0, _formContextDefault.default));
+    bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "form-control");
+    (0, _warningDefault.default)(controlId == null || !id, "`controlId` is ignored on `<FormControl>` when `id` is specified.");
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+        ...props,
+        type: type,
+        size: htmlSize,
+        ref: ref,
+        readOnly: readOnly,
+        id: id || controlId,
+        className: (0, _classnamesDefault.default)(className, plaintext ? `${bsPrefix}-plaintext` : bsPrefix, size && `${bsPrefix}-${size}`, type === "color" && `${bsPrefix}-color`, isValid && "is-valid", isInvalid && "is-invalid")
+    });
+});
+FormControl.displayName = "FormControl";
+exports.default = Object.assign(FormControl, {
+    Feedback: (0, _feedbackDefault.default)
+});
+
+},{"classnames":"jocGM","react":"21dqq","warning":"eUVzU","./Feedback":"aWeg2","./FormContext":"gjvSt","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI"}],"eUVzU":[function(require,module,exports) {
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */ "use strict";
+/**
+ * Similar to invariant but only logs a warning if the condition is not met.
+ * This can be used to log issues in development environments in critical
+ * paths. Removing the logging code for production environments will keep the
+ * same logic and follow the same code paths.
+ */ var __DEV__ = true;
+var warning = function() {};
+if (__DEV__) {
+    var printWarning = function printWarning(format, args) {
+        var len = arguments.length;
+        args = new Array(len > 1 ? len - 1 : 0);
+        for(var key = 1; key < len; key++)args[key - 1] = arguments[key];
+        var argIndex = 0;
+        var message = "Warning: " + format.replace(/%s/g, function() {
+            return args[argIndex++];
+        });
+        if (typeof console !== "undefined") console.error(message);
+        try {
+            // --- Welcome to debugging React ---
+            // This error was thrown as a convenience so that you can use this stack
+            // to find the callsite that caused this warning to fire.
+            throw new Error(message);
+        } catch (x) {}
+    };
+    warning = function(condition, format, args) {
+        var len = arguments.length;
+        args = new Array(len > 2 ? len - 2 : 0);
+        for(var key = 2; key < len; key++)args[key - 2] = arguments[key];
+        if (format === undefined) throw new Error("`warning(condition, format, ...args)` requires a warning message argument");
+        if (!condition) printWarning.apply(null, [
+            format
+        ].concat(args));
+    };
+}
+module.exports = warning;
+
+},{}],"aj346":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _themeProvider = require("./ThemeProvider");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const FormFloating = /*#__PURE__*/ _react.forwardRef(({ className, bsPrefix, as: Component = "div", ...props }, ref)=>{
+    bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "form-floating");
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+        ref: ref,
+        className: (0, _classnamesDefault.default)(className, bsPrefix),
+        ...props
+    });
+});
+FormFloating.displayName = "FormFloating";
+exports.default = FormFloating;
+
+},{"react":"21dqq","classnames":"jocGM","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI"}],"1qBHH":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _formContext = require("./FormContext");
+var _formContextDefault = parcelHelpers.interopDefault(_formContext);
+var _jsxRuntime = require("react/jsx-runtime");
+const FormGroup = /*#__PURE__*/ _react.forwardRef(({ controlId, // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+as: Component = "div", ...props }, ref)=>{
+    const context = (0, _react.useMemo)(()=>({
+            controlId
+        }), [
+        controlId
+    ]);
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _formContextDefault.default).Provider, {
+        value: context,
+        children: /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+            ...props,
+            ref: ref
+        })
+    });
+});
+FormGroup.displayName = "FormGroup";
+exports.default = FormGroup;
+
+},{"react":"21dqq","./FormContext":"gjvSt","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI"}],"66epi":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _react = require("react");
+var _warning = require("warning");
+var _warningDefault = parcelHelpers.interopDefault(_warning);
+var _col = require("./Col");
+var _colDefault = parcelHelpers.interopDefault(_col);
+var _formContext = require("./FormContext");
+var _formContextDefault = parcelHelpers.interopDefault(_formContext);
+var _themeProvider = require("./ThemeProvider");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const FormLabel = /*#__PURE__*/ _react.forwardRef(({ // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+as: Component = "label", bsPrefix, column = false, visuallyHidden = false, className, htmlFor, ...props }, ref)=>{
+    const { controlId } = (0, _react.useContext)((0, _formContextDefault.default));
+    bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "form-label");
+    let columnClass = "col-form-label";
+    if (typeof column === "string") columnClass = `${columnClass} ${columnClass}-${column}`;
+    const classes = (0, _classnamesDefault.default)(className, bsPrefix, visuallyHidden && "visually-hidden", column && columnClass);
+    (0, _warningDefault.default)(controlId == null || !htmlFor, "`controlId` is ignored on `<FormLabel>` when `htmlFor` is specified.");
+    htmlFor = htmlFor || controlId;
+    if (column) return /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _colDefault.default), {
+        ref: ref,
+        as: "label",
+        className: classes,
+        htmlFor: htmlFor,
+        ...props
+    });
+    return(/*#__PURE__*/ // eslint-disable-next-line jsx-a11y/label-has-for, jsx-a11y/label-has-associated-control
+    (0, _jsxRuntime.jsx)(Component, {
+        ref: ref,
+        className: classes,
+        htmlFor: htmlFor,
+        ...props
+    }));
+});
+FormLabel.displayName = "FormLabel";
+exports.default = FormLabel;
+
+},{"classnames":"jocGM","react":"21dqq","warning":"eUVzU","./Col":"2L2I6","./FormContext":"gjvSt","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI"}],"8zsCO":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _react = require("react");
+var _themeProvider = require("./ThemeProvider");
+var _formContext = require("./FormContext");
+var _formContextDefault = parcelHelpers.interopDefault(_formContext);
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const FormRange = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, id, ...props }, ref)=>{
+    const { controlId } = (0, _react.useContext)((0, _formContextDefault.default));
+    bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "form-range");
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)("input", {
+        ...props,
+        type: "range",
+        ref: ref,
+        className: (0, _classnamesDefault.default)(className, bsPrefix),
+        id: id || controlId
+    });
+});
+FormRange.displayName = "FormRange";
+exports.default = FormRange;
+
+},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","./FormContext":"gjvSt","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI"}],"hHWyB":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _react = require("react");
+var _themeProvider = require("./ThemeProvider");
+var _formContext = require("./FormContext");
+var _formContextDefault = parcelHelpers.interopDefault(_formContext);
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const FormSelect = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, size, htmlSize, className, isValid = false, isInvalid = false, id, ...props }, ref)=>{
+    const { controlId } = (0, _react.useContext)((0, _formContextDefault.default));
+    bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "form-select");
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)("select", {
+        ...props,
+        size: htmlSize,
+        ref: ref,
+        className: (0, _classnamesDefault.default)(className, bsPrefix, size && `${bsPrefix}-${size}`, isValid && `is-valid`, isInvalid && `is-invalid`),
+        id: id || controlId
+    });
+});
+FormSelect.displayName = "FormSelect";
+exports.default = FormSelect;
+
+},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","./FormContext":"gjvSt","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI"}],"ffeC7":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _react = require("react");
+var _themeProvider = require("./ThemeProvider");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const FormText = /*#__PURE__*/ _react.forwardRef(// Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+({ bsPrefix, className, as: Component = "small", muted, ...props }, ref)=>{
+    bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "form-text");
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+        ...props,
+        ref: ref,
+        className: (0, _classnamesDefault.default)(className, bsPrefix, muted && "text-muted")
+    });
+});
+FormText.displayName = "FormText";
+exports.default = FormText;
+
+},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI"}],"9O81i":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _formCheck = require("./FormCheck");
+var _formCheckDefault = parcelHelpers.interopDefault(_formCheck);
+var _jsxRuntime = require("react/jsx-runtime");
+const Switch = /*#__PURE__*/ _react.forwardRef((props, ref)=>/*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _formCheckDefault.default), {
+        ...props,
+        ref: ref,
+        type: "switch"
+    }));
+Switch.displayName = "Switch";
+exports.default = Object.assign(Switch, {
+    Input: (0, _formCheckDefault.default).Input,
+    Label: (0, _formCheckDefault.default).Label
+});
+
+},{"react":"21dqq","./FormCheck":"idkr0","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI"}],"coYzo":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _react = require("react");
+var _formGroup = require("./FormGroup");
+var _formGroupDefault = parcelHelpers.interopDefault(_formGroup);
+var _themeProvider = require("./ThemeProvider");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const FloatingLabel = /*#__PURE__*/ _react.forwardRef(({ bsPrefix, className, children, controlId, label, ...props }, ref)=>{
+    bsPrefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "form-floating");
+    return /*#__PURE__*/ (0, _jsxRuntime.jsxs)((0, _formGroupDefault.default), {
+        ref: ref,
+        className: (0, _classnamesDefault.default)(className, bsPrefix),
+        controlId: controlId,
+        ...props,
+        children: [
+            children,
+            /*#__PURE__*/ (0, _jsxRuntime.jsx)("label", {
+                htmlFor: controlId,
+                children: label
+            })
+        ]
+    });
+});
+FloatingLabel.displayName = "FloatingLabel";
+exports.default = FloatingLabel;
+
+},{"classnames":"jocGM","react":"21dqq","./FormGroup":"1qBHH","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI"}],"d6HH4":[function() {},{}],"ggaUx":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$e9f6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -30400,6 +30993,7 @@ parcelHelpers.export(exports, "LoginView", ()=>LoginView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactBootstrap = require("react-bootstrap");
 var _s = $RefreshSig$();
 const LoginView = ({ onLoggedIn })=>{
     _s();
@@ -30433,122 +31027,109 @@ const LoginView = ({ onLoggedIn })=>{
             alert("Login failed. Verify your username and password are correct.");
         });
     };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
         id: "loginForm",
-        class: "form-group",
         onSubmit: handleSubmit,
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                class: "container mt-5",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                        class: "formTitle",
-                        children: "Login"
-                    }, void 0, false, {
-                        fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 51,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                        fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 52,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                        id: "usernameLabel",
-                        children: [
-                            "Username",
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                id: "usernameInput",
-                                type: "text",
-                                value: Username,
-                                class: "form-control",
-                                onChange: (e)=>setUsername(e.target.value),
-                                minLength: 5,
-                                required: true
-                            }, void 0, false, {
-                                fileName: "src/components/login-view/login-view.jsx",
-                                lineNumber: 55,
-                                columnNumber: 11
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 53,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                        fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 65,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                        fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 66,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                        id: "passwoordLabel",
-                        children: [
-                            "Password",
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                id: "passwoordInput",
-                                type: "password",
-                                value: Password,
-                                class: "form-control",
-                                onChange: (e)=>setPassword(e.target.value),
-                                required: true
-                            }, void 0, false, {
-                                fileName: "src/components/login-view/login-view.jsx",
-                                lineNumber: 69,
-                                columnNumber: 11
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 67,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                        fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 78,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                        fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 79,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        id: "submit-button",
-                        class: "btn btn-dark",
-                        type: "submit",
-                        children: "Submit"
-                    }, void 0, false, {
-                        fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 80,
-                        columnNumber: 9
-                    }, undefined)
-                ]
-            }, void 0, true, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                className: "formTitle",
+                children: "Login"
+            }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 50,
+                lineNumber: 52,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                fileName: "src/components/login-view/login-view.jsx",
+                lineNumber: 53,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                controlId: "formUsername",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                    id: "usernameLabel",
+                    children: [
+                        "Username",
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                            id: "usernameInput",
+                            type: "text",
+                            value: Username,
+                            onChange: (e)=>setUsername(e.target.value),
+                            minLength: 5,
+                            required: true
+                        }, void 0, false, {
+                            fileName: "src/components/login-view/login-view.jsx",
+                            lineNumber: 57,
+                            columnNumber: 11
+                        }, undefined)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/login-view/login-view.jsx",
+                    lineNumber: 55,
+                    columnNumber: 9
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/login-view/login-view.jsx",
+                lineNumber: 54,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                controlId: "formPassword",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                    id: "passwordLabel",
+                    children: [
+                        "Password",
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                            id: "passwoordInput",
+                            type: "password",
+                            value: Password,
+                            onChange: (e)=>setPassword(e.target.value),
+                            required: true
+                        }, void 0, false, {
+                            fileName: "src/components/login-view/login-view.jsx",
+                            lineNumber: 70,
+                            columnNumber: 11
+                        }, undefined)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/login-view/login-view.jsx",
+                    lineNumber: 68,
+                    columnNumber: 9
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/login-view/login-view.jsx",
+                lineNumber: 67,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                fileName: "src/components/login-view/login-view.jsx",
+                lineNumber: 79,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                id: "submit-button",
+                className: "btn btn-dark",
+                type: "submit",
+                children: "Submit"
+            }, void 0, false, {
+                fileName: "src/components/login-view/login-view.jsx",
+                lineNumber: 80,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                fileName: "src/components/login-view/login-view.jsx",
+                lineNumber: 83,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
                 lineNumber: 84,
                 columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 85,
-                columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/login-view/login-view.jsx",
-        lineNumber: 49,
+        lineNumber: 50,
         columnNumber: 5
     }, undefined);
 };
@@ -30562,7 +31143,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"gsJHn"}],"4OGiN":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"gsJHn","react-bootstrap":"3AD9A"}],"4OGiN":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$73d1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -30575,6 +31156,7 @@ parcelHelpers.export(exports, "SignupView", ()=>SignupView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactBootstrap = require("react-bootstrap");
 var _s = $RefreshSig$();
 const SignupView = ()=>{
     _s();
@@ -30611,323 +31193,300 @@ const SignupView = ()=>{
             } else alert("Signup failed");
         });
     };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
         id: "registerForm",
         onSubmit: handleSubmit,
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            class: "container mt-5",
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                    class: "formTitle",
-                    children: "Register"
-                }, void 0, false, {
-                    fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 46,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                    fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 47,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    class: "form-group",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                            for: "Username",
-                            children: [
-                                "Username",
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                    type: "text",
-                                    value: Username,
-                                    onChange: (e)=>setUsername(e.target.value),
-                                    class: "form-control",
-                                    id: "usernameSignup",
-                                    name: "Username",
-                                    pattern: "^[a-zA-Z0-9]{5,15}$",
-                                    required: true
-                                }, void 0, false, {
-                                    fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 51,
-                                    columnNumber: 13
-                                }, undefined)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 49,
-                            columnNumber: 11
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            class: "invalid-feedback",
-                            children: "Username must be alphanumeric and between 5 and 15 characters long."
-                        }, void 0, false, {
-                            fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 62,
-                            columnNumber: 11
-                        }, undefined)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 48,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    class: "form-group",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                            for: "Password",
-                            children: [
-                                "Password",
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                    type: "password",
-                                    value: Password,
-                                    onChange: (e)=>setPassword(e.target.value),
-                                    class: "form-control",
-                                    id: "passwordSignup",
-                                    name: "Password",
-                                    minLength: "8",
-                                    maxLength: "25",
-                                    required: true
-                                }, void 0, false, {
-                                    fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 69,
-                                    columnNumber: 13
-                                }, undefined)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 67,
-                            columnNumber: 11
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            class: "invalid-feedback",
-                            children: "Password must be between 8 and 25 characters long."
-                        }, void 0, false, {
-                            fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 81,
-                            columnNumber: 11
-                        }, undefined)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 66,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    class: "form-group",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                            for: "confirmPassword",
-                            children: [
-                                "Re-enter Password",
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                    type: "password",
-                                    class: "form-control",
-                                    id: "confirmPassword",
-                                    name: "confirmPassword",
-                                    required: true
-                                }, void 0, false, {
-                                    fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 88,
-                                    columnNumber: 13
-                                }, undefined)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 86,
-                            columnNumber: 11
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            class: "invalid-feedback",
-                            children: "Passwords must match."
-                        }, void 0, false, {
-                            fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 96,
-                            columnNumber: 11
-                        }, undefined)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 85,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    class: "form-group",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                            for: "Email",
-                            children: [
-                                "Email",
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                    type: "email",
-                                    value: Email,
-                                    onChange: (e)=>setEmail(e.target.value),
-                                    class: "form-control",
-                                    id: "emailSignup",
-                                    name: "Email",
-                                    required: true
-                                }, void 0, false, {
-                                    fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 101,
-                                    columnNumber: 13
-                                }, undefined)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 99,
-                            columnNumber: 11
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            class: "invalid-feedback",
-                            children: "Please enter a valid email address."
-                        }, void 0, false, {
-                            fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 111,
-                            columnNumber: 11
-                        }, undefined)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 98,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    class: "form-group",
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                        for: "Birthday",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                className: "formTitle",
+                children: "Register"
+            }, void 0, false, {
+                fileName: "src/components/signup-view/signup-view.jsx",
+                lineNumber: 46,
+                columnNumber: 9
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                fileName: "src/components/signup-view/signup-view.jsx",
+                lineNumber: 47,
+                columnNumber: 9
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                controlId: "Username",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
                         children: [
-                            "Birthday",
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                type: "date",
-                                value: Birthday,
-                                onChange: (e)=>setBirthday(e.target.value),
-                                class: "form-control",
-                                id: "birthdaySignup",
-                                name: "Birthday"
+                            "Username",
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                                type: "text",
+                                value: Username,
+                                onChange: (e)=>setUsername(e.target.value),
+                                id: "usernameSignup",
+                                name: "Username",
+                                pattern: "^[a-zA-Z0-9]{5,15}$",
+                                required: true
                             }, void 0, false, {
                                 fileName: "src/components/signup-view/signup-view.jsx",
-                                lineNumber: 118,
+                                lineNumber: 51,
                                 columnNumber: 13
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 116,
+                        lineNumber: 49,
+                        columnNumber: 11
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        class: "invalid-feedback",
+                        children: "Username must be alphanumeric and between 5 and 15 characters long."
+                    }, void 0, false, {
+                        fileName: "src/components/signup-view/signup-view.jsx",
+                        lineNumber: 61,
                         columnNumber: 11
                     }, undefined)
-                }, void 0, false, {
-                    fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 115,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    class: "form-group",
+                ]
+            }, void 0, true, {
+                fileName: "src/components/signup-view/signup-view.jsx",
+                lineNumber: 48,
+                columnNumber: 9
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                controlId: "Password",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                        children: [
+                            "Password",
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                                type: "password",
+                                value: Password,
+                                onChange: (e)=>setPassword(e.target.value),
+                                id: "passwordSignup",
+                                name: "Password",
+                                minLength: "8",
+                                maxLength: "25",
+                                required: true
+                            }, void 0, false, {
+                                fileName: "src/components/signup-view/signup-view.jsx",
+                                lineNumber: 68,
+                                columnNumber: 13
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/signup-view/signup-view.jsx",
+                        lineNumber: 66,
+                        columnNumber: 11
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        class: "invalid-feedback",
+                        children: "Password must be between 8 and 25 characters long."
+                    }, void 0, false, {
+                        fileName: "src/components/signup-view/signup-view.jsx",
+                        lineNumber: 79,
+                        columnNumber: 11
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/signup-view/signup-view.jsx",
+                lineNumber: 65,
+                columnNumber: 9
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                controlId: "confirmPassword",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                        children: [
+                            "Re-enter Password",
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                                type: "password",
+                                class: "form-control",
+                                id: "confirmPassword",
+                                name: "confirmPassword",
+                                required: true
+                            }, void 0, false, {
+                                fileName: "src/components/signup-view/signup-view.jsx",
+                                lineNumber: 86,
+                                columnNumber: 13
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/signup-view/signup-view.jsx",
+                        lineNumber: 84,
+                        columnNumber: 11
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "invalid-feedback",
+                        children: "Passwords must match."
+                    }, void 0, false, {
+                        fileName: "src/components/signup-view/signup-view.jsx",
+                        lineNumber: 94,
+                        columnNumber: 11
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/signup-view/signup-view.jsx",
+                lineNumber: 83,
+                columnNumber: 9
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                controlId: "Email",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                        children: [
+                            "Email",
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                                type: "email",
+                                value: Email,
+                                onChange: (e)=>setEmail(e.target.value),
+                                id: "emailSignup",
+                                name: "Email",
+                                required: true
+                            }, void 0, false, {
+                                fileName: "src/components/signup-view/signup-view.jsx",
+                                lineNumber: 99,
+                                columnNumber: 13
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/signup-view/signup-view.jsx",
+                        lineNumber: 97,
+                        columnNumber: 11
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "invalid-feedback",
+                        children: "Please enter a valid email address."
+                    }, void 0, false, {
+                        fileName: "src/components/signup-view/signup-view.jsx",
+                        lineNumber: 108,
+                        columnNumber: 11
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/signup-view/signup-view.jsx",
+                lineNumber: 96,
+                columnNumber: 9
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                controlId: "Birthday",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
                     children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                            for: "FirstName",
-                            children: [
-                                "First Name",
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                    type: "text",
-                                    value: FirstName,
-                                    onChange: (e)=>setFirstName(e.target.value),
-                                    class: "form-control",
-                                    id: "firstNameSignup",
-                                    name: "FirstName",
-                                    required: true
-                                }, void 0, false, {
-                                    fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 131,
-                                    columnNumber: 13
-                                }, undefined)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 129,
-                            columnNumber: 11
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            class: "invalid-feedback",
-                            children: "First name is required."
+                        "Birthday",
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                            type: "date",
+                            value: Birthday,
+                            onChange: (e)=>setBirthday(e.target.value),
+                            id: "birthdaySignup",
+                            name: "Birthday"
                         }, void 0, false, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 142,
-                            columnNumber: 11
+                            lineNumber: 115,
+                            columnNumber: 13
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 128,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    class: "form-group",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                            for: "LastName",
-                            children: [
-                                "Last Name",
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                    type: "text",
-                                    value: LastName,
-                                    onChange: (e)=>setLastName(e.target.value),
-                                    class: "form-control",
-                                    id: "lastNameSignup",
-                                    name: "LastName",
-                                    required: true
-                                }, void 0, false, {
-                                    fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 147,
-                                    columnNumber: 13
-                                }, undefined)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 145,
-                            columnNumber: 11
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            class: "invalid-feedback",
-                            children: "Last name is required."
-                        }, void 0, false, {
-                            fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 157,
-                            columnNumber: 11
-                        }, undefined)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 144,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                    fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 159,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                    type: "submit",
-                    class: "btn btn-dark",
-                    children: "Register"
-                }, void 0, false, {
-                    fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 160,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                    fileName: "src/components/signup-view/signup-view.jsx",
-                    lineNumber: 163,
-                    columnNumber: 9
+                    lineNumber: 113,
+                    columnNumber: 11
                 }, undefined)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/signup-view/signup-view.jsx",
-            lineNumber: 45,
-            columnNumber: 7
-        }, undefined)
-    }, void 0, false, {
+            }, void 0, false, {
+                fileName: "src/components/signup-view/signup-view.jsx",
+                lineNumber: 112,
+                columnNumber: 9
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                controlId: "FirstName",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                        children: [
+                            "First Name",
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                                type: "text",
+                                value: FirstName,
+                                onChange: (e)=>setFirstName(e.target.value),
+                                className: "form-control",
+                                id: "firstNameSignup",
+                                name: "FirstName",
+                                required: true
+                            }, void 0, false, {
+                                fileName: "src/components/signup-view/signup-view.jsx",
+                                lineNumber: 127,
+                                columnNumber: 13
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/signup-view/signup-view.jsx",
+                        lineNumber: 125,
+                        columnNumber: 11
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "invalid-feedback",
+                        children: "First name is required."
+                    }, void 0, false, {
+                        fileName: "src/components/signup-view/signup-view.jsx",
+                        lineNumber: 138,
+                        columnNumber: 11
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/signup-view/signup-view.jsx",
+                lineNumber: 124,
+                columnNumber: 9
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                controlId: "LastName",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                        children: [
+                            "Last Name",
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                                type: "text",
+                                value: LastName,
+                                onChange: (e)=>setLastName(e.target.value),
+                                className: "form-control",
+                                id: "lastNameSignup",
+                                name: "LastName",
+                                required: true
+                            }, void 0, false, {
+                                fileName: "src/components/signup-view/signup-view.jsx",
+                                lineNumber: 143,
+                                columnNumber: 13
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/signup-view/signup-view.jsx",
+                        lineNumber: 141,
+                        columnNumber: 11
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "invalid-feedback",
+                        children: "Last name is required."
+                    }, void 0, false, {
+                        fileName: "src/components/signup-view/signup-view.jsx",
+                        lineNumber: 153,
+                        columnNumber: 11
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/signup-view/signup-view.jsx",
+                lineNumber: 140,
+                columnNumber: 9
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                type: "submit",
+                className: "btn btn-dark",
+                children: "Register"
+            }, void 0, false, {
+                fileName: "src/components/signup-view/signup-view.jsx",
+                lineNumber: 155,
+                columnNumber: 9
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                fileName: "src/components/signup-view/signup-view.jsx",
+                lineNumber: 158,
+                columnNumber: 9
+            }, undefined)
+        ]
+    }, void 0, true, {
         fileName: "src/components/signup-view/signup-view.jsx",
-        lineNumber: 44,
+        lineNumber: 45,
         columnNumber: 5
     }, undefined);
 };
@@ -30941,6 +31500,6 @@ $RefreshReg$(_c, "SignupView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"gsJHn"}],"lJZlQ":[function() {},{}],"i5LP7":[function() {},{}]},["5qvMu","jthtV","d8Dch"], "d8Dch", "parcelRequireaec4")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"gsJHn","react-bootstrap":"3AD9A"}],"lJZlQ":[function() {},{}],"i5LP7":[function() {},{}]},["5qvMu","jthtV","d8Dch"], "d8Dch", "parcelRequireaec4")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
