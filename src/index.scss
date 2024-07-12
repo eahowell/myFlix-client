@@ -33,19 +33,11 @@ img {
 
 .movies-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 15px;
   max-width: 1200px;
 }
 
-.movie-card {
-  border: 1px solid black;
-  padding: 10px;
-  background-color: rgba(255, 0, 0, 0.26);
-  box-sizing: border-box;
-  border-radius: 15px;
-  cursor: pointer;
-}
 
 .movie-view-text {
   text-align: left;
