@@ -88,12 +88,14 @@ export const MainView = () => {
             </div>
           </Col>
       ) : selectedMovie ? (
+        <>
           <Col md={8}>
           <MovieView
             Movie={selectedMovie}
             onBackClick={() => setSelectedMovie(null)}
             className="movie-view"
           />
+          </Col>
           <br />
           <h2>Similar Movies in the {selectedMovie.Genre.Name} Genre</h2>
           <div className="movies-grid">
@@ -113,7 +115,8 @@ export const MainView = () => {
           </div>
           <br />
           <br />
-          </Col>
+          
+          </>
       ) : Movies.length === 0 ? (
         <div>The list is empty.</div>
       ) : (
@@ -124,7 +127,7 @@ export const MainView = () => {
               <br />
               <Button
                 id="logout-button"
-                className="btn btn-dark"
+                variant="warning"
                 onClick={() => {
                   setUser(null);
                   setToken(null);

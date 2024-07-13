@@ -42,9 +42,8 @@ export const SignupView = () => {
   };
 
   return (
-    <Form id="registerForm" onSubmit={handleSubmit}>      
+    <Form id="registerForm" onSubmit={handleSubmit} className="w-100">      
         <h2 className="formTitle">Register</h2>
-        <br />
         <Form.Group controlId="Username">
           <Form.Label>
             Username
@@ -152,10 +151,9 @@ export const SignupView = () => {
           </Form.Label>
           <div className="invalid-feedback">Last name is required.</div>
         </Form.Group>
-        <Button type="submit" className="btn btn-dark">
+        <Button variant="warning" type="submit" >
           Register
         </Button>
-        <br />
     </Form>
   );
 };
