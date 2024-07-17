@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Button, Form } from "react-bootstrap";
 
 export const LoginView = ({ onLoggedIn }) => {
   const [Username, setUsername] = useState("");
@@ -46,43 +47,40 @@ export const LoginView = ({ onLoggedIn }) => {
       });
   };
   return (
-    <form id="loginForm" class="form-group" onSubmit={handleSubmit}>
-      <div class="container mt-5">
-        <h2 class="formTitle">Login</h2>
-        <br />
-        <label id="usernameLabel">
+    <Form id="loginForm" onSubmit={handleSubmit}>
+      <h2 className="formTitle">Login</h2>
+      <br />
+      <Form.Group controlId="formUsername">
+        <Form.Label id="usernameLabel">
           Username
-          <input
+          <Form.Control
             id="usernameInput"
             type="text"
             value={Username}
-            class="form-control"
             onChange={(e) => setUsername(e.target.value)}
             minLength={5}
             required
           />
-        </label>
-        <br />
-        <br />
-        <label id="passwoordLabel">
+        </Form.Label>
+      </Form.Group>
+      <Form.Group controlId="formPassword">
+        <Form.Label id="passwordLabel">
           Password
-          <input
+          <Form.Control
             id="passwoordInput"
             type="password"
             value={Password}
-            class="form-control"
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </label>
-        <br />
-        <br />
-        <button id="submit-button" class="btn btn-dark" type="submit">
-          Submit
-        </button>
-      </div>
+        </Form.Label>
+      </Form.Group>
+      <br />
+      <Button id="submit-button" variant="warning" type="submit">
+        Submit
+      </Button>
       <br />
       <br />
-    </form>
+    </Form>
   );
 };

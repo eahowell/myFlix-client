@@ -1,40 +1,45 @@
 import PropTypes from "prop-types";
+import { Button, Card } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
 
 export const MovieView = ({ Movie, onBackClick }) => {
   return (
-    <div>
-      <div>
-        <h1>Title: {Movie.Title}</h1>
-      </div>
-      <div className="movie-view-text">
-        <div>
-          <span>Director: </span>
-          <span>{Movie.Director.Name}</span>
-        </div>
-        <div>
-          <span>Genre: </span>
-          <span>{Movie.Genre.Name}</span>
-        </div>
-        <div>
-          <span>Actors: </span>
-          <span>{Movie.Actors.join(" , ")}</span>
-        </div>
-        <div>
-          <span>Description: </span>
-          <span>{Movie.Description}</span>
-        </div>
-      </div>
-      <br />
-      <button id="back-button" onClick={onBackClick}>
+    <Card bg="light" border="warning">
+      
+      <Card.Body>
+      <Button id="back-button" variant="warning" onClick={onBackClick}>
         Back
-      </button>
-      <br />
-      <br />
-      <div>
-        <img src={Movie.ImagePath} />
-      </div>
-      <br />
-    </div>
+      </Button>
+        <Card.Title as="h1">{Movie.Title}</Card.Title>
+        <Card.Text className="movie-view-text text-start" style={{paddingLeft:'15px', margin:'10px', maxWidth:'900px'}}
+        >
+          <div>
+            <span>Director: </span>
+            <span>{Movie.Director.Name}</span>
+          </div>
+          <div>
+            <span>Genre: </span>
+            <span>{Movie.Genre.Name}</span>
+          </div>
+          <div>
+            <span>Actors: </span>
+            <span>{Movie.Actors.join(" , ")}</span>
+          </div>
+          <div>
+            <span>Description: </span>
+            <span>{Movie.Description}</span>
+          </div>
+        </Card.Text>
+
+        <br />
+        {/* <Col md={8}> */}
+        <div>
+          <Card.Img src={Movie.ImagePath} style = {{width: '350px'}} />
+        </div>
+        {/* </Col> */}
+        <br />
+      </Card.Body>
+    </Card>
   );
 };
 

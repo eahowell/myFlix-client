@@ -1,11 +1,16 @@
+// @import '~bootstrap/scss/bootstrap.scss';
 $myFlix-Red: #fc4242;
 $myFlix-LightRed: #f5cece;
 $myFlix-Popcorn: #f7ac08;
 $myFlix-Black: #212529;
+$red-100: #f8d7da;
+// $body-bg: rgb(189, 189, 189);
+$primary: #f7ac08;
+$body-bg: $red-100;
+@import '~bootstrap/scss/bootstrap.scss';
 
 .my-flix {
   font-family: "Roboto", sans-serif;
-  background-color: rgb(189, 189, 189);
 }
 
 html,
@@ -25,34 +30,13 @@ header {
   background-color: rgb(245, 206, 206);
 }
 
-img {
-  width: 350px;
-  height: auto;
-  margin: auto 5%;
-}
-
 .movies-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 15px;
   max-width: 1200px;
 }
 
-.movie-card {
-  border: 1px solid black;
-  padding: 10px;
-  background-color: rgba(255, 0, 0, 0.26);
-  box-sizing: border-box;
-  border-radius: 15px;
-  cursor: pointer;
-}
-
-.movie-view-text {
-  text-align: left;
-  margin: 10px;
-  padding-left: 15px;
-  max-width: 900px;
-}
 .nav-link {
   line-height: 1;
   height: 15px;
@@ -79,7 +63,7 @@ img {
   border-radius: 10px;
   font: bold 1rem sans-serif;
   margin: 1rem;
-  padding: 1rem;
+  padding: 1rem 2rem;
   outline-offset: 0.5rem;
 }
 
@@ -88,8 +72,10 @@ img {
 }
 
 .formTitle {
-  font: bolder 50px sans-serif;
-  text-decoration: underline;
+  font: bold 50px sans-serif;
+  background-color: $red-100;
+  padding: 10px;
+  border-radius: 25px;
 }
 
 label {
