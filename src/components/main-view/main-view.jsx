@@ -12,7 +12,6 @@ export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
   const [Movies, setMovies] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState(null);
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
 
@@ -33,7 +32,6 @@ export const MainView = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         const moviesFromAPI = data.map((Movie) => {
           let directorDeathday = Movie.Director.Death_day
             ? { Deathday: Movie.Director.Death_day }
@@ -68,7 +66,7 @@ export const MainView = () => {
   }, [storedToken]);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter>    
       <Row className="justify-content-md-center">
         <Routes>
           <Route
@@ -106,7 +104,7 @@ export const MainView = () => {
           />
 
           <Route
-            path="/movies/:movieId"
+            path="/movies/:movieID"
             element={
               <>
                 {!storedUser ? (
@@ -115,34 +113,12 @@ export const MainView = () => {
                   <Col>The list is empty!</Col>
                 ) : (
                   <>
-                    <Col md={8}>
+                    <Col md={8}>                    
                       <MovieView
-                        Movie={selectedMovie}
-                        onBackClick={() => setSelectedMovie(null)}
-                        className="movie-view"
+                        Movies={Movies} 
                       />
                     </Col>
-                    <br />
-                    <h2>
-                      Similar Movies in the {selectedMovie.Genre.Name} Genre
-                    </h2>
-                    <div className="movies-grid">
-                      {Movies.filter(
-                        (Movie) =>
-                          Movie.Genre.Name === selectedMovie.Genre.Name &&
-                          Movies._id !== selectedMovie._id
-                      ).map((Movie) => (
-                        <MovieCard
-                          key={Movie._id}
-                          Movie={Movie}
-                          onMovieClick={(newSelectedMovie) => {
-                            setSelectedMovie(newSelectedMovie);
-                          }}
-                        />
-                      ))}
-                    </div>
-                    <br />
-                    <br />
+                    
                   </>
                 )}
               </>
@@ -163,12 +139,7 @@ export const MainView = () => {
                       <br />
                       <Button
                         id="logout-button"
-                        variant="warning"
-                        onClick={() => {
-                          setUser(null);
-                          setToken(null);
-                          localStorage.clear();
-                        }}
+                        variant="warning"                        
                       >
                         Logout
                       </Button>
@@ -180,9 +151,6 @@ export const MainView = () => {
                         <Col key={Movie._id} md={3} className="mb-2">
                           <MovieCard
                             Movie={Movie}
-                            onMovieClick={(newSelectedMovie) => {
-                              setSelectedMovie(newSelectedMovie);
-                            }}
                           />
                         </Col>
                       ))}
@@ -195,5 +163,6 @@ export const MainView = () => {
         </Routes>
       </Row>
     </BrowserRouter>
+    
   );
 };
