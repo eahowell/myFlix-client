@@ -3,7 +3,8 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view.jsx";
 import { LoginView } from "../login-view/login-view.jsx";
 import { SignupView } from "../signup-view/signup-view.jsx";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { NavigationBar } from "../navigation-bar/navigation-bar.jsx";
+import { BrowserRouter, Routes, Route, Navigate, Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -66,7 +67,15 @@ export const MainView = () => {
   }, [storedToken]);
 
   return (
-    <BrowserRouter>    
+    <BrowserRouter>
+      <NavigationBar
+        user={storedUser}
+        onLoggedOut={() => {
+          setUser(null);
+          setToken(null);
+          localStorage.clear();
+        }}
+      />
       <Row className="justify-content-md-center">
         <Routes>
           <Route
@@ -76,7 +85,7 @@ export const MainView = () => {
                 {storedUser ? (
                   <Navigate to="/" />
                 ) : (
-                  <Col md={5} className="container-signup">
+                  <Col md={12} className="container-signup">
                     <SignupView />
                   </Col>
                 )}
@@ -113,12 +122,9 @@ export const MainView = () => {
                   <Col>The list is empty!</Col>
                 ) : (
                   <>
-                    <Col md={8}>                    
-                      <MovieView
-                        Movies={Movies} 
-                      />
+                    <Col md={8}>
+                      <MovieView Movies={Movies} />
                     </Col>
-                    
                   </>
                 )}
               </>
@@ -133,25 +139,11 @@ export const MainView = () => {
                 ) : Movies.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
-                  <>
-                    <div className="loggedInAs">
-                      Logged in as: {storedUser.Username}
-                      <br />
-                      <Button
-                        id="logout-button"
-                        variant="warning"                        
-                      >
-                        Logout
-                      </Button>
-                      <br />
-                      <br />
-                    </div>
+                  <>                    
                     <div className="movies-grid">
                       {Movies.map((Movie) => (
                         <Col key={Movie._id} md={3} className="mb-2">
-                          <MovieCard
-                            Movie={Movie}
-                          />
+                          <MovieCard Movie={Movie} />
                         </Col>
                       ))}
                     </div>
@@ -163,6 +155,5 @@ export const MainView = () => {
         </Routes>
       </Row>
     </BrowserRouter>
-    
   );
 };

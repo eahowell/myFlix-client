@@ -42,8 +42,8 @@ export const SignupView = () => {
   };
 
   return (
-    <Form id="registerForm" onSubmit={handleSubmit} className="w-100">      
-        <h2 className="formTitle">Register</h2>
+    <Form id="registerForm" onSubmit={handleSubmit} >      
+        <h2 className="formTitle">  Create your own account  </h2>
         <Form.Group controlId="Username">
           <Form.Label>
             Username
@@ -55,15 +55,16 @@ export const SignupView = () => {
               name="Username"
               pattern="^[a-zA-Z0-9]{5,15}$"
               required
+              
             />
           </Form.Label>
           <div class="invalid-feedback">
             Username must be alphanumeric and between 5 and 15 characters long.
           </div>
         </Form.Group>
-        <Form.Group controlId="Password">
+        <Form.Group controlId="Password" >
           <Form.Label >
-            Password
+            Password 
             <Form.Control
               type="password"
               value={Password}
@@ -92,7 +93,7 @@ export const SignupView = () => {
           </Form.Label>
           <div className="invalid-feedback">Passwords must match.</div>
         </Form.Group>
-        <Form.Group controlId="Email">
+        <Form.Group controlId="Email" >
           <Form.Label >
             Email
             <Form.Control
@@ -108,7 +109,7 @@ export const SignupView = () => {
             Please enter a valid email address.
           </div>
         </Form.Group>
-        <Form.Group controlId="Birthday">
+        <Form.Group controlId="Birthday" >
           <Form.Label >
             Birthday
             <Form.Control
@@ -120,7 +121,7 @@ export const SignupView = () => {
             />
           </Form.Label>
         </Form.Group>
-        <Form.Group controlId="FirstName">
+        <Form.Group controlId="FirstName" >
           <Form.Label >
             First Name
             <Form.Control

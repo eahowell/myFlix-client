@@ -3,10 +3,9 @@ $myFlix-Red: #fc4242;
 $myFlix-LightRed: #f5cece;
 $myFlix-Popcorn: #f7ac08;
 $myFlix-Black: #212529;
-$red-100: #f8d7da;
 // $body-bg: rgb(189, 189, 189);
 $primary: #f7ac08;
-$body-bg: $red-100;
+
 @import '~bootstrap/scss/bootstrap.scss';
 
 .my-flix {
@@ -17,7 +16,6 @@ html,
 body {
   height: 100%;
   margin: 0;
-  padding-top: 100px;
 }
 
 main {
@@ -26,9 +24,11 @@ main {
   align-items: center;
   text-align: center;
 }
+
 header {
-  background-color: rgb(245, 206, 206);
+  background-color: $myFlix-LightRed;
 }
+
 
 .movies-grid {
   display: grid;
@@ -37,9 +37,16 @@ header {
   max-width: 1200px;
 }
 
-.nav-link {
-  line-height: 1;
-  height: 15px;
+// .nav-link {
+//   line-height: 1;
+//   height: 15px;
+// }
+.navbar-full-width {
+  width: 100vw;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 0;
+  border-bottom: 10px solid white;
 }
 
 .popcorn-icon {
@@ -48,32 +55,25 @@ header {
   margin: 0;
 }
 
-.container-signlog {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+// .container-signlog {
+//   display: grid;
+//   grid-template-columns: repeat(3, 1fr);
+//   gap: 15px;
+//   justify-content: center;
+//   align-items: center;
+//   text-align: center;
+// }
 
-.container-signup {
-  border: 0.5rem outset $myFlix-LightRed;
-  box-shadow: 0 0 0 1rem $myFlix-Black;
-  border-radius: 10px;
-  font: bold 1rem sans-serif;
-  margin: 1rem;
-  padding: 1rem 2rem;
-  outline-offset: 0.5rem;
-}
+// .container-signup {
+//   font: bold 2rem sans-serif;
+//   width: 700px;
 
-.orDiv {
-  font: bolder 100px sans-serif;
-}
+// }
+
 
 .formTitle {
   font: bold 50px sans-serif;
-  background-color: $red-100;
+  // background-color: $red-100;
   padding: 10px;
   border-radius: 25px;
 }

@@ -73,8 +73,8 @@
   --bs-body-line-height: 1.5;
   --bs-body-color: #212529;
   --bs-body-color-rgb: 33, 37, 41;
-  --bs-body-bg: #f8d7da;
-  --bs-body-bg-rgb: 248, 215, 218;
+  --bs-body-bg: #fff;
+  --bs-body-bg-rgb: 255, 255, 255;
   --bs-emphasis-color: #000;
   --bs-emphasis-color-rgb: 0, 0, 0;
   --bs-secondary-color: #212529bf;
@@ -2653,11 +2653,11 @@ textarea.form-control-lg {
 }
 
 .form-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #f8d7da, 0 0 0 .25rem #f7ac0840;
+  box-shadow: 0 0 0 1px #fff, 0 0 0 .25rem #f7ac0840;
 }
 
 .form-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #f8d7da, 0 0 0 .25rem #f7ac0840;
+  box-shadow: 0 0 0 1px #fff, 0 0 0 .25rem #f7ac0840;
 }
 
 .form-range::-moz-focus-outer {
@@ -13197,7 +13197,6 @@ textarea.form-control-lg {
 html, body {
   height: 100%;
   margin: 0;
-  padding-top: 100px;
 }
 
 main {
@@ -13218,9 +13217,12 @@ header {
   display: grid;
 }
 
-.nav-link {
-  height: 15px;
-  line-height: 1;
+.navbar-full-width {
+  border-bottom: 10px solid #fff;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 0;
 }
 
 .popcorn-icon {
@@ -13229,31 +13231,7 @@ header {
   margin: 0;
 }
 
-.container-signlog {
-  text-align: center;
-  grid-template-columns: repeat(3, 1fr);
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  display: grid;
-}
-
-.container-signup {
-  outline-offset: .5rem;
-  border: .5rem outset #f5cece;
-  border-radius: 10px;
-  margin: 1rem;
-  padding: 1rem 2rem;
-  font: bold 1rem sans-serif;
-  box-shadow: 0 0 0 1rem #212529;
-}
-
-.orDiv {
-  font: bolder 100px sans-serif;
-}
-
 .formTitle {
-  background-color: #f8d7da;
   border-radius: 25px;
   padding: 10px;
   font: bold 50px sans-serif;
