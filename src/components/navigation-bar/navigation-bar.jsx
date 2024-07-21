@@ -21,7 +21,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
             height="90"
             alt="Logo of myFlix that navigates to the home page"
             title="myFlix Application"
-            class="page-header__item img-fluid mx-auto d-block"
+            className="page-header__item img-fluid mx-auto d-block"
           />
         </Navbar.Brand>
 
@@ -34,10 +34,9 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
           >
             {user && (
               <>
-                <Navbar.Text className="justify-content-end">
-                  Welcome back,
-                  <strong>{user.Username}</strong>!
-                </Navbar.Text>
+                <Nav.Link as={Link} to="/users">
+                  Welcome back,<strong>{user.Username}</strong>
+                </Nav.Link>
                 <Nav.Link
                   onClick={onLoggedOut}
                   style={{
@@ -71,7 +70,12 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
             )}
             {user && (
               <>
-                <Nav.Link as={Link} to="/">Home</Nav.Link>
+                <Nav.Link as={Link} to="/">
+                  Home
+                </Nav.Link>
+                <Nav.Link as={Link} to="/users">
+                  User Profile
+                </Nav.Link>
 
                 <Nav.Link onClick={onLoggedOut}>Logout</Nav.Link>
                 <Nav.Link
