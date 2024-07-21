@@ -4,10 +4,11 @@ import { MovieView } from "../movie-view/movie-view.jsx";
 import { LoginView } from "../login-view/login-view.jsx";
 import { SignupView } from "../signup-view/signup-view.jsx";
 import { NavigationBar } from "../navigation-bar/navigation-bar.jsx";
+import { UserProfile } from "../profile-view/profile-view.jsx";
 import { BrowserRouter, Routes, Route, Navigate, Link } from "react-router-dom";
-import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import UserProfile from "../profile-view/profile-view.jsx";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -106,6 +107,21 @@ export const MainView = () => {
                         setToken(token);
                       }}
                     />
+                  </Col>
+                )}
+              </>
+            }
+          />
+
+<Route
+            path="/users"
+            element={
+              <>
+                {!storedUser ? (
+                  <Navigate to="/login" replace />
+                ) : (
+                  <Col>
+                    <UserProfile user = {storedUser} token={storedToken}/>
                   </Col>
                 )}
               </>

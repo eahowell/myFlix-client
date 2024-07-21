@@ -85,7 +85,7 @@ export const SignupView = () => {
             Re-enter Password
             <Form.Control
               type="password"
-              class="form-control"
+              className="form-control"
               id="confirmPassword"
               name="confirmPassword"
               required
