@@ -344,7 +344,7 @@ const UserProfile = ({ user, token, Movies }) => {
             <div className="movies-grid">
               {Movies.filter((Movie) => user.ToWatch.includes(Movie._id)).map(
                 (Movie) => (
-                  <MovieCard key={Movie._id} Movie={Movie} />
+                  <MovieCard key={Movie._id} Movie={Movie} user={user} token = {token}/>
                 )
               )}
             </div>
@@ -357,7 +357,7 @@ const UserProfile = ({ user, token, Movies }) => {
               {Movies.filter((Movie) =>
                 user.FavoriteMovies.includes(Movie._id)
               ).map((Movie) => (
-                <MovieCard key={Movie._id} Movie={Movie} />
+                <MovieCard key={Movie._id} Movie={Movie} user={user} token = {token}/>
               ))}
             </div>
           </Form.Group>

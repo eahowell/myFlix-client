@@ -39,6 +39,8 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                 </Nav.Link>
                 <Nav.Link
                   onClick={onLoggedOut}
+                  as={Link}
+                  to={`/`}
                   style={{
                     fontSize: "smaller",
                     fontStyle: "italic",
@@ -77,7 +79,9 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                   User Profile
                 </Nav.Link>
 
-                <Nav.Link onClick={onLoggedOut}>Logout</Nav.Link>
+                <Nav.Link onClick={onLoggedOut} as={Link} to="/">
+                  Logout
+                </Nav.Link>
                 <Nav.Link
                   as={Link}
                   to="https://myflix-eahowell-7d843bf0554c.herokuapp.com/documentation.html"

@@ -143,7 +143,8 @@ export const MainView = () => {
                 ) : (
                   <>
                     <Col md={8}>
-                      <MovieView Movies={Movies} />
+                      <MovieView Movies={Movies} user={storedUser} 
+                      token={storedToken}/>
                     </Col>
                   </>
                 )}
@@ -163,7 +164,8 @@ export const MainView = () => {
                     <div className="movies-grid">
                       {Movies.map((Movie) => (
                         <Col key={Movie._id} md={3} className="mb-2">
-                          <MovieCard Movie={Movie} />
+                          <MovieCard Movie={Movie} user={storedUser}
+                      token={storedToken}/>
                         </Col>
                       ))}
                     </div>
