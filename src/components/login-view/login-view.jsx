@@ -54,7 +54,6 @@ export const LoginView = ({ onLoggedIn }) => {
         <Form.Label id="usernameLabel">
           Username
           <Form.Control
-            id="usernameInput"
             type="text"
             value={Username}
             onChange={(e) => setUsername(e.target.value)}
@@ -67,7 +66,6 @@ export const LoginView = ({ onLoggedIn }) => {
         <Form.Label id="passwordLabel">
           Password
           <Form.Control
-            id="passwoordInput"
             type="password"
             value={Password}
             onChange={(e) => setPassword(e.target.value)}

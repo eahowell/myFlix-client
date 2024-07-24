@@ -51,14 +51,13 @@ export const SignupView = () => {
               type="text"
               value={Username}
               onChange={(e) => setUsername(e.target.value)}
-              id="usernameSignup"
               name="Username"
               pattern="^[a-zA-Z0-9]{5,15}$"
               required
               
             />
           </Form.Label>
-          <div class="invalid-feedback">
+          <div className="invalid-feedback">
             Username must be alphanumeric and between 5 and 15 characters long.
           </div>
         </Form.Group>
@@ -69,14 +68,13 @@ export const SignupView = () => {
               type="password"
               value={Password}
               onChange={(e) => setPassword(e.target.value)}
-              id="passwordSignup"
               name="Password"
               minLength="8"
               maxLength="25"
               required
             />
           </Form.Label>
-          <div class="invalid-feedback">
+          <div className="invalid-feedback">
             Password must be between 8 and 25 characters long.
           </div>
         </Form.Group>
@@ -86,7 +84,6 @@ export const SignupView = () => {
             <Form.Control
               type="password"
               className="form-control"
-              id="confirmPassword"
               name="confirmPassword"
               required
             />
@@ -100,7 +97,6 @@ export const SignupView = () => {
               type="email"
               value={Email}
               onChange={(e) => setEmail(e.target.value)}
-              id="emailSignup"
               name="Email"
               required
             />
@@ -116,7 +112,6 @@ export const SignupView = () => {
               type="date"
               value={Birthday}
               onChange={(e) => setBirthday(e.target.value)}
-              id="birthdaySignup"
               name="Birthday"
             />
           </Form.Label>
@@ -129,7 +124,6 @@ export const SignupView = () => {
               value={FirstName}
               onChange={(e) => setFirstName(e.target.value)}
               className="form-control"
-              id="firstNameSignup"
               name="FirstName"
               required
             />
@@ -145,7 +139,6 @@ export const SignupView = () => {
               value={LastName}
               onChange={(e) => setLastName(e.target.value)}
               className="form-control"
-              id="lastNameSignup"
               name="LastName"
               required
             />
