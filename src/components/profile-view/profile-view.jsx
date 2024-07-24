@@ -340,7 +340,7 @@ const UserProfile = ({ user, token, Movies }) => {
         </Row>
         <Row className="justify-content-md-center">
           <Form.Group className="mb-3">
-            <Form.Label>To Watch List</Form.Label>
+            <Form.Label as="h1">To Watch List</Form.Label>
             <div className="movies-grid">
               {Movies.filter((Movie) => user.ToWatch.includes(Movie._id)).map(
                 (Movie) => (
@@ -352,7 +352,7 @@ const UserProfile = ({ user, token, Movies }) => {
         </Row>
         <Row className="justify-content-md-center">
           <Form.Group className="mb-3">
-            <Form.Label>Favorite Movies</Form.Label>
+            <Form.Label as="h1">Favorite Movies</Form.Label>
             <div className="movies-grid">
               {Movies.filter((Movie) =>
                 user.FavoriteMovies.includes(Movie._id)

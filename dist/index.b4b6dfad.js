@@ -43073,7 +43073,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
                                             onClick: onLoggedOut,
                                             as: (0, _reactRouterDom.Link),
-                                            to: `/`,
+                                            to: "/login",
                                             style: {
                                                 fontSize: "smaller",
                                                 fontStyle: "italic",
@@ -43147,7 +43147,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
                                             onClick: onLoggedOut,
                                             as: (0, _reactRouterDom.Link),
-                                            to: "/",
+                                            to: "/login",
                                             children: "Logout"
                                         }, void 0, false, {
                                             fileName: "src/components/navigation-bar/navigation-bar.jsx",
@@ -43781,6 +43781,7 @@ const UserProfile = ({ user, token, Movies })=>{
                             className: "mb-3",
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                                    as: "h1",
                                     children: "To Watch List"
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
@@ -43820,6 +43821,7 @@ const UserProfile = ({ user, token, Movies })=>{
                             className: "mb-3",
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                                    as: "h1",
                                     children: "Favorite Movies"
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
