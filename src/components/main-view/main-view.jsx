@@ -113,7 +113,7 @@ export const MainView = () => {
             }
           />
 
-<Route
+          <Route
             path="/users"
             element={
               <>
@@ -121,7 +121,11 @@ export const MainView = () => {
                   <Navigate to="/login" replace />
                 ) : (
                   <Col>
-                    <UserProfile user = {storedUser} token={storedToken}/>
+                    <UserProfile
+                      user={storedUser}
+                      token={storedToken}
+                      Movies={Movies}
+                    />
                   </Col>
                 )}
               </>
@@ -155,7 +159,7 @@ export const MainView = () => {
                 ) : Movies.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
-                  <>                    
+                  <>
                     <div className="movies-grid">
                       {Movies.map((Movie) => (
                         <Col key={Movie._id} md={3} className="mb-2">
