@@ -11,6 +11,9 @@ export const MovieCard = ({ Movie, user, token }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isToWatch, setIsToWatch] = useState(false);
 
+  const [, updateState] = React.useState();
+  const forceUpdate = React.useCallback(() => updateState({}), []);
+
   useEffect(() => {
     // Check if the movie is in the user's favorites or to-watch list
     setIsFavorite(user.FavoriteMovies.includes(Movie._id));
@@ -33,6 +36,7 @@ export const MovieCard = ({ Movie, user, token }) => {
       if (response.ok) {
         const updatedUser = await response.json();
         setIsFavorite(!isFavorite);
+        forceUpdate();
         console.log(updatedUser);
       } else {
         console.error("Server responded with an error:", await response.text());
@@ -57,6 +61,7 @@ export const MovieCard = ({ Movie, user, token }) => {
       if (response.ok) {
         const updatedUser = await response.json();
         setIsToWatch(!isToWatch);
+        forceUpdate();
         console.log(updatedUser);
       } else {
         console.error("Server responded with an error:", await response.text());
