@@ -14,8 +14,22 @@ export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
   const [Movies, setMovies] = useState([]);
-  const [user, setUser] = useState(null);
-  const [token, setToken] = useState(null);
+  const [user, setUser] = useState(storedUser? storedUser : null);
+  const [token, setToken] = useState(storedToken? storedToken : null);
+
+  const refreshUserData = () => {
+    fetch(`https://myflix-eahowell-7d843bf0554c.herokuapp.com/users/${storedUser.Username}`, {
+      headers: {
+        Authorization: `Bearer ${storedToken}`,
+      },
+    })
+    .then(response => response.json())
+    .then(userData => {
+      localStorage.setItem('user', JSON.stringify(userData));
+      setUser(userData);
+    })
+    .catch(err => console.error('Failed to refresh user data', err));
+  };
 
   useEffect(() => {
     if (!storedToken) {
@@ -65,7 +79,8 @@ export const MainView = () => {
       .catch((error) => {
         console.error(error);
       });
-  }, [storedToken]);
+      refreshUserData();
+  }, [storedToken, user]);
 
   return (
     <BrowserRouter>
@@ -75,6 +90,7 @@ export const MainView = () => {
           setUser(null);
           setToken(null);
           localStorage.clear();
+          console.log(storedUser);
         }}
       />
       <Row className="justify-content-md-center">
