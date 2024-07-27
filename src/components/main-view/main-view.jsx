@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view.jsx";
@@ -14,30 +15,33 @@ export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
   const [Movies, setMovies] = useState([]);
-  const [user, setUser] = useState(storedUser? storedUser : null);
-  const [token, setToken] = useState(storedToken? storedToken : null);
+  const [user, setUser] = useState(storedUser ? storedUser : null);
+  const [token, setToken] = useState(storedToken ? storedToken : null);
 
   const refreshUserData = () => {
-    fetch(`https://myflix-eahowell-7d843bf0554c.herokuapp.com/users/${storedUser.Username}`, {
-      headers: {
-        Authorization: `Bearer ${storedToken}`,
-      },
-    })
-    .then(response => response.json())
-    .then(userData => {
-      localStorage.setItem('user', JSON.stringify(userData));
-      setUser(userData);
-    })
-    .catch(err => console.error('Failed to refresh user data', err));
+    fetch(
+      `https://myflix-eahowell-7d843bf0554c.herokuapp.com/users/${storedUser.Username}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((userData) => {
+        localStorage.setItem("user", JSON.stringify(userData));
+        setUser(userData);
+      })
+      .catch((err) => console.error("Failed to refresh user data", err));
   };
 
   useEffect(() => {
-    if (!storedToken) {
+    if (!token) {
       return;
     }
     fetch("https://myflix-eahowell-7d843bf0554c.herokuapp.com/movies/", {
       headers: {
-        Authorization: `Bearer ${storedToken}`,
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((response) => {
@@ -79,13 +83,13 @@ export const MainView = () => {
       .catch((error) => {
         console.error(error);
       });
-      refreshUserData();
-  }, [storedToken, user]);
+    refreshUserData();
+  }, [token, user]);
 
   return (
     <BrowserRouter>
       <NavigationBar
-        user={storedUser}
+        user={user}
         onLoggedOut={() => {
           setUser(null);
           setToken(null);
@@ -99,7 +103,7 @@ export const MainView = () => {
             path="/signup"
             element={
               <>
-                {storedUser ? (
+                {user ? (
                   <Navigate to="/" />
                 ) : (
                   <Col md={12} className="container-signup">
@@ -113,7 +117,7 @@ export const MainView = () => {
             path="/login"
             element={
               <>
-                {storedUser ? (
+                {user ? (
                   <Navigate to="/" />
                 ) : (
                   <Col md={10} className="container-login">
@@ -133,15 +137,11 @@ export const MainView = () => {
             path="/users"
             element={
               <>
-                {!storedUser ? (
+                {!user ? (
                   <Navigate to="/login" replace />
                 ) : (
                   <Col>
-                    <UserProfile
-                      user={storedUser}
-                      token={storedToken}
-                      Movies={Movies}
-                    />
+                    <UserProfile user={user} token={token} Movies={Movies} />
                   </Col>
                 )}
               </>
@@ -152,15 +152,14 @@ export const MainView = () => {
             path="/movies/:movieID"
             element={
               <>
-                {!storedUser ? (
+                {!user ? (
                   <Navigate to="/login" replace />
                 ) : Movies.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
                   <>
                     <Col md={8}>
-                      <MovieView Movies={Movies} user={storedUser} 
-                      token={storedToken}/>
+                      <MovieView Movies={Movies} user={user} token={token} />
                     </Col>
                   </>
                 )}
@@ -171,7 +170,7 @@ export const MainView = () => {
             path="/"
             element={
               <>
-                {!storedUser ? (
+                {!user ? (
                   <Navigate to="/login" replace />
                 ) : Movies.length === 0 ? (
                   <Col>The list is empty!</Col>
@@ -180,8 +179,7 @@ export const MainView = () => {
                     <div className="movies-grid">
                       {Movies.map((Movie) => (
                         <Col key={Movie._id} md={3} className="mb-2">
-                          <MovieCard Movie={Movie} user={storedUser}
-                      token={storedToken}/>
+                          <MovieCard Movie={Movie} user={user} token={token} />
                         </Col>
                       ))}
                     </div>

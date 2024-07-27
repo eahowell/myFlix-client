@@ -11,6 +11,7 @@ export const MovieCard = ({ Movie, user, token }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isToWatch, setIsToWatch] = useState(false);
 
+  // Force update to re-render component so To Watch and Favorite selections update immediately
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
 
