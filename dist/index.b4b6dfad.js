@@ -43402,7 +43402,7 @@ $RefreshReg$(_c, "NavigationBar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","../login-view/login-view.jsx":"9YtA0","../../img/myFlixLogo-Light.png":"2ugbf","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"gsJHn"}],"2ugbf":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","../../img/myFlixLogo-Light.png":"2ugbf","@parcel/transformer-js/src/esmodule-helpers.js":"3kxsI","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"gsJHn","../login-view/login-view.jsx":"9YtA0"}],"2ugbf":[function(require,module,exports) {
 module.exports = require("d1a5e0cb0f6d6731").getBundleURL("byUka") + "myFlixLogo-Light.511e7dc6.png" + "?" + Date.now();
 
 },{"d1a5e0cb0f6d6731":"efkFJ"}],"2vVqf":[function(require,module,exports) {
