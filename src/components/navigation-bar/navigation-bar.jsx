@@ -1,5 +1,6 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { LoginView } from "../login-view/login-view.jsx";
 import BrandImage from "../../img/myFlixLogo-Light.png";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
+import { Navigate } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";
+import { LoginView } from "../login-view/login-view.jsx";
 import LoadingSpinner from "../loading-spinner/loading-spinner";
 
-const UserProfile = ({ user, token, Movies }) => {
+const UserProfile = ({ user, token, Movies, onLoggedOut }) => {
   const [error, setError] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [updatedUser, setUpdatedUser] = useState({});
