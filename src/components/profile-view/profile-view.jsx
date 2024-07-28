@@ -9,100 +9,80 @@ const UserProfile = ({ user, token, Movies, onLoggedOut }) => {
   const [error, setError] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [updatedUser, setUpdatedUser] = useState({});
-  const [currentPassword, setCurrentPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [confirmpasswordError, setConfirmPasswordError] = useState("");
-  const [isPasswordChanged, setIsPasswordChanged] = useState(false);  
+  const [passwords, setPasswords] = useState({
+    current: "",
+    new: "",
+    confirm: ""
+  });
+  const [passwordErrors, setPasswordErrors] = useState({
+    new: "",
+    confirm: ""
+  });
+  const [isPasswordChanged, setIsPasswordChanged] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  function formatDate(dateString) {
-    // Format date into YYYY-MM-DD
-    // Parse the input date string
+  const formatDate = (dateString) => {
     const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-
-    // Return the formatted date string
-    return `${year}-${month}-${day}`;
-  }
+    return date.toISOString().split('T')[0];
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setUpdatedUser({ ...updatedUser, [name]: value });
+    setUpdatedUser(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleNewPasswordChange = (e) => {
-    setNewPassword(e.target.value);
-    setIsPasswordChanged(e.target.value !== "");
-    handleInputChange(e);
-    setPasswordError("");
+  const handlePasswordChange = (e) => {
+    const { name, value } = e.target;
+    setPasswords(prev => ({ ...prev, [name]: value }));
+    if (name === 'new') {
+      setIsPasswordChanged(value !== "");
+      setPasswordErrors(prev => ({ ...prev, new: "" }));
+    } else if (name === 'confirm') {
+      setPasswordErrors(prev => ({ ...prev, confirm: "" }));
+    }
   };
 
-  const handleConfirmPasswordChange = (e) => {
-    setConfirmPassword(e.target.value);
-    setPasswordError("");
+  const refreshUserData = async () => {
+    try {
+      const response = await fetch(
+        `https://myflix-eahowell-7d843bf0554c.herokuapp.com/users/${user.Username}`,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      if (!response.ok) throw new Error("Failed to fetch user data");
+      const userData = await response.json();
+      localStorage.setItem("user", JSON.stringify(userData));
+      return userData;
+    } catch (err) {
+      console.error("Failed to refresh user data", err);
+      return null;
+    }
   };
-
-  // Refetch user data from the server to ensure the most up-to-date data is displayed
-  const refreshUserData = () => {
-    fetch(
-      `https://myflix-eahowell-7d843bf0554c.herokuapp.com/users/${user.Username}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((userData) => {
-        localStorage.setItem("user", JSON.stringify(userData));
-        user = userData;
-      })
-      .catch((err) => console.error("Failed to refresh user data", err));
-  // }
-};
 
   const validatePasswords = async () => {
-    if (currentPassword === "") {
-      setConfirmPasswordError(
-        "Please enter your current password to save edits to your account"
-      );
+    if (!passwords.current) {
+      setPasswordErrors(prev => ({ ...prev, confirm: "Please enter your current password" }));
       return false;
     }
-
-    const passwordCheckData = {
-      Username: user.Username,
-      Password: currentPassword,
-    };
 
     try {
       const response = await fetch("https://myflix-eahowell-7d843bf0554c.herokuapp.com/validation", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(passwordCheckData),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ Username: user.Username, Password: passwords.current }),
       });
 
       if (!response.ok) {
-        console.log("Password validation failed.");
-        setConfirmPasswordError(
-          "The password you entered is incorrect. Please try again."
-        );
+        setPasswordErrors(prev => ({ ...prev, confirm: "Incorrect password" }));
         return false;
       }
 
-      if (isPasswordChanged && newPassword !== confirmPassword) {
-        setPasswordError("Passwords do not match");
+      if (isPasswordChanged && passwords.new !== passwords.confirm) {
+        setPasswordErrors(prev => ({ ...prev, new: "Passwords do not match" }));
         return false;
       }
 
       return true;
     } catch (e) {
-      alert("Error in validatePasswords(). Please try again.");
       console.error("Failed to validate password", e);
       return false;
     }
@@ -111,18 +91,15 @@ const UserProfile = ({ user, token, Movies, onLoggedOut }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    const isValid = await validatePasswords();
-    if (!isValid) {
-      console.log("validatePasswords() returned as " + isValid +" in handleSubmit()");
+    
+    if (!(await validatePasswords())) {
       setIsLoading(false);
-      alert("Validation failed.");
       return;
     }
-    try {      
-      console.log(updatedUser);      
+
+    try {
       const response = await fetch(
-        "https://myflix-eahowell-7d843bf0554c.herokuapp.com/users/" +
-          user.Username,
+        `https://myflix-eahowell-7d843bf0554c.herokuapp.com/users/${user.Username}`,
         {
           method: "PUT",
           headers: {
@@ -132,143 +109,90 @@ const UserProfile = ({ user, token, Movies, onLoggedOut }) => {
           body: JSON.stringify(updatedUser),
         }
       );
-      if (!response.ok) {
-        setIsLoading(false);
-        throw new Error("Failed to update user data");
-      } else {
-        console.log(response);
-        // refreshUserData();
-        setIsLoading(false);
+
+      if (!response.ok) throw new Error("Failed to update user data");
+
+      const updatedUserData = await refreshUserData();
+      if (updatedUserData) {
+        setEditMode(false);
+        setPasswords({ current: "", new: "", confirm: "" });
+        setIsPasswordChanged(false);
+        setPasswordErrors({ new: "", confirm: "" });
+        alert("Profile updated successfully!");
       }
-      setIsLoading(false);
-      setEditMode(false);
-      setCurrentPassword("");
-      setNewPassword("");
-      setConfirmPassword("");
-      setIsPasswordChanged(false);
-      setConfirmPasswordError("");
-      alert("Profile updated successfully!");
     } catch (err) {
-      setIsLoading(false);
       setError(err.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  const handleDeleteAccount = async (e) => {
+  const handleDeleteAccount = async () => {
     setIsLoading(true);
-    const isValid = await validatePasswords();
-    if (!isValid) {
-      console.log("validatePasswords() returned as " + isValid +" in handleSubmit()");
+    
+    if (!(await validatePasswords())) {
       setIsLoading(false);
-      alert("Validation failed.");
       return;
-    } else {
-      if (
-        window.confirm(
-          "Are you sure you want to delete your account? This action cannot be undone."
-        )
-      ) {
-        try {
-          const response = await fetch(
-            "https://myflix-eahowell-7d843bf0554c.herokuapp.com/users/" +
-              user.Username,
-            {
-              method: "DELETE",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
-          if (!response.ok) {
-            console.log(response);
-            setIsLoading(false);
-            throw new Error("Failed to delete account");
-          } else {
+    }
 
-          setEditMode(false);
-          setCurrentPassword("");
-          setNewPassword("");
-          setConfirmPassword("");
-          setPasswordError("");
-          setConfirmPasswordError("");
-          setIsPasswordChanged(false);
-          setIsLoading(false);
-          alert("Account deleted successfully");
-          onLoggedOut();
-          <Navigate to="/login" />;
-        <LoginView
-          onLoggedIn={(user, token) => {
-            setUser(user);
-            setToken(token);
-          }}
-        />;
-        }} catch (err) {
-          setError(err.message);
-        }
+    if (window.confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
+      try {
+        const response = await fetch(
+          `https://myflix-eahowell-7d843bf0554c.herokuapp.com/users/${user.Username}`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (!response.ok) throw new Error("Failed to delete account");
+
+        alert("Account deleted successfully");
+        onLoggedOut();
+        return <Navigate to="/login" />;
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
       }
+    } else {
+      setIsLoading(false);
     }
   };
 
   const handleCancelChanges = () => {
-    setUpdatedUser(user);
+    setUpdatedUser({});
     setEditMode(false);
-    setCurrentPassword("");
-    setNewPassword("");
-    setConfirmPassword("");
-    setPasswordError("");
-    setConfirmPasswordError("");
+    setPasswords({ current: "", new: "", confirm: "" });
+    setPasswordErrors({ new: "", confirm: "" });
     setIsPasswordChanged(false);
-    setIsLoading(false);
   };
 
-  // This function checks if the value in updatedUser is undefined. If it is, it falls back to the value in the original user object. If that's also undefined (or user is null), it returns an empty string.
-  const getValue = (key) =>
-    updatedUser[key] !== undefined ? updatedUser[key] : user ? user[key] : "";
-
-  const toggleEditMode = () => {
-    setEditMode(!editMode);
-    if (!editMode) {
-      // Entering edit mode
-      setNewPassword("");
-      setConfirmPassword("");
-      setIsPasswordChanged(false);
-    }
-  };
+  const getValue = (key) => updatedUser[key] ?? user?.[key] ?? "";
 
   if (error) return <Alert variant="danger">{error}</Alert>;
   if (!user) return <Alert variant="warning">No user data found</Alert>;
 
   return (
-    <>
     <div>
       {isLoading ? (
         <LoadingSpinner />
       ) : (
-    <Container>
-      <h1 className="my-4">User Profile</h1>
-      <Form onSubmit={handleSubmit}>
-        {editMode ? (
-          <>
-            <Button variant="primary" type="submit" className="me-2">
-              Save Changes
-            </Button>
-            <Button
-              variant="secondary"
-              onClick={handleCancelChanges}
-              className="me-2"
-            >
-              Cancel Changes
-            </Button>
-            <Button variant="danger" onClick={handleDeleteAccount}>
-              Delete Account
-            </Button>
-          </>
-        ) : (
-          <Button variant="primary" onClick={toggleEditMode} className="me-2">
-            Edit Profile
-          </Button>
-        )}
+        <Container>
+          <h1 className="my-4">User Profile</h1>
+          <Form onSubmit={handleSubmit}>
+            {editMode ? (
+              <>
+                <Button variant="primary" type="submit" className="me-2">Save Changes</Button>
+                <Button variant="secondary" onClick={handleCancelChanges} className="me-2">Cancel Changes</Button>
+                <Button variant="danger" onClick={handleDeleteAccount}>Delete Account</Button>
+              </>
+            ) : (
+              <Button variant="primary" onClick={() => setEditMode(true)} className="me-2">Edit Profile</Button>
+            )}
         <Row className="justify-content-md-center">
           <Col md={6}>
             <Form.Group className="mb-3">
@@ -299,73 +223,72 @@ const UserProfile = ({ user, token, Movies, onLoggedOut }) => {
         </Row>
 
         {editMode && (
-          <>
-            <Row className="justify-content-md-center">
+              <>
+                <Row className="justify-content-md-center">
+                  <Col md={6}>
+                    <Form.Group className="mb-3">
+                      <Form.Label>Current Password</Form.Label>
+                      <Form.Control
+                        type="password"
+                        name="current"
+                        value={passwords.current}
+                        onChange={handlePasswordChange}
+                        required
+                      />
+                      <Form.Text>
+                        You must enter your current password for any changes to your account, including deleting your account.
+                      </Form.Text>
+                    </Form.Group>
+                  </Col>
+                </Row>
+                {passwordErrors.confirm && (
+                  <Alert variant="danger">{passwordErrors.confirm}</Alert>
+                )}
+
+                <Row className="justify-content-md-center">
+                  <Col md={6}>
+                    <Form.Group className="mb-3">
+                      <Form.Label>New Password</Form.Label>
+                      <Form.Control
+                        type="password"
+                        name="new"
+                        value={passwords.new}
+                        onChange={handlePasswordChange}
+                        placeholder="Enter new password"
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+
+                {isPasswordChanged && (
+                  <Row className="justify-content-md-center">
+                    <Col md={6}>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Confirm New Password</Form.Label>
+                        <Form.Control
+                          type="password"
+                          name="confirm"
+                          value={passwords.confirm}
+                          onChange={handlePasswordChange}
+                        />
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                )}
+
+                {passwordErrors.new && (
+                  <Alert variant="danger">{passwordErrors.new}</Alert>
+                )}
+              </>
+            )}
+        <Row className="justify-content-md-center">
               <Col md={6}>
                 <Form.Group className="mb-3">
-                  <Form.Label>Current Password</Form.Label>
-                  <Form.Control
-                    type="password"
-                    value={currentPassword}
-                    onChange={(e) => setCurrentPassword(e.target.value)}
-                    required
-                  />
-                  <Form.Text>
-                    You must enter your password for any changes to your
-                    account, including deleting your account.
-                  </Form.Text>
+                  <Form.Label>Birthday</Form.Label>
+                  <Form.Control type="date" value={formatDate(user.Birthday)} readOnly />
                 </Form.Group>
               </Col>
             </Row>
-            {confirmpasswordError && (
-              <Alert variant="danger">{confirmpasswordError}</Alert>
-            )}
-          </>
-        )}
-        <Row className="justify-content-md-center">
-          {editMode && (
-            <Col md={6}>
-              <Form.Group className="mb-3">
-                <Form.Label>New Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  name="Password"
-                  value={newPassword}
-                  onChange={handleNewPasswordChange}
-                  placeholder="Enter new password"
-                  disabled={!editMode}
-                />
-              </Form.Group>
-            </Col>
-          )}
-        </Row>
-        <Row className="justify-content-md-center">
-          {editMode && isPasswordChanged && (
-            <Col md={6}>
-              <Form.Group className="mb-3">
-                <Form.Label>Confirm New Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  value={confirmPassword}
-                  onChange={handleConfirmPasswordChange}
-                />
-              </Form.Group>
-            </Col>
-          )}
-        </Row>
-        {passwordError && <Alert variant="danger">{passwordError}</Alert>}
-        <Row className="justify-content-md-center">
-          <Col md={6}>
-            <Form.Group className="mb-3">
-              <Form.Label>Birthday</Form.Label>
-              <Form.Control
-                type="date"
-                value={formatDate(user.Birthday)}
-                readOnly
-              />
-            </Form.Group>
-          </Col>
-        </Row>
         <Row className="justify-content-md-center">
           <Col md={3}>
             <Form.Group className="mb-3">
@@ -393,44 +316,30 @@ const UserProfile = ({ user, token, Movies, onLoggedOut }) => {
           </Col>
         </Row>
         <Row className="justify-content-md-center">
-          <Form.Group className="mb-3">
-            <Form.Label as="h1">To Watch List</Form.Label>
-            <div className="movies-grid">
-              {Movies.filter((Movie) => user.ToWatch.includes(Movie._id)).map(
-                (Movie) => (
-                  <MovieCard
-                    key={Movie._id}
-                    Movie={Movie}
-                    user={user}
-                    token={token}
-                  />
-                )
-              )}
-            </div>
-          </Form.Group>
-        </Row>
-        <Row className="justify-content-md-center">
-          <Form.Group className="mb-3">
-            <Form.Label as="h1">Favorite Movies</Form.Label>
-            <div className="movies-grid">
-              {Movies.filter((Movie) =>
-                user.FavoriteMovies.includes(Movie._id)
-              ).map((Movie) => (
-                <MovieCard
-                  key={Movie._id}
-                  Movie={Movie}
-                  user={user}
-                  token={token}
-                />
-              ))}
-            </div>
-          </Form.Group>
-        </Row>
-      </Form>
-    </Container>
-    )}
+              <Form.Group className="mb-3">
+                <Form.Label as="h1">To Watch List</Form.Label>
+                <div className="movies-grid">
+                  {Movies.filter((movie) => user.ToWatch.includes(movie._id)).map((movie) => (
+                    <MovieCard key={movie._id} Movie={movie} user={user} token={token} />
+                  ))}
+                </div>
+              </Form.Group>
+            </Row>
+            
+            <Row className="justify-content-md-center">
+              <Form.Group className="mb-3">
+                <Form.Label as="h1">Favorite Movies</Form.Label>
+                <div className="movies-grid">
+                  {Movies.filter((movie) => user.FavoriteMovies.includes(movie._id)).map((movie) => (
+                    <MovieCard key={movie._id} Movie={movie} user={user} token={token} />
+                  ))}
+                </div>
+              </Form.Group>
+            </Row>
+          </Form>
+        </Container>
+      )}
     </div>
-  </>
   );
 };
 
