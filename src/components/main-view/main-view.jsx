@@ -6,9 +6,10 @@ import { LoginView } from "../login-view/login-view.jsx";
 import { SignupView } from "../signup-view/signup-view.jsx";
 import { NavigationBar } from "../navigation-bar/navigation-bar.jsx";
 import { UserProfile } from "../profile-view/profile-view.jsx";
-import { BrowserRouter, Routes, Route, Navigate, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import LoadingSpinner from "../loading-spinner/loading-spinner";
 import UserProfile from "../profile-view/profile-view.jsx";
 
 export const MainView = () => {
@@ -17,8 +18,15 @@ export const MainView = () => {
   const [Movies, setMovies] = useState([]);
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
+  const [isLoading, setIsLoading] = useState(false);
+  
 
   const refreshUserData = () => {
+    setIsLoading(true);
+    // if (!token) {
+    //   setIsLoading(false);
+    //   return;
+    // } else {
     fetch(
       `https://myflix-eahowell-7d843bf0554c.herokuapp.com/users/${storedUser.Username}`,
       {
@@ -31,12 +39,18 @@ export const MainView = () => {
       .then((userData) => {
         localStorage.setItem("user", JSON.stringify(userData));
         setUser(userData);
+        setIsLoading(false);
       })
-      .catch((err) => console.error("Failed to refresh user data", err));
-  };
+      .catch((err) =>{ 
+        setIsLoading(false);
+        console.error("Failed to refresh user data", err)});
+  // }
+};
 
   useEffect(() => {
+    setIsLoading(true);
     if (!token) {
+      setIsLoading(false);
       return;
     }
     fetch("https://myflix-eahowell-7d843bf0554c.herokuapp.com/movies/", {
@@ -47,6 +61,7 @@ export const MainView = () => {
       .then((response) => {
         if (!response.ok) {
           console.log(response);
+          setIsLoading (false);
           throw new Error("Failed to fetch movies.");
         }
         return response.json();
@@ -79,8 +94,10 @@ export const MainView = () => {
           };
         });
         setMovies(moviesFromAPI);
+        setIsLoading(false);
       })
       .catch((error) => {
+        setIsLoading(false);
         console.error(error);
       });
     refreshUserData();
@@ -91,10 +108,11 @@ export const MainView = () => {
       <NavigationBar
         user={user}
         onLoggedOut={() => {
+          localStorage.clear();
           setUser(null);
           setToken(null);
-          localStorage.clear();
           console.log(storedUser);
+          <Navigate to="/login" />;
         }}
       />
       <Row className="justify-content-md-center">
@@ -141,7 +159,14 @@ export const MainView = () => {
                   <Navigate to="/login" replace />
                 ) : (
                   <Col>
-                    <UserProfile user={user} token={token} Movies={Movies} />
+                    <UserProfile user={user} token={token} Movies={Movies} onLoggedOut={() => {
+          
+          localStorage.clear();
+          setUser(null);
+          setToken(null);
+          console.log(storedUser);
+          <Navigate to="/login" replace/>;
+        }} />
                   </Col>
                 )}
               </>

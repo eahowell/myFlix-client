@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import { Navigate } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";
@@ -14,8 +14,7 @@ const UserProfile = ({ user, token, Movies, onLoggedOut }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [confirmpasswordError, setConfirmPasswordError] = useState("");
-  const [isPasswordChanged, setIsPasswordChanged] = useState(false);
-  const [PasswordData, setPasswordData] = useState("");
+  const [isPasswordChanged, setIsPasswordChanged] = useState(false);  
   const [isLoading, setIsLoading] = useState(false);
 
   function formatDate(dateString) {
@@ -38,14 +37,13 @@ const UserProfile = ({ user, token, Movies, onLoggedOut }) => {
   const handleNewPasswordChange = (e) => {
     setNewPassword(e.target.value);
     setIsPasswordChanged(e.target.value !== "");
+    handleInputChange(e);
     setPasswordError("");
-    setConfirmPasswordError("");
   };
 
   const handleConfirmPasswordChange = (e) => {
     setConfirmPassword(e.target.value);
     setPasswordError("");
-    setConfirmPasswordError("");
   };
 
   const validatePasswords = () => {
@@ -55,45 +53,54 @@ const UserProfile = ({ user, token, Movies, onLoggedOut }) => {
       );
       return false;
     }
-    console.log(currentPassword);
-    console.log(user.Password);
-    console.log(newPassword);
-    if (currentPassword !== user.Password) {
-      setConfirmPasswordError("Current password is incorrect");
-      return false;
-    }
 
-    if (isPasswordChanged && newPassword !== confirmPassword) {
-      setPasswordError("Passwords do not match");
+    const passwordCheckData = {
+      Username: user.Username,
+      Password: currentPassword,
+    };
+
+    try {
+      const response = await fetch("https://myflix-eahowell-7d843bf0554c.herokuapp.com/validation", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(passwordCheckData),
+      });
+
+      if (!response.ok) {
+        console.log("Password validation failed.");
+        setConfirmPasswordError(
+          "The password you entered is incorrect. Please try again."
+        );
+        return false;
+      }
+
+      if (isPasswordChanged && newPassword !== confirmPassword) {
+        setPasswordError("Passwords do not match");
+        return false;
+      }
+
+      return true;
+    } catch (e) {
+      alert("Error in validatePasswords(). Please try again.");
+      console.error("Failed to validate password", e);
       return false;
     }
-    return true;
   };
 
   const handleSubmit = async (e) => {
-    console.log(updatedUser);
-    console.log(user);
-    console.log(currentPassword);
-    console.log(user.Password);
-    console.log(newPassword);
     e.preventDefault();
-    if (!validatePasswords()) {
+    setIsLoading(true);
+    const isValid = await validatePasswords();
+    if (!isValid) {
+      console.log("validatePasswords() returned as " + isValid +" in handleSubmit()");
+      setIsLoading(false);
+      alert("Validation failed.");
       return;
     }
-    try {
-      if (isPasswordChanged) {
-        setPasswordData(newPassword);
-      } else {
-        setPasswordData(currentPassword);
-      }
-      const formattedData = {
-        Username: updatedUser.Username ?? user.Username,
-        Password: PasswordData ?? user.Password,
-        FirstName: updatedUser.FirstName ?? user.FirstName,
-        LastName: updatedUser.LastName ?? user.LastName,
-        Email: updatedUser.Email ?? user.Email,
-      };
-      console.log(formattedData);
+    try {      
+      console.log(updatedUser);      
       const response = await fetch(
         "https://myflix-eahowell-7d843bf0554c.herokuapp.com/users/" +
           user.Username,
@@ -103,7 +110,7 @@ const UserProfile = ({ user, token, Movies, onLoggedOut }) => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify(formattedData),
+          body: JSON.stringify(updatedUser),
         }
       );
       if (!response.ok) {
@@ -111,15 +118,14 @@ const UserProfile = ({ user, token, Movies, onLoggedOut }) => {
         throw new Error("Failed to update user data");
       } else {
         console.log(response);
+        // refreshUserData();
         setIsLoading(false);
       }
-      setUpdatedUser(formattedData);
       setIsLoading(false);
       setEditMode(false);
       setCurrentPassword("");
       setNewPassword("");
       setConfirmPassword("");
-      setPasswordData("");
       setIsPasswordChanged(false);
       setConfirmPasswordError("");
       alert("Profile updated successfully!");
@@ -129,21 +135,14 @@ const UserProfile = ({ user, token, Movies, onLoggedOut }) => {
     }
   };
 
-  const handleDeleteAccount = async () => {
-    console.log(currentPassword);
-    console.log(user.Password);
-    console.log(newPassword);
-    if (currentPassword === "") {
-      setConfirmPasswordError(
-        "Please enter your current password to delete your account"
-      );
-      return false;
-    }
-    if (currentPassword !== user.Password) {
-      setConfirmPasswordError("Current password is incorrect");
-      return false;
+  const handleDeleteAccount = async (e) => {
     setIsLoading(true);
+    const isValid = await validatePasswords();
+    if (!isValid) {
+      console.log("validatePasswords() returned as " + isValid +" in handleSubmit()");
       setIsLoading(false);
+      alert("Validation failed.");
+      return;
     } else {
       if (
         window.confirm(
@@ -163,13 +162,29 @@ const UserProfile = ({ user, token, Movies, onLoggedOut }) => {
             }
           );
           if (!response.ok) {
+            console.log(response);
             setIsLoading(false);
             throw new Error("Failed to delete account");
-          }
+          } else {
+
+          setEditMode(false);
+          setCurrentPassword("");
+          setNewPassword("");
+          setConfirmPassword("");
+          setPasswordError("");
+          setConfirmPasswordError("");
+          setIsPasswordChanged(false);
           setIsLoading(false);
           alert("Account deleted successfully");
-          // Redirect to login page or perform logout action
-        } catch (err) {
+          onLoggedOut();
+          <Navigate to="/login" />;
+        <LoginView
+          onLoggedIn={(user, token) => {
+            setUser(user);
+            setToken(token);
+          }}
+        />;
+        }} catch (err) {
           setError(err.message);
         }
       }
@@ -184,18 +199,23 @@ const UserProfile = ({ user, token, Movies, onLoggedOut }) => {
     setConfirmPassword("");
     setPasswordError("");
     setConfirmPasswordError("");
-    setPasswordData("");
     setIsPasswordChanged(false);
     setIsLoading(false);
   };
 
-  let favoriteMovies = Movies.filter((Movie) =>
-    user.FavoriteMovies.includes(Movie._id)
-  );
-
   // This function checks if the value in updatedUser is undefined. If it is, it falls back to the value in the original user object. If that's also undefined (or user is null), it returns an empty string.
   const getValue = (key) =>
     updatedUser[key] !== undefined ? updatedUser[key] : user ? user[key] : "";
+
+  const toggleEditMode = () => {
+    setEditMode(!editMode);
+    if (!editMode) {
+      // Entering edit mode
+      setNewPassword("");
+      setConfirmPassword("");
+      setIsPasswordChanged(false);
+    }
+  };
 
   if (error) return <Alert variant="danger">{error}</Alert>;
   if (!user) return <Alert variant="warning">No user data found</Alert>;
@@ -226,11 +246,7 @@ const UserProfile = ({ user, token, Movies, onLoggedOut }) => {
             </Button>
           </>
         ) : (
-          <Button
-            variant="primary"
-            onClick={() => setEditMode(true)}
-            className="me-2"
-          >
+          <Button variant="primary" onClick={toggleEditMode} className="me-2">
             Edit Profile
           </Button>
         )}
@@ -295,8 +311,9 @@ const UserProfile = ({ user, token, Movies, onLoggedOut }) => {
                 <Form.Control
                   type="password"
                   name="Password"
-                  value={editMode ? getValue("Password") : ""}
+                  value={newPassword}
                   onChange={handleNewPasswordChange}
+                  placeholder="Enter new password"
                   disabled={!editMode}
                 />
               </Form.Group>
@@ -362,7 +379,12 @@ const UserProfile = ({ user, token, Movies, onLoggedOut }) => {
             <div className="movies-grid">
               {Movies.filter((Movie) => user.ToWatch.includes(Movie._id)).map(
                 (Movie) => (
-                  <MovieCard key={Movie._id} Movie={Movie} user={user} token = {token}/>
+                  <MovieCard
+                    key={Movie._id}
+                    Movie={Movie}
+                    user={user}
+                    token={token}
+                  />
                 )
               )}
             </div>
@@ -375,7 +397,12 @@ const UserProfile = ({ user, token, Movies, onLoggedOut }) => {
               {Movies.filter((Movie) =>
                 user.FavoriteMovies.includes(Movie._id)
               ).map((Movie) => (
-                <MovieCard key={Movie._id} Movie={Movie} user={user} token = {token}/>
+                <MovieCard
+                  key={Movie._id}
+                  Movie={Movie}
+                  user={user}
+                  token={token}
+                />
               ))}
             </div>
           </Form.Group>
