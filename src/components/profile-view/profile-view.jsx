@@ -46,7 +46,26 @@ const UserProfile = ({ user, token, Movies, onLoggedOut }) => {
     setPasswordError("");
   };
 
-  const validatePasswords = () => {
+  // Refetch user data from the server to ensure the most up-to-date data is displayed
+  const refreshUserData = () => {
+    fetch(
+      `https://myflix-eahowell-7d843bf0554c.herokuapp.com/users/${user.Username}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((userData) => {
+        localStorage.setItem("user", JSON.stringify(userData));
+        user = userData;
+      })
+      .catch((err) => console.error("Failed to refresh user data", err));
+  // }
+};
+
+  const validatePasswords = async () => {
     if (currentPassword === "") {
       setConfirmPasswordError(
         "Please enter your current password to save edits to your account"
