@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import { MovieCard } from "../movie-card/movie-card";
+import LoadingSpinner from "../loading-spinner/loading-spinner";
 
 const UserProfile = ({ user, token, Movies }) => {
   const [error, setError] = useState(null);
@@ -13,6 +14,7 @@ const UserProfile = ({ user, token, Movies }) => {
   const [confirmpasswordError, setConfirmPasswordError] = useState("");
   const [isPasswordChanged, setIsPasswordChanged] = useState(false);
   const [PasswordData, setPasswordData] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   function formatDate(dateString) {
     // Format date into YYYY-MM-DD
@@ -103,11 +105,14 @@ const UserProfile = ({ user, token, Movies }) => {
         }
       );
       if (!response.ok) {
+        setIsLoading(false);
         throw new Error("Failed to update user data");
       } else {
         console.log(response);
+        setIsLoading(false);
       }
       setUpdatedUser(formattedData);
+      setIsLoading(false);
       setEditMode(false);
       setCurrentPassword("");
       setNewPassword("");
@@ -117,6 +122,7 @@ const UserProfile = ({ user, token, Movies }) => {
       setConfirmPasswordError("");
       alert("Profile updated successfully!");
     } catch (err) {
+      setIsLoading(false);
       setError(err.message);
     }
   };
@@ -134,6 +140,8 @@ const UserProfile = ({ user, token, Movies }) => {
     if (currentPassword !== user.Password) {
       setConfirmPasswordError("Current password is incorrect");
       return false;
+    setIsLoading(true);
+      setIsLoading(false);
     } else {
       if (
         window.confirm(
@@ -153,8 +161,10 @@ const UserProfile = ({ user, token, Movies }) => {
             }
           );
           if (!response.ok) {
+            setIsLoading(false);
             throw new Error("Failed to delete account");
           }
+          setIsLoading(false);
           alert("Account deleted successfully");
           // Redirect to login page or perform logout action
         } catch (err) {
@@ -174,6 +184,7 @@ const UserProfile = ({ user, token, Movies }) => {
     setConfirmPasswordError("");
     setPasswordData("");
     setIsPasswordChanged(false);
+    setIsLoading(false);
   };
 
   let favoriteMovies = Movies.filter((Movie) =>
@@ -188,6 +199,11 @@ const UserProfile = ({ user, token, Movies }) => {
   if (!user) return <Alert variant="warning">No user data found</Alert>;
 
   return (
+    <>
+    <div>
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
     <Container>
       <h1 className="my-4">User Profile</h1>
       <Form onSubmit={handleSubmit}>
@@ -364,6 +380,9 @@ const UserProfile = ({ user, token, Movies }) => {
         </Row>
       </Form>
     </Container>
+    )}
+    </div>
+  </>
   );
 };
 
