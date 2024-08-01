@@ -7,24 +7,19 @@ import offFavoriteImage from "../../img/offFavorite.png";
 import onWatchImage from "../../img/onWatch.png";
 import offWatchImage from "../../img/offWatch.png";
 
-export const MovieCard = ({ Movie, user, token }) => {
+export const MovieCard = ({ Movie, user, token, onUserDataChange }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isToWatch, setIsToWatch] = useState(false);
 
-  // Force update to re-render component so To Watch and Favorite selections update immediately
-  const [, updateState] = React.useState();
-  const forceUpdate = React.useCallback(() => updateState({}), []);
-
-  useEffect(() => {
+   useEffect(() => {
     // Check if the movie is in the user's favorites or to-watch list
     setIsFavorite(user.FavoriteMovies.includes(Movie._id));
     setIsToWatch(user.ToWatch.includes(Movie._id));
   }, [user, Movie._id]);
 
-  const handleFavoriteToggle = async () => {
+    const handleFavoriteToggle = async () => {
     const methodType = isFavorite ? "DELETE" : "PUT";
     const endpoint = `https://myflix-eahowell-7d843bf0554c.herokuapp.com/users/${user.Username}/favorites/${Movie._id}`;
-    console.log(methodType);
     try {
       const response = await fetch(endpoint, {
         method: methodType,
@@ -33,12 +28,10 @@ export const MovieCard = ({ Movie, user, token }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response);
       if (response.ok) {
         const updatedUser = await response.json();
         setIsFavorite(!isFavorite);
-        forceUpdate();
-        console.log(updatedUser);
+        onUserDataChange(updatedUser);
       } else {
         console.error("Server responded with an error:", await response.text());
       }
@@ -62,8 +55,7 @@ export const MovieCard = ({ Movie, user, token }) => {
       if (response.ok) {
         const updatedUser = await response.json();
         setIsToWatch(!isToWatch);
-        forceUpdate();
-        console.log(updatedUser);
+        onUserDataChange(updatedUser);
       } else {
         console.error("Server responded with an error:", await response.text());
       }
@@ -71,7 +63,6 @@ export const MovieCard = ({ Movie, user, token }) => {
       console.error("Error toggling to-watch:", error);
     }
   };
-
 
   return (
     <Card
@@ -95,26 +86,33 @@ export const MovieCard = ({ Movie, user, token }) => {
         <Card.Title>{Movie.Title}</Card.Title>
         <Card.Text>{Movie.Director.Name}</Card.Text>
         <div className="d-flex justify-content-between mb-2">
-            <Image
-              src={isFavorite ? onFavoriteImage : offFavoriteImage}
-              alt="Favorite Toggle"
-              title={isFavorite ? "Click to Remove from Favorites List" : "Click to Add from Favorites List"}
-              style={{ width: "30px", height: "30px", cursor: "pointer" }}
-              onClick={handleFavoriteToggle}
-            />
-            
           <Image
-              src={isToWatch ? onWatchImage : offWatchImage}
-              alt="To Watch Toggle"
-              title={isToWatch ? "Click to Remove from Watch List" : "Click to Add from Watch List"}
-              style={{ width: "30px", height: "30px", cursor: "pointer" }}
-              onClick={handleToWatchToggle}
-            />
-          
-        
-        <Link to={`/movies/${encodeURIComponent(Movie._id)}`}>
-          <Button variant="warning">More Details</Button>
-        </Link>
+            src={isFavorite ? onFavoriteImage : offFavoriteImage}
+            alt="Favorite Toggle"
+            title={
+              isFavorite
+                ? "Click to Remove from Favorites List"
+                : "Click to Add from Favorites List"
+            }
+            style={{ width: "30px", height: "30px", cursor: "pointer" }}
+            onClick={handleFavoriteToggle}
+          />
+
+          <Image
+            src={isToWatch ? onWatchImage : offWatchImage}
+            alt="To Watch Toggle"
+            title={
+              isToWatch
+                ? "Click to Remove from Watch List"
+                : "Click to Add from Watch List"
+            }
+            style={{ width: "30px", height: "30px", cursor: "pointer" }}
+            onClick={handleToWatchToggle}
+          />
+
+          <Link to={`/movies/${encodeURIComponent(Movie._id)}`}>
+            <Button variant="warning">More Details</Button>
+          </Link>
         </div>
       </Card.Body>
     </Card>

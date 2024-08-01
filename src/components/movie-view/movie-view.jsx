@@ -1,11 +1,9 @@
-import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
-import Col from "react-bootstrap/Col";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";
 
-export const MovieView = ({ Movies, user, token }) => {
+export const MovieView = ({ Movies, user, token, onUserDataChange }) => {
   const { movieID } = useParams();
 
   const Movie = Movies.find((m) => m._id === movieID);
@@ -56,7 +54,13 @@ export const MovieView = ({ Movies, user, token }) => {
           (Movie) =>
             Movie.Genre.Name === Movie.Genre.Name && Movies._id !== Movie._id
         ).map((Movie) => (
-          <MovieCard key={Movie._id} Movie={Movie} user={user} token = {token} />
+          <MovieCard
+            key={Movie._id}
+            Movie={Movie}
+            user={user}
+            token={token}
+            onUserDataChange={onUserDataChange}
+          />
         ))}
       </div>
       <br />
