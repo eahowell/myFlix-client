@@ -137,8 +137,12 @@ export const SignupView = () => {
             value={Birthday}
             onChange={(e) => setBirthday(e.target.value)}
             name="Birthday"
+            required
           />
         </Form.Label>
+        <div className="invalid-feedback">
+          Please enter a Birthday.
+        </div>
       </Form.Group>
       <Form.Group controlId="FirstName">
         <Form.Label>
