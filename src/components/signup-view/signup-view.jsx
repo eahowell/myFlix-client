@@ -54,8 +54,9 @@ export const SignupView = () => {
       } else {
         setIsLoading(false);
         alert("Signup failed");
+        console.error(response);
       }
-    }).catch((e) => {
+    }).catch((err) => {
       setIsLoading(false);
       console.error("Error", err);
     });
