@@ -1,14 +1,19 @@
 import React from "react";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import LoadingSpinner from "../loading-spinner/loading-spinner";
+
 
 export const LoginView = ({ onLoggedIn }) => {
   const [Username, setUsername] = useState("");
   const [Password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Prevent default reload entire page action
+  
   const handleSubmit = (event) => {
+    // Prevent default reload entire page action
     event.preventDefault();
+    setIsLoading(true);
 
     const data = {
       Username: Username,
@@ -27,6 +32,7 @@ export const LoginView = ({ onLoggedIn }) => {
           return response.json();
         } else {
           console.log("Login failed.");
+          setIsLoading(false);
         }
       })
       .then((data) => {
@@ -36,25 +42,33 @@ export const LoginView = ({ onLoggedIn }) => {
           localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token);
           onLoggedIn(data.user, data.token);
+          setIsLoading(false);
         } else {
+          setIsLoading(false);
           alert(
             "No user was found with that username and password. Please try again or register as a new"
           );
         }
       })
       .catch((e) => {
+        setIsLoading(false);
+        console.error("Error", e);
         alert("Login failed. Verify your username and password are correct.");
       });
   };
   return (
+    <>
+    <div>
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
     <Form id="loginForm" onSubmit={handleSubmit}>
-      <h2 className="formTitle">Login</h2>
+      
       <br />
       <Form.Group controlId="formUsername">
         <Form.Label id="usernameLabel">
           Username
           <Form.Control
-            id="usernameInput"
             type="text"
             value={Username}
             onChange={(e) => setUsername(e.target.value)}
@@ -67,7 +81,6 @@ export const LoginView = ({ onLoggedIn }) => {
         <Form.Label id="passwordLabel">
           Password
           <Form.Control
-            id="passwoordInput"
             type="password"
             value={Password}
             onChange={(e) => setPassword(e.target.value)}
@@ -82,5 +95,8 @@ export const LoginView = ({ onLoggedIn }) => {
       <br />
       <br />
     </Form>
+      )}
+      </div>
+    </>
   );
 };
