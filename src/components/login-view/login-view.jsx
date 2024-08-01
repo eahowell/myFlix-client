@@ -9,8 +9,9 @@ export const LoginView = ({ onLoggedIn }) => {
   const [Password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // Prevent default reload entire page action
+  
   const handleSubmit = (event) => {
+    // Prevent default reload entire page action
     event.preventDefault();
     setIsLoading(true);
 

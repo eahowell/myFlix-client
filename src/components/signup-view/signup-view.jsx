@@ -11,8 +11,7 @@ export const SignupView = () => {
   const [Email, setEmail] = useState("");
   const [Birthday, setBirthday] = useState("");
   const [FirstName, setFirstName] = useState("");
-  const [LastName, setLastName] = useState("");
-  
+  const [LastName, setLastName] = useState("");  
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (event) => {
