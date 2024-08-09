@@ -5,14 +5,14 @@ import { MovieCard } from "../movie-card/movie-card";
 import { useSelector } from "react-redux";
 
 export const MovieView = () => {
-  const Movies = useSelector((state) => state.movies);
+  const Movies = useSelector((state) => state.movies.list);
  
   const { movieID } = useParams();
 
   const Movie = Movies.find((m) => m._id === movieID);
 
   return (
-    <>
+    <div>
       <Card bg="light" border="warning">
         <Card.Body>
           <Link to={`/`}>
@@ -65,6 +65,6 @@ export const MovieView = () => {
       </div>
       <br />
       <br />
-    </>
+    </div>
   );
 };

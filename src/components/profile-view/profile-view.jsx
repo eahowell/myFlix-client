@@ -8,7 +8,7 @@ import { setUser } from "../../redux/reducers/user";
 
 const UserProfile = () => {
   const [error, setError] = useState(null);
-  const Movies = useSelector((state) => state.movies);  
+  const Movies = useSelector((state) => state.movies.list);  
   const user = useSelector((state) => state.user);
   const token = useSelector((state) => state.token);
   const dispatch = useDispatch();
