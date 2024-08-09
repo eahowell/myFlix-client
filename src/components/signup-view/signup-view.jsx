@@ -1,8 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { Navigate } from "react-router-dom";
-import { LoginView } from "../login-view/login-view.jsx";
+import { useNavigate } from "react-router-dom";
 import LoadingSpinner from "../loading-spinner/loading-spinner";
 
 export const SignupView = () => {
@@ -13,6 +12,7 @@ export const SignupView = () => {
   const [FirstName, setFirstName] = useState("");
   const [LastName, setLastName] = useState("");  
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -41,15 +41,7 @@ export const SignupView = () => {
       if (response.ok) {
         setIsLoading(false); 
         alert("Signup successful");
-        window.location.reload();
-        <Navigate to="/login" />;
-        <LoginView
-          onLoggedIn={(user, token) => {
-            setUser(user);
-            setToken(token);
-          }}
-        />;
-        
+        navigate('/login'); 
       } else {
         setIsLoading(false);
         alert("Signup failed");

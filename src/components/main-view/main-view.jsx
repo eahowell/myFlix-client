@@ -15,11 +15,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { setMovies } from "../../redux/reducers/movies";
 
 export const MainView = () => {
-  const storedToken = localStorage.getItem("token");
-  const [Movies, setMovies] = useState([]);
-  const [user, setUser] = useState(storedUser ? storedUser : null);
-  const [token, setToken] = useState(storedToken ? storedToken : null);
   const Movies = useSelector((state) => state.movies);
+  const user = useSelector((state) => state.user);
+  const token = useSelector((state) => state.token);  
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
@@ -81,14 +79,6 @@ export const MainView = () => {
   return (
     <BrowserRouter>
       <NavigationBar
-        user={user}
-        onLoggedOut={() => {
-          localStorage.clear();
-          setUser(null);
-          setToken(null);
-          console.log(storedUser);
-          <Navigate to="/login" />;
-        }}
       />
       <div>
         {isLoading ? (
@@ -118,12 +108,7 @@ export const MainView = () => {
                       <Navigate to="/" />
                     ) : (
                       <Col md={10} className="container-login">
-                        <LoginView
-                          onLoggedIn={(user, token) => {
-                            setUser(user);
-                            setToken(token);
-                          }}
-                        />
+                        <LoginView />
                       </Col>
                     )}
                   </>
@@ -139,16 +124,6 @@ export const MainView = () => {
                     ) : (
                       <Col>
                         <UserProfile
-                          user={user}
-                          token={token}
-                          onUserDataChange={handleUserDataChange}
-                          onLoggedOut={() => {
-                            localStorage.clear();
-                            setUser(null);
-                            setToken(null);
-                            console.log(storedUser);
-                            <Navigate to="/login" replace />;
-                          }}
                         />
                       </Col>
                     )}
@@ -190,9 +165,6 @@ export const MainView = () => {
                             <Col key={Movie._id} md={3} className="mb-2">
                               <MovieCard
                                 Movie={Movie}
-                                user={user}
-                                token={token}
-                                onUserDataChange={handleUserDataChange}
                               />
                             </Col>
                           ))}
