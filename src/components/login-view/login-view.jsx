@@ -2,13 +2,19 @@ import React from "react";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import LoadingSpinner from "../loading-spinner/loading-spinner";
+import { useSelector, useDispatch } from "react-redux";
+import { setUser } from "../../redux/reducers/user";
+import { setToken } from "../../redux/reducers/token";
+import { Navigate } from "react-router-dom";
 
 
 export const LoginView = ({ onLoggedIn }) => {
   const [Username, setUsername] = useState("");
   const [Password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
+  const user = useSelector((state) => state.user);  
+  const token = useSelector((state) => state.token);
+  const dispatch = useDispatch();
   
   const handleSubmit = (event) => {
     // Prevent default reload entire page action
@@ -38,11 +44,13 @@ export const LoginView = ({ onLoggedIn }) => {
       .then((data) => {
         console.log("Login Response: ", data);
         if (data.user) {
-          console.log("User " + Username + "logged in successfully.");
+          dispatch(setUser(data.user));
+          dispatch(setToken(data.token));
+          console.log("User " + Username + " logged in successfully.");
           localStorage.setItem("user", JSON.stringify(data.user));
-          localStorage.setItem("token", data.token);
-          onLoggedIn(data.user, data.token);
+          localStorage.setItem("token", data.token);          
           setIsLoading(false);
+          // <Navigate to="/" />;
         } else {
           setIsLoading(false);
           alert(

@@ -6,10 +6,15 @@ import onFavoriteImage from "../../img/onFavorite.png";
 import offFavoriteImage from "../../img/offFavorite.png";
 import onWatchImage from "../../img/onWatch.png";
 import offWatchImage from "../../img/offWatch.png";
+import { useSelector, useDispatch } from "react-redux";
+import { setUser } from "../../redux/reducers/user";
 
-export const MovieCard = ({ Movie, user, token, onUserDataChange }) => {
+export const MovieCard = ({ Movie }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isToWatch, setIsToWatch] = useState(false);
+  const user = useSelector((state) => state.user); 
+  const token = useSelector((state) => state.token); 
+  const dispatch = useDispatch();
 
    useEffect(() => {
     // Check if the movie is in the user's favorites or to-watch list
@@ -30,8 +35,8 @@ export const MovieCard = ({ Movie, user, token, onUserDataChange }) => {
       });
       if (response.ok) {
         const updatedUser = await response.json();
+        dispatch(setUser(updatedUser));
         setIsFavorite(!isFavorite);
-        onUserDataChange(updatedUser);
       } else {
         console.error("Server responded with an error:", await response.text());
       }
@@ -55,7 +60,6 @@ export const MovieCard = ({ Movie, user, token, onUserDataChange }) => {
       if (response.ok) {
         const updatedUser = await response.json();
         setIsToWatch(!isToWatch);
-        onUserDataChange(updatedUser);
       } else {
         console.error("Server responded with an error:", await response.text());
       }
@@ -136,10 +140,5 @@ MovieCard.propTypes = {
     Description: PropTypes.string.isRequired,
     ImagePath: PropTypes.string.isRequired,
     Title: PropTypes.string.isRequired,
-  }).isRequired,
-  user: PropTypes.shape({
-    Username: PropTypes.string.isRequired,
-    FavoriteMovies: PropTypes.arrayOf(PropTypes.string).isRequired,
-    ToWatch: PropTypes.arrayOf(PropTypes.string).isRequired,
-  }).isRequired,
+  }).isRequired,  
 };
