@@ -11,22 +11,21 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import LoadingSpinner from "../loading-spinner/loading-spinner";
 import UserProfile from "../profile-view/profile-view.jsx";
+import { useSelector, useDispatch } from "react-redux";
+import { setMovies } from "../../redux/reducers/movies";
 
 export const MainView = () => {
-  const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
   const [Movies, setMovies] = useState([]);
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
+  const Movies = useSelector((state) => state.movies);
   const [isLoading, setIsLoading] = useState(false);
-
-  const handleUserDataChange = (updatedUser) => {
-    setUser(updatedUser);
-    localStorage.setItem("user", JSON.stringify(updatedUser));
-  };
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setIsLoading(true);
+    
     if (!token) {
       setIsLoading(false);
       return;
@@ -70,7 +69,7 @@ export const MainView = () => {
             Title: Movie.Title,
           };
         });
-        setMovies(moviesFromAPI);
+        dispatch(setMovies(moviesFromAPI));
         setIsLoading(false);
       })
       .catch((error) => {
@@ -142,7 +141,6 @@ export const MainView = () => {
                         <UserProfile
                           user={user}
                           token={token}
-                          Movies={Movies}
                           onUserDataChange={handleUserDataChange}
                           onLoggedOut={() => {
                             localStorage.clear();
@@ -170,10 +168,6 @@ export const MainView = () => {
                       <>
                         <Col md={8}>
                           <MovieView
-                            Movies={Movies}
-                            user={user}
-                            token={token}
-                            onUserDataChange={handleUserDataChange}
                           />
                         </Col>
                       </>
