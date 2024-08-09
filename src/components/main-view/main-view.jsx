@@ -80,7 +80,7 @@ export const MainView = () => {
     <BrowserRouter>
       <NavigationBar
       />
-      <div>
+      <>
         {isLoading ? (
           <LoadingSpinner />
         ) : (
@@ -177,7 +177,7 @@ export const MainView = () => {
             </Routes>
           </Row>
         )}
-      </div>
+      </>
     </BrowserRouter>
   );
 };

@@ -27285,7 +27285,7 @@ const MainView = ()=>{
                 lineNumber: 81,
                 columnNumber: 7
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                 children: isLoading ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loadingSpinnerDefault.default), {}, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
                     lineNumber: 85,
@@ -27470,11 +27470,7 @@ const MainView = ()=>{
                     lineNumber: 87,
                     columnNumber: 11
                 }, undefined)
-            }, void 0, false, {
-                fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 83,
-                columnNumber: 7
-            }, undefined)
+            }, void 0, false)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
