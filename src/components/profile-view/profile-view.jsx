@@ -27,9 +27,18 @@ const UserProfile = () => {
   const [isPasswordChanged, setIsPasswordChanged] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  
   const formatDate = (dateString) => {
+    if (!dateString) return '';  
     const date = new Date(dateString);
-    return date.toISOString().split("T")[0];
+  
+    // Check if the date is valid
+    if (isNaN(date.getTime())) {
+      console.error(`Invalid date: ${dateString}`);
+      return 'Invalid Date';
+    }  
+    // If valid, format the date
+    return date.toISOString().split('T')[0];
   };
 
   const handleInputChange = (e) => {
