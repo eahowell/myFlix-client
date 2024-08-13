@@ -1,9 +1,15 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
-import { Link, Navigate } from "react-router-dom";
-import { LoginView } from "../login-view/login-view.jsx";
+import { Link } from "react-router-dom";
 import BrandImage from "../../img/myFlixLogo-Light.png";
+import { useSelector, useDispatch } from "react-redux";
+import { setUser } from "../../redux/reducers/user";
+import { setToken } from "../../redux/reducers/token";
 
-export const NavigationBar = ({ user, onLoggedOut }) => {
+export const NavigationBar = () => {
+  const user = useSelector((state) => state.user);  
+  const token = useSelector((state) => state.token);
+  const dispatch = useDispatch();
+
   return (
     <Navbar
       collapseOnSelect
@@ -36,10 +42,14 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
             {user && (
               <>
                 <Nav.Link as={Link} to="/users">
-                  Welcome back,<strong>{user.Username}</strong>
+                  Welcome back, <strong>{user.Username}</strong>
                 </Nav.Link>
                 <Nav.Link
-                  onClick={onLoggedOut}
+                  onClick={() => {
+                    localStorage.clear(),
+                    dispatch(setUser(null)),
+                    dispatch(setToken(null))
+                  }}
                   as={Link}
                   to="/login"
                   style={{
@@ -80,7 +90,15 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                   User Profile
                 </Nav.Link>
 
-                <Nav.Link onClick={onLoggedOut} as={Link} to="/login">
+                <Nav.Link
+                  onClick={() => {
+                    localStorage.clear(),
+                    dispatch(setUser(null)),
+                    dispatch(setToken(null))
+                  }}
+                  as={Link}
+                  to="/login"
+                >
                   Logout
                 </Nav.Link>
                 <Nav.Link

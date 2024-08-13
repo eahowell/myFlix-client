@@ -6,27 +6,28 @@ import { LoginView } from "../login-view/login-view.jsx";
 import { SignupView } from "../signup-view/signup-view.jsx";
 import { NavigationBar } from "../navigation-bar/navigation-bar.jsx";
 import { UserProfile } from "../profile-view/profile-view.jsx";
+import { MoviesList } from "../movies-list/movies-list.jsx";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import LoadingSpinner from "../loading-spinner/loading-spinner";
 import UserProfile from "../profile-view/profile-view.jsx";
+import { useSelector, useDispatch } from "react-redux";
+import { setMovies } from "../../redux/reducers/movies";
+import { setUser } from "../../redux/reducers/user";
+import { setToken } from "../../redux/reducers/token";
 
 export const MainView = () => {
-  const storedUser = JSON.parse(localStorage.getItem("user"));
-  const storedToken = localStorage.getItem("token");
-  const [Movies, setMovies] = useState([]);
-  const [user, setUser] = useState(storedUser ? storedUser : null);
-  const [token, setToken] = useState(storedToken ? storedToken : null);
+  const Movies = useSelector((state) => state.movies.list);
+  const user = useSelector((state) => state.user);
+  const token = useSelector((state) => state.token);
   const [isLoading, setIsLoading] = useState(false);
-
-  const handleUserDataChange = (updatedUser) => {
-    setUser(updatedUser);
-    localStorage.setItem("user", JSON.stringify(updatedUser));
-  };
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setIsLoading(true);
+    dispatch(setUser(JSON.parse(localStorage.getItem("user"))));
+    dispatch(setToken(localStorage.getItem("token")));
     if (!token) {
       setIsLoading(false);
       return;
@@ -70,7 +71,7 @@ export const MainView = () => {
             Title: Movie.Title,
           };
         });
-        setMovies(moviesFromAPI);
+        dispatch(setMovies(moviesFromAPI));
         setIsLoading(false);
       })
       .catch((error) => {
@@ -81,17 +82,8 @@ export const MainView = () => {
 
   return (
     <BrowserRouter>
-      <NavigationBar
-        user={user}
-        onLoggedOut={() => {
-          localStorage.clear();
-          setUser(null);
-          setToken(null);
-          console.log(storedUser);
-          <Navigate to="/login" />;
-        }}
-      />
-      <div>
+      <NavigationBar />
+      <>
         {isLoading ? (
           <LoadingSpinner />
         ) : (
@@ -119,12 +111,7 @@ export const MainView = () => {
                       <Navigate to="/" />
                     ) : (
                       <Col md={10} className="container-login">
-                        <LoginView
-                          onLoggedIn={(user, token) => {
-                            setUser(user);
-                            setToken(token);
-                          }}
-                        />
+                        <LoginView />
                       </Col>
                     )}
                   </>
@@ -139,19 +126,7 @@ export const MainView = () => {
                       <Navigate to="/login" replace />
                     ) : (
                       <Col>
-                        <UserProfile
-                          user={user}
-                          token={token}
-                          Movies={Movies}
-                          onUserDataChange={handleUserDataChange}
-                          onLoggedOut={() => {
-                            localStorage.clear();
-                            setUser(null);
-                            setToken(null);
-                            console.log(storedUser);
-                            <Navigate to="/login" replace />;
-                          }}
-                        />
+                        <UserProfile />
                       </Col>
                     )}
                   </>
@@ -167,16 +142,9 @@ export const MainView = () => {
                     ) : Movies.length === 0 ? (
                       <Col>The list is empty!</Col>
                     ) : (
-                      <>
-                        <Col md={8}>
-                          <MovieView
-                            Movies={Movies}
-                            user={user}
-                            token={token}
-                            onUserDataChange={handleUserDataChange}
-                          />
-                        </Col>
-                      </>
+                      <Col md={8}>
+                        <MovieView />
+                      </Col>
                     )}
                   </>
                 }
@@ -185,25 +153,10 @@ export const MainView = () => {
                 path="/"
                 element={
                   <>
-                    {!user ? (
+                  {!user ? (
                       <Navigate to="/login" replace />
-                    ) : Movies.length === 0 ? (
-                      <Col>The list is empty!</Col>
                     ) : (
-                      <>
-                        <div className="movies-grid">
-                          {Movies.map((Movie) => (
-                            <Col key={Movie._id} md={3} className="mb-2">
-                              <MovieCard
-                                Movie={Movie}
-                                user={user}
-                                token={token}
-                                onUserDataChange={handleUserDataChange}
-                              />
-                            </Col>
-                          ))}
-                        </div>
-                      </>
+                     <MoviesList />
                     )}
                   </>
                 }
@@ -211,7 +164,7 @@ export const MainView = () => {
             </Routes>
           </Row>
         )}
-      </div>
+      </>
     </BrowserRouter>
   );
 };

@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";
 import LoadingSpinner from "../loading-spinner/loading-spinner";
+import { useSelector, useDispatch } from "react-redux";
+import { setUser } from "../../redux/reducers/user";
 
-const UserProfile = ({
-  user,
-  token,
-  Movies,
-  onLoggedOut,
-  onUserDataChange,
-}) => {
+const UserProfile = () => {
   const [error, setError] = useState(null);
+  const Movies = useSelector((state) => state.movies.list);  
+  const user = useSelector((state) => state.user);
+  const token = useSelector((state) => state.token);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [editMode, setEditMode] = useState(false);
   const [updatedUser, setUpdatedUser] = useState({ ...user });
   const [passwords, setPasswords] = useState({
@@ -150,7 +151,7 @@ const UserProfile = ({
       }
       const updatedUserData = await response.json();
       if (updatedUserData) {
-        onUserDataChange(updatedUserData);
+        dispatch(setUser(updatedUserData));
         setEditMode(false);
         setPasswords({ current: "", new: "", confirm: "" });
         setIsPasswordChanged(false);
@@ -193,8 +194,10 @@ const UserProfile = ({
         if (!response.ok) throw new Error("Failed to delete account");
 
         alert("Account deleted successfully");
-        onLoggedOut();
-        return <Navigate to="/login" />;
+        localStorage.clear();
+        dispatch(setUser(null));
+        dispatch(setToken(null));
+        navigate('/login');  
       } catch (err) {
         setError(err.message);
       } finally {
@@ -386,9 +389,6 @@ const UserProfile = ({
                     <MovieCard
                       key={movie._id}
                       Movie={movie}
-                      user={user}
-                      token={token}
-                      onUserDataChange={onUserDataChange}
                     />
                   ))}
                 </div>
@@ -405,9 +405,6 @@ const UserProfile = ({
                     <MovieCard
                       key={movie._id}
                       Movie={movie}
-                      user={user}
-                      token={token}
-                      onUserDataChange={onUserDataChange}
                     />
                   ))}
                 </div>

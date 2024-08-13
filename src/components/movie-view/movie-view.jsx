@@ -2,14 +2,17 @@ import { Button, Card } from "react-bootstrap";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";
+import { useSelector } from "react-redux";
 
-export const MovieView = ({ Movies, user, token, onUserDataChange }) => {
+export const MovieView = () => {
+  const Movies = useSelector((state) => state.movies.list);
+ 
   const { movieID } = useParams();
 
   const Movie = Movies.find((m) => m._id === movieID);
 
   return (
-    <>
+    <div>
       <Card bg="light" border="warning">
         <Card.Body>
           <Link to={`/`}>
@@ -57,14 +60,11 @@ export const MovieView = ({ Movies, user, token, onUserDataChange }) => {
           <MovieCard
             key={Movie._id}
             Movie={Movie}
-            user={user}
-            token={token}
-            onUserDataChange={onUserDataChange}
           />
         ))}
       </div>
       <br />
       <br />
-    </>
+    </div>
   );
 };
