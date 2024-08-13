@@ -59,6 +59,7 @@ export const MovieCard = ({ Movie }) => {
       );
       if (response.ok) {
         const updatedUser = await response.json();
+        dispatch(setUser(updatedUser));
         setIsToWatch(!isToWatch);
       } else {
         console.error("Server responded with an error:", await response.text());
