@@ -38,10 +38,10 @@ export const SignupView = () => {
         "Content-Type": "application/json",
       },
     }).then((response) => {
-      if (response.status=409) {
+      if (response.status===409) {
         setIsLoading(false);
         alert("Signup failed: Username already exists");
-        console.error("Signup failed: Username already exists");
+        console.log("Signup failed: Username already exists");
       } else if  (response.ok) {
         setIsLoading(false); 
         alert("Signup successful");
