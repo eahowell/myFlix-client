@@ -48080,10 +48080,19 @@ const SignupView = ()=>{
                 "Content-Type": "application/json"
             }
         }).then((response)=>{
-            response.status = 409;
-            setIsLoading(false);
-            alert("Signup failed: Username already exists");
-            console.error("Signup failed: Username already exists");
+            if (response.status(409)) {
+                setIsLoading(false);
+                alert("Signup failed: Username already exists");
+                console.log("Signup failed: Username already exists");
+            } else if (response.ok) {
+                setIsLoading(false);
+                alert("Signup successful");
+                navigate("/login");
+            } else {
+                setIsLoading(false);
+                alert("Signup failed");
+                console.error(response);
+            }
         }).catch((err)=>{
             setIsLoading(false);
             console.error("Error", err);
