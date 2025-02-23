@@ -1,7 +1,7 @@
 {
-  "name": "myflix-client",
+  "name": "myflix-client-aws",
   "version": "1.0.0",
-  "description": "Client side of the myFlix app that's using the movie_api",
+  "description": "AWS Release- Client side of the myFlix app that's using the movie_api",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "rm -rf .parcel-cache && parcel",
