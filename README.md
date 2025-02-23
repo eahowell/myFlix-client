@@ -1,4 +1,4 @@
-# myFlix Client Side - AWS
+# myFlix CLient Side
 ![GitHub issues](https://img.shields.io/github/issues/eahowell/myFlix-client?color=yellow)
 ![GitHub Repo stars](https://img.shields.io/github/stars/eahowell/myFlix-client)
 ![GitHub forks](https://img.shields.io/github/forks/eahowell/myFlix-client)
@@ -8,7 +8,7 @@
 
 
 ## Table of Contents
-- [myFlix Client Side - AWS](#myflix-client-side---aws)
+- [myFlix CLient Side](#myflix-client-side)
   - [Table of Contents](#table-of-contents)
   - [Getting Started](#getting-started)
   - [Installation](#installation)
