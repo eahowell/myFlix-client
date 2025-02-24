@@ -30,7 +30,7 @@
     - In the README section of this [NVM for Windows GitHub page](https://github.com/coreybutler/nvm-windows#readme), you’ll find a Download Now! button. 
     - Clicking this button will open information about the latest release, including a list of “Assets”. 
     - From this list, download the nvm-setup.zip file
-- Install Parcel gobally
+- Install Parcel globally
   - <code>npm install -g parcel</code>
 
 #### Dependencies
