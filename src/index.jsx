@@ -3,7 +3,10 @@ import { MainView } from "./components/main-view/main-view";
 import { Container } from "react-bootstrap";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
-
+// import dotenv from "dotenv";
+// dotenv.config();
+require('dotenv').config();
+const mongoURI = process.env.MONGODB_URI;
 
 // Import statement to indicate that you need to bundle `./index.scss`
 import "./index.scss";
