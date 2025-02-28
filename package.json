@@ -2,11 +2,11 @@
   "name": "myflix-client",
   "version": "1.0.0",
   "description": "Client side of the myFlix app that's using the movie_api",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "rm -rf .parcel-cache && parcel src/index.html",
-    "build": "rm -rf .parcel-cache && parcel build src/index.html"
-  },
+ "scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "start": "rimraf .parcel-cache && parcel src/index.html",
+  "build": "rimraf .parcel-cache && parcel build src/index.html"
+},
   "author": "Elizabeth Howell",
   "license": "ISC",
   "dependencies": {
@@ -25,6 +25,7 @@
     "@parcel/transformer-sass": "^2.12.0",
     "@types/dotenv": "^6.1.1",
     "parcel": "^2.12.0",
-    "process": "^0.11.10"
+    "process": "^0.11.10",
+    "rimraf": "^6.0.1"
   }
 }
