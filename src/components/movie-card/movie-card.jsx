@@ -12,19 +12,19 @@ import { setUser } from "../../redux/reducers/user";
 export const MovieCard = ({ Movie }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isToWatch, setIsToWatch] = useState(false);
-  const user = useSelector((state) => state.user); 
-  const token = useSelector((state) => state.token); 
+  const user = useSelector((state) => state.user);
+  const token = useSelector((state) => state.token);
   const dispatch = useDispatch();
 
-   useEffect(() => {
+  useEffect(() => {
     // Check if the movie is in the user's favorites or to-watch list
     setIsFavorite(user.FavoriteMovies.includes(Movie._id));
     setIsToWatch(user.ToWatch.includes(Movie._id));
   }, [user, Movie._id]);
 
-    const handleFavoriteToggle = async () => {
+  const handleFavoriteToggle = async () => {
     const methodType = isFavorite ? "DELETE" : "PUT";
-    const endpoint = `https://myflix-eahowell-7d843bf0554c.herokuapp.com/users/${user.Username}/favorites/${Movie._id}`;
+    const endpoint = `http://3.239.66.158:8080/users/${user.Username}/favorites/${Movie._id}`;
     try {
       const response = await fetch(endpoint, {
         method: methodType,
@@ -48,7 +48,7 @@ export const MovieCard = ({ Movie }) => {
   const handleToWatchToggle = async () => {
     try {
       const response = await fetch(
-        `https://myflix-eahowell-7d843bf0554c.herokuapp.com/users/${user.Username}/toWatch/${Movie._id}`,
+        `http://3.239.66.158:8080/users/${user.Username}/toWatch/${Movie._id}`,
         {
           method: isToWatch ? "DELETE" : "PUT",
           headers: {
@@ -141,5 +141,5 @@ MovieCard.propTypes = {
     Description: PropTypes.string.isRequired,
     ImagePath: PropTypes.string.isRequired,
     Title: PropTypes.string.isRequired,
-  }).isRequired,  
+  }).isRequired,
 };

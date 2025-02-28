@@ -6,7 +6,7 @@ import { setUser } from "../../redux/reducers/user";
 import { setToken } from "../../redux/reducers/token";
 
 export const NavigationBar = () => {
-  const user = useSelector((state) => state.user);  
+  const user = useSelector((state) => state.user);
   const token = useSelector((state) => state.token);
   const dispatch = useDispatch();
 
@@ -47,8 +47,8 @@ export const NavigationBar = () => {
                 <Nav.Link
                   onClick={() => {
                     localStorage.clear(),
-                    dispatch(setUser(null)),
-                    dispatch(setToken(null))
+                      dispatch(setUser(null)),
+                      dispatch(setToken(null));
                   }}
                   as={Link}
                   to="/login"
@@ -93,8 +93,8 @@ export const NavigationBar = () => {
                 <Nav.Link
                   onClick={() => {
                     localStorage.clear(),
-                    dispatch(setUser(null)),
-                    dispatch(setToken(null))
+                      dispatch(setUser(null)),
+                      dispatch(setToken(null));
                   }}
                   as={Link}
                   to="/login"
@@ -103,7 +103,7 @@ export const NavigationBar = () => {
                 </Nav.Link>
                 <Nav.Link
                   as={Link}
-                  to="https://myflix-eahowell-7d843bf0554c.herokuapp.com/documentation.html"
+                  to="http://3.239.66.158:8080/documentation.html"
                   target="_blank"
                 >
                   API Documentation

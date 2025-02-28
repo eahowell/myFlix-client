@@ -8,7 +8,7 @@ import { setUser } from "../../redux/reducers/user";
 
 const UserProfile = () => {
   const [error, setError] = useState(null);
-  const Movies = useSelector((state) => state.movies.list);  
+  const Movies = useSelector((state) => state.movies.list);
   const user = useSelector((state) => state.user);
   const token = useSelector((state) => state.token);
   const dispatch = useDispatch();
@@ -27,18 +27,17 @@ const UserProfile = () => {
   const [isPasswordChanged, setIsPasswordChanged] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  
   const formatDate = (dateString) => {
-    if (!dateString) return '';  
+    if (!dateString) return "";
     const date = new Date(dateString);
-  
+
     // Check if the date is valid
     if (isNaN(date.getTime())) {
       console.error(`Invalid date: ${dateString}`);
-      return 'Invalid Date';
-    }  
+      return "Invalid Date";
+    }
     // If valid, format the date
-    return date.toISOString().split('T')[0];
+    return date.toISOString().split("T")[0];
   };
 
   const handleInputChange = (e) => {
@@ -75,17 +74,14 @@ const UserProfile = () => {
     }
 
     try {
-      const response = await fetch(
-        "https://myflix-eahowell-7d843bf0554c.herokuapp.com/validation",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            Username: user.Username,
-            Password: passwords.current,
-          }),
-        }
-      );
+      const response = await fetch("http://3.239.66.158:8080/validation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          Username: user.Username,
+          Password: passwords.current,
+        }),
+      });
       if (!response.ok) {
         setPasswordErrors((prev) => ({
           ...prev,
@@ -141,9 +137,9 @@ const UserProfile = () => {
         return;
       }
 
-      console.log("Data being sent to server:", dataToUpdate);  // For debugging
+      console.log("Data being sent to server:", dataToUpdate); // For debugging
       const response = await fetch(
-        `https://myflix-eahowell-7d843bf0554c.herokuapp.com/users/${user.Username}`,
+        `http://3.239.66.158:8080/users/${user.Username}`,
         {
           method: "PUT",
           headers: {
@@ -190,7 +186,7 @@ const UserProfile = () => {
     ) {
       try {
         const response = await fetch(
-          `https://myflix-eahowell-7d843bf0554c.herokuapp.com/users/${user.Username}`,
+          `http://3.239.66.158:8080/users/${user.Username}`,
           {
             method: "DELETE",
             headers: {
@@ -206,7 +202,7 @@ const UserProfile = () => {
         localStorage.clear();
         dispatch(setUser(null));
         dispatch(setToken(null));
-        navigate('/login');  
+        navigate("/login");
       } catch (err) {
         setError(err.message);
       } finally {
@@ -268,7 +264,7 @@ const UserProfile = () => {
                   <Form.Control
                     type="text"
                     name="Username"
-                    value={ user.Username}
+                    value={user.Username}
                     onChange={handleInputChange}
                     readOnly
                   />
@@ -395,10 +391,7 @@ const UserProfile = () => {
                   {Movies.filter((movie) =>
                     user.ToWatch.includes(movie._id)
                   ).map((movie) => (
-                    <MovieCard
-                      key={movie._id}
-                      Movie={movie}
-                    />
+                    <MovieCard key={movie._id} Movie={movie} />
                   ))}
                 </div>
               </Form.Group>
@@ -411,10 +404,7 @@ const UserProfile = () => {
                   {Movies.filter((movie) =>
                     user.FavoriteMovies.includes(movie._id)
                   ).map((movie) => (
-                    <MovieCard
-                      key={movie._id}
-                      Movie={movie}
-                    />
+                    <MovieCard key={movie._id} Movie={movie} />
                   ))}
                 </div>
               </Form.Group>

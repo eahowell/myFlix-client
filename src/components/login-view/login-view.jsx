@@ -7,15 +7,14 @@ import { setUser } from "../../redux/reducers/user";
 import { setToken } from "../../redux/reducers/token";
 import { Navigate } from "react-router-dom";
 
-
 export const LoginView = ({ onLoggedIn }) => {
   const [Username, setUsername] = useState("");
   const [Password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const user = useSelector((state) => state.user);  
+  const user = useSelector((state) => state.user);
   const token = useSelector((state) => state.token);
   const dispatch = useDispatch();
-  
+
   const handleSubmit = (event) => {
     // Prevent default reload entire page action
     event.preventDefault();
@@ -26,7 +25,7 @@ export const LoginView = ({ onLoggedIn }) => {
       Password: Password,
     };
 
-    fetch("https://myflix-eahowell-7d843bf0554c.herokuapp.com/login", {
+    fetch("http://3.239.66.158:8080/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -48,7 +47,7 @@ export const LoginView = ({ onLoggedIn }) => {
           dispatch(setToken(data.token));
           console.log("User " + Username + " logged in successfully.");
           localStorage.setItem("user", JSON.stringify(data.user));
-          localStorage.setItem("token", data.token);          
+          localStorage.setItem("token", data.token);
           setIsLoading(false);
           // <Navigate to="/" />;
         } else {
@@ -66,44 +65,43 @@ export const LoginView = ({ onLoggedIn }) => {
   };
   return (
     <>
-    <div>
-      {isLoading ? (
-        <LoadingSpinner />
-      ) : (
-    <Form id="loginForm" onSubmit={handleSubmit}>
-      
-      <br />
-      <Form.Group controlId="formUsername">
-        <Form.Label id="usernameLabel">
-          Username
-          <Form.Control
-            type="text"
-            value={Username}
-            onChange={(e) => setUsername(e.target.value)}
-            minLength={5}
-            required
-          />
-        </Form.Label>
-      </Form.Group>
-      <Form.Group controlId="formPassword">
-        <Form.Label id="passwordLabel">
-          Password
-          <Form.Control
-            type="password"
-            value={Password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </Form.Label>
-      </Form.Group>
-      <br />
-      <Button id="submit-button" variant="warning" type="submit">
-        Submit
-      </Button>
-      <br />
-      <br />
-    </Form>
-      )}
+      <div>
+        {isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          <Form id="loginForm" onSubmit={handleSubmit}>
+            <br />
+            <Form.Group controlId="formUsername">
+              <Form.Label id="usernameLabel">
+                Username
+                <Form.Control
+                  type="text"
+                  value={Username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  minLength={5}
+                  required
+                />
+              </Form.Label>
+            </Form.Group>
+            <Form.Group controlId="formPassword">
+              <Form.Label id="passwordLabel">
+                Password
+                <Form.Control
+                  type="password"
+                  value={Password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </Form.Label>
+            </Form.Group>
+            <br />
+            <Button id="submit-button" variant="warning" type="submit">
+              Submit
+            </Button>
+            <br />
+            <br />
+          </Form>
+        )}
       </div>
     </>
   );

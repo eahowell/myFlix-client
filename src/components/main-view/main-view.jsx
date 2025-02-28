@@ -32,7 +32,7 @@ export const MainView = () => {
       setIsLoading(false);
       return;
     }
-    fetch("https://myflix-eahowell-7d843bf0554c.herokuapp.com/movies/", {
+    fetch("http://3.239.66.158:8080/movies/", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -153,11 +153,7 @@ export const MainView = () => {
                 path="/"
                 element={
                   <>
-                  {!user ? (
-                      <Navigate to="/login" replace />
-                    ) : (
-                     <MoviesList />
-                    )}
+                    {!user ? <Navigate to="/login" replace /> : <MoviesList />}
                   </>
                 }
               />
