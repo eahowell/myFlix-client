@@ -31,7 +31,7 @@ export const SignupView = () => {
       LastName: LastName,
     };
 
-    fetch("http://35.169.117.130:8080/users", {
+    fetch("http://3.239.66.158:8080/users", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
