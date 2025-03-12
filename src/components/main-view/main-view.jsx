@@ -32,7 +32,7 @@ export const MainView = () => {
       setIsLoading(false);
       return;
     }
-    fetch("http://3.239.66.158:8080/movies/", {
+    fetch("http://35.169.117.130:8080/movies/", {
       headers: {
         Authorization: `Bearer ${token}`,
       },

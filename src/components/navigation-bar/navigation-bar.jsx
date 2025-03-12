@@ -103,7 +103,7 @@ export const NavigationBar = () => {
                 </Nav.Link>
                 <Nav.Link
                   as={Link}
-                  to="http://3.239.66.158:8080/documentation.html"
+                  to="http://35.169.117.130:8080/documentation.html"
                   target="_blank"
                 >
                   API Documentation

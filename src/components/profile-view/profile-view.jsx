@@ -74,7 +74,7 @@ const UserProfile = () => {
     }
 
     try {
-      const response = await fetch("http://3.239.66.158:8080/validation", {
+      const response = await fetch("http://35.169.117.130:8080/validation", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -139,7 +139,7 @@ const UserProfile = () => {
 
       console.log("Data being sent to server:", dataToUpdate); // For debugging
       const response = await fetch(
-        `http://3.239.66.158:8080/users/${user.Username}`,
+        `http://35.169.117.130:8080/users/${user.Username}`,
         {
           method: "PUT",
           headers: {
@@ -186,7 +186,7 @@ const UserProfile = () => {
     ) {
       try {
         const response = await fetch(
-          `http://3.239.66.158:8080/users/${user.Username}`,
+          `http://35.169.117.130:8080/users/${user.Username}`,
           {
             method: "DELETE",
             headers: {
