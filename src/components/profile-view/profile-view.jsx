@@ -74,14 +74,17 @@ const UserProfile = () => {
     }
 
     try {
-      const response = await fetch("http://3.239.66.158:8080/validation", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          Username: user.Username,
-          Password: passwords.current,
-        }),
-      });
+      const response = await fetch(
+        "http://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/validation",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            Username: user.Username,
+            Password: passwords.current,
+          }),
+        }
+      );
       if (!response.ok) {
         setPasswordErrors((prev) => ({
           ...prev,
@@ -139,7 +142,7 @@ const UserProfile = () => {
 
       console.log("Data being sent to server:", dataToUpdate); // For debugging
       const response = await fetch(
-        `http://3.239.66.158:8080/users/${user.Username}`,
+        `http://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/users/${user.Username}`,
         {
           method: "PUT",
           headers: {
@@ -186,7 +189,7 @@ const UserProfile = () => {
     ) {
       try {
         const response = await fetch(
-          `http://3.239.66.158:8080/users/${user.Username}`,
+          `http://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/users/${user.Username}`,
           {
             method: "DELETE",
             headers: {

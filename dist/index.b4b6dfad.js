@@ -9070,9 +9070,8 @@ ${frame.code}`;
                 stringValue = node.getAttribute(attributeName);
               }
               if (shouldRemoveAttribute(name, expected, propertyInfo, false))
-                return stringValue === null
-                  ? expected
-                  : stringValue; // eslint-disable-next-line react-internal/safe-string-coercion
+                return stringValue === null ? expected : stringValue;
+              // eslint-disable-next-line react-internal/safe-string-coercion
               else if (stringValue === "" + expected) return expected;
               else return stringValue;
             }
@@ -32527,9 +32526,8 @@ ${frame.code}`;
               // hook updates, which are handled differently and don't reach this
               // function), but there are some internal React features that use this as
               // an implementation detail, like selective hydration.
-              warnAboutRenderPhaseUpdatesInDEV(
-                fiber
-              ); // Track lanes that were updated during the render phase
+              warnAboutRenderPhaseUpdatesInDEV(fiber);
+            // Track lanes that were updated during the render phase
             else {
               if (isDevToolsPresent) addFiberToLanesMap(root, fiber, lane);
               warnIfUpdatesNotWrappedWithActDEV(fiber);
@@ -37010,11 +37008,14 @@ ${frame.code}`;
                 setIsLoading(false);
                 return;
               }
-              fetch("http://3.239.66.158:8080/movies/", {
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                },
-              })
+              fetch(
+                "http://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/movies/",
+                {
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+                }
+              )
                 .then((response) => {
                   if (!response.ok) {
                     console.log(response);
@@ -37595,7 +37596,7 @@ ${frame.code}`;
             }, [user, Movie._id]);
             const handleFavoriteToggle = async () => {
               const methodType = isFavorite ? "DELETE" : "PUT";
-              const endpoint = `http://3.239.66.158:8080/users/${user.Username}/favorites/${Movie._id}`;
+              const endpoint = `http://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/users/${user.Username}/favorites/${Movie._id}`;
               try {
                 const response = await fetch(endpoint, {
                   method: methodType,
@@ -37620,7 +37621,7 @@ ${frame.code}`;
             const handleToWatchToggle = async () => {
               try {
                 const response = await fetch(
-                  `http://3.239.66.158:8080/users/${user.Username}/toWatch/${Movie._id}`,
+                  `http://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/users/${user.Username}/toWatch/${Movie._id}`,
                   {
                     method: isToWatch ? "DELETE" : "PUT",
                     headers: {
@@ -67751,13 +67752,16 @@ object-assign
                 Username: Username,
                 Password: Password,
               };
-              fetch("http://3.239.66.158:8080/login", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-              })
+              fetch(
+                "http://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/login",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(data),
+                }
+              )
                 .then((response) => {
                   if (response.ok) return response.json();
                   else {
@@ -68208,13 +68212,16 @@ object-assign
                 FirstName: FirstName,
                 LastName: LastName,
               };
-              fetch("http://3.239.66.158:8080/users", {
-                method: "POST",
-                body: JSON.stringify(data),
-                headers: {
-                  "Content-Type": "application/json",
-                },
-              })
+              fetch(
+                "http://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/users",
+                {
+                  method: "POST",
+                  body: JSON.stringify(data),
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                }
+              )
                 .then((response) => {
                   if (response.status(409)) {
                     setIsLoading(false);
@@ -69175,7 +69182,7 @@ object-assign
                                             (0, _reactBootstrap.Nav).Link,
                                             {
                                               as: (0, _reactRouterDom.Link),
-                                              to: "http://3.239.66.158:8080/documentation.html",
+                                              to: "http://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/documentation.html",
                                               target: "_blank",
                                               children: "API Documentation",
                                             },
@@ -69384,7 +69391,7 @@ object-assign
               }
               try {
                 const response = await fetch(
-                  "http://3.239.66.158:8080/validation",
+                  "http://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/validation",
                   {
                     method: "POST",
                     headers: {
@@ -69436,7 +69443,7 @@ object-assign
                 }
                 console.log("Data being sent to server:", dataToUpdate); // For debugging
                 const response = await fetch(
-                  `http://3.239.66.158:8080/users/${user.Username}`,
+                  `http://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/users/${user.Username}`,
                   {
                     method: "PUT",
                     headers: {
@@ -69489,7 +69496,7 @@ object-assign
               )
                 try {
                   const response = await fetch(
-                    `http://3.239.66.158:8080/users/${user.Username}`,
+                    `http://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/users/${user.Username}`,
                     {
                       method: "DELETE",
                       headers: {

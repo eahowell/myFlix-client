@@ -32,11 +32,14 @@ export const MainView = () => {
       setIsLoading(false);
       return;
     }
-    fetch("http://3.239.66.158:8080/movies/", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    fetch(
+      "http://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/movies/",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
       .then((response) => {
         if (!response.ok) {
           console.log(response);
