@@ -7,6 +7,7 @@ import { SignupView } from "../signup-view/signup-view.jsx";
 import { NavigationBar } from "../navigation-bar/navigation-bar.jsx";
 import { UserProfile } from "../profile-view/profile-view.jsx";
 import { MoviesList } from "../movies-list/movies-list.jsx";
+import { ImageUploader } from "../image-uploader/image-uploader.jsx";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -152,6 +153,22 @@ export const MainView = () => {
                   </>
                 }
               />
+              
+              <Route
+                path="/upload"
+                element={
+                  <>
+                    {!user ? (
+                      <Navigate to="/login" replace />
+                    ) : (
+                      <Col>
+                        <ImageUploader />
+                      </Col>
+                    )}
+                  </>
+                }
+              />
+              
               <Route
                 path="/"
                 element={

@@ -89,7 +89,9 @@ export const NavigationBar = () => {
                 <Nav.Link as={Link} to="/users">
                   User Profile
                 </Nav.Link>
-
+                <Nav.Link as={Link} to="/upload">
+                  Upload Images
+                </Nav.Link>
                 <Nav.Link
                   onClick={() => {
                     localStorage.clear(),
