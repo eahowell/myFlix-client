@@ -1,0 +1,36 @@
+@import '../../index.scss';
+
+.image-uploader-container {
+  margin-top: 100px;
+  
+  .image-preview {
+    text-align: center;
+    
+    img {
+      border: 1px solid $myFlix-LightRed;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+  }
+  
+  .card {
+    border-color: $myFlix-LightRed;
+    border-radius: 8px;
+    
+    .card-title {
+      color: $myFlix-Red;
+      border-bottom: 1px solid $myFlix-LightRed;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+  }
+  
+  .btn-warning {
+    background-color: $myFlix-Popcorn;
+    border-color: $myFlix-Popcorn;
+    
+    &:hover, &:focus {
+      background-color: darken($myFlix-Popcorn, 10%);
+      border-color: darken($myFlix-Popcorn, 10%);
+    }
+  }
+}
