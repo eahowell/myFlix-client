@@ -33,11 +33,14 @@ export const MainView = () => {
       setIsLoading(false);
       return;
     }
-    fetch("cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/movies/", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    fetch(
+      "https://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/movies/",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
       .then((response) => {
         if (!response.ok) {
           console.log(response);
@@ -154,14 +157,10 @@ export const MainView = () => {
               <Route
                 path="/upload"
                 element={
-                  <>
-                    {!user ? (
-                      <Navigate to="/login" replace />
-                    ) : (
+                  <>                    
                       <Col>
                         <ImageUploader />
-                      </Col>
-                    )}
+                      </Col>                    
                   </>
                 }
               />

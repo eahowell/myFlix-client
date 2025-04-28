@@ -79,6 +79,9 @@ export const NavigationBar = () => {
                 <Nav.Link as={Link} to="/signup">
                   Signup
                 </Nav.Link>
+                <Nav.Link as={Link} to="/upload">
+                  Upload Images
+                </Nav.Link>
               </>
             )}
             {user && (
@@ -105,7 +108,7 @@ export const NavigationBar = () => {
                 </Nav.Link>
                 <Nav.Link
                   as={Link}
-                  to="cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/documentation.html"
+                  to="https://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/documentation.html"
                   target="_blank"
                 >
                   API Documentation

@@ -8,9 +8,12 @@ import {
   Alert,
   Container,
 } from "react-bootstrap";
-import { useSelector } from "react-redux";
 import LoadingSpinner from "../loading-spinner/loading-spinner";
 import "./image-uploader.scss";
+
+// Define the base URL for the image uploader API
+// This should be configurable or stored in an environment variable
+const IMAGE_API_BASE_URL = "https://ec2-3-239-161-207.compute-1.amazonaws.com/api/objects";
 
 export const ImageUploader = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -18,9 +21,6 @@ export const ImageUploader = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [uploadStatus, setUploadStatus] = useState(null);
   const [uploadedImages, setUploadedImages] = useState([]);
-
-  const user = useSelector((state) => state.user);
-  const token = useSelector((state) => state.token);
 
   // Fetch already uploaded images on component mount
   useEffect(() => {
@@ -30,9 +30,7 @@ export const ImageUploader = () => {
   const fetchUploadedImages = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(
-        "cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/api/objects"
-      );
+      const response = await fetch(IMAGE_API_BASE_URL);
       const data = await response.json();
 
       if (data.success) {
@@ -52,10 +50,10 @@ export const ImageUploader = () => {
                 originalSize: formatSize(orig.Size),
                 resizedSize: resizedObj ? formatSize(resizedObj.Size) : "-",
                 uploadDate: new Date(orig.LastModified).toLocaleString(),
-                thumbnailUrl: `cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/api/objects/${encodeURIComponent(
+                thumbnailUrl: `${IMAGE_API_BASE_URL}/${encodeURIComponent(
                   resizedKey
                 )}`,
-                originalUrl: `cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/api/objects/${encodeURIComponent(
+                originalUrl: `${IMAGE_API_BASE_URL}/${encodeURIComponent(
                   orig.Key
                 )}`,
               };
@@ -126,17 +124,15 @@ export const ImageUploader = () => {
     formData.append("file", selectedFile);
 
     try {
-      const response = await fetch(
-        "cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/api/objects",
-        {
-          method: "POST",
-          body: formData,
-          // Don't set Content-Type header; browser will set it with boundary for FormData
-          headers: {
-            Authorization: token ? `Bearer ${token}` : "",
-          },
-        }
-      );
+      const response = await fetch(IMAGE_API_BASE_URL, {
+        method: "POST",
+        body: formData,
+        // No need to set Content-Type header for FormData
+        // The browser will automatically set it with the appropriate boundary
+        
+        // You might need to set credentials if your API requires authentication
+        // credentials: 'include', // or 'same-origin'
+      });
 
       const data = await response.json();
 
@@ -167,11 +163,16 @@ export const ImageUploader = () => {
     }
   };
 
+  // Function to open image in new tab
+  const openImage = (url) => {
+    window.open(url, "_blank");
+  };
+
   return (
     <Container className="image-uploader-container">
       <h1 className="my-4 text-center">Image Uploader</h1>
 
-      {isLoading ? (
+      {isLoading && !uploadedImages.length ? (
         <LoadingSpinner />
       ) : (
         <>
@@ -200,8 +201,8 @@ export const ImageUploader = () => {
                 </div>
               )}
 
-              <Button variant="warning" type="submit" disabled={!selectedFile}>
-                Upload to S3
+              <Button variant="warning" type="submit" disabled={!selectedFile || isLoading}>
+                {isLoading && uploadStatus === null ? 'Uploading...' : 'Upload to S3'}
               </Button>
             </Form>
 
@@ -215,6 +216,15 @@ export const ImageUploader = () => {
           {/* Uploaded Images */}
           <Card className="mb-4 p-4">
             <Card.Title as="h2">Your Uploaded Images</Card.Title>
+            <div className="mb-3">
+              <Button 
+                variant="warning" 
+                onClick={fetchUploadedImages}
+                disabled={isLoading}
+              >
+                {isLoading ? 'Refreshing...' : 'Refresh List'}
+              </Button>
+            </div>
 
             {uploadedImages.length === 0 ? (
               <p>No images uploaded yet.</p>
@@ -228,6 +238,7 @@ export const ImageUploader = () => {
                         src={image.thumbnailUrl}
                         className="img-fluid p-2"
                         style={{ height: "200px", objectFit: "contain" }}
+                        alt={image.name}
                       />
                       <Card.Body>
                         <Card.Title>{image.name}</Card.Title>
@@ -242,18 +253,14 @@ export const ImageUploader = () => {
                           <Button
                             variant="warning"
                             size="sm"
-                            onClick={() =>
-                              window.open(image.originalUrl, "_blank")
-                            }
+                            onClick={() => openImage(image.originalUrl)}
                           >
                             View Original
                           </Button>
                           <Button
                             variant="secondary"
                             size="sm"
-                            onClick={() =>
-                              window.open(image.thumbnailUrl, "_blank")
-                            }
+                            onClick={() => openImage(image.thumbnailUrl)}
                           >
                             View Resized
                           </Button>
