@@ -31,7 +31,7 @@ export const SignupView = () => {
       LastName: LastName,
     };
 
-    fetch("http://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/users", {
+    fetch("cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/users", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {

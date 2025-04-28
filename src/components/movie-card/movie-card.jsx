@@ -24,7 +24,7 @@ export const MovieCard = ({ Movie }) => {
 
   const handleFavoriteToggle = async () => {
     const methodType = isFavorite ? "DELETE" : "PUT";
-    const endpoint = `http://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/users/${user.Username}/favorites/${Movie._id}`;
+    const endpoint = `cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/users/${user.Username}/favorites/${Movie._id}`;
     try {
       const response = await fetch(endpoint, {
         method: methodType,
@@ -48,7 +48,7 @@ export const MovieCard = ({ Movie }) => {
   const handleToWatchToggle = async () => {
     try {
       const response = await fetch(
-        `http://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/users/${user.Username}/toWatch/${Movie._id}`,
+        `cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/users/${user.Username}/toWatch/${Movie._id}`,
         {
           method: isToWatch ? "DELETE" : "PUT",
           headers: {

@@ -25,7 +25,7 @@ export const LoginView = ({ onLoggedIn }) => {
       Password: Password,
     };
 
-    fetch("http://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/login", {
+    fetch("cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

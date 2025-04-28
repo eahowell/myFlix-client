@@ -75,7 +75,7 @@ const UserProfile = () => {
 
     try {
       const response = await fetch(
-        "http://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/validation",
+        "cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/validation",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -142,7 +142,7 @@ const UserProfile = () => {
 
       console.log("Data being sent to server:", dataToUpdate); // For debugging
       const response = await fetch(
-        `http://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/users/${user.Username}`,
+        `cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/users/${user.Username}`,
         {
           method: "PUT",
           headers: {
@@ -189,7 +189,7 @@ const UserProfile = () => {
     ) {
       try {
         const response = await fetch(
-          `http://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/users/${user.Username}`,
+          `cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/users/${user.Username}`,
           {
             method: "DELETE",
             headers: {
