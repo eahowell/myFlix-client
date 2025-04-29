@@ -31,16 +31,13 @@ export const SignupView = () => {
       LastName: LastName,
     };
 
-    fetch(
-      "https://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/users",
-      {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    fetch("http://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/users", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => {
         if (response.status(409)) {
           setIsLoading(false);

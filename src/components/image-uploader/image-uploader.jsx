@@ -13,7 +13,7 @@ import "./image-uploader.scss";
 
 // Define the base URL for the image uploader API
 // This should be configurable or stored in an environment variable
-const IMAGE_API_BASE_URL = "https://ec2-3-239-161-207.compute-1.amazonaws.com/api/objects";
+const IMAGE_API_BASE_URL = "http://ec2-3-239-161-207.compute-1.amazonaws.com/api/objects";
 
 export const ImageUploader = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -36,28 +36,40 @@ export const ImageUploader = () => {
       if (data.success) {
         // Format uploaded images data
         const images = data.originals
-          ? data.originals.map((orig) => {
-              const name = orig.Key.split("/").pop();
-              const resizedKey = `resized-images/${name}`;
-              const resizedObj = data.resized
-                ? data.resized.find((r) => r.Key === resizedKey)
-                : null;
+          ? data.originals
+              // Filter out folders and only include files that don't begin with "resized-images/"
+              .filter(orig => {
+                // Skip folders (they typically end with a slash)
+                if (orig.Key.endsWith('/')) return false;
+                
+                // Skip items in the resized-images folder
+                if (orig.Key.startsWith('resized-images/')) return false;
+                
+                // Include everything else
+                return true;
+              })
+              .map((orig) => {
+                const name = orig.Key.split("/").pop();
+                const resizedKey = `resized-images/${name}`;
+                const resizedObj = data.resized
+                  ? data.resized.find((r) => r.Key === resizedKey)
+                  : null;
 
-              return {
-                name,
-                originalKey: orig.Key,
-                resizedKey,
-                originalSize: formatSize(orig.Size),
-                resizedSize: resizedObj ? formatSize(resizedObj.Size) : "-",
-                uploadDate: new Date(orig.LastModified).toLocaleString(),
-                thumbnailUrl: `${IMAGE_API_BASE_URL}/${encodeURIComponent(
-                  resizedKey
-                )}`,
-                originalUrl: `${IMAGE_API_BASE_URL}/${encodeURIComponent(
-                  orig.Key
-                )}`,
-              };
-            })
+                return {
+                  name,
+                  originalKey: orig.Key,
+                  resizedKey,
+                  originalSize: formatSize(orig.Size),
+                  resizedSize: resizedObj ? formatSize(resizedObj.Size) : "-",
+                  uploadDate: new Date(orig.LastModified).toLocaleString(),
+                  thumbnailUrl: `${IMAGE_API_BASE_URL}/${encodeURIComponent(
+                    resizedKey
+                  )}`,
+                  originalUrl: `${IMAGE_API_BASE_URL}/${encodeURIComponent(
+                    orig.Key
+                  )}`,
+                };
+              })
           : [];
 
         setUploadedImages(images);

@@ -108,7 +108,7 @@ export const NavigationBar = () => {
                 </Nav.Link>
                 <Nav.Link
                   as={Link}
-                  to="https://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/documentation.html"
+                  to="http://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/documentation.html"
                   target="_blank"
                 >
                   API Documentation

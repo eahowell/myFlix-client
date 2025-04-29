@@ -34,7 +34,7 @@ export const MainView = () => {
       return;
     }
     fetch(
-      "https://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/movies/",
+      "http://cc-myflix-alb-2050379200.us-east-1.elb.amazonaws.com/movies/",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -157,10 +157,10 @@ export const MainView = () => {
               <Route
                 path="/upload"
                 element={
-                  <>                    
-                      <Col>
-                        <ImageUploader />
-                      </Col>                    
+                  <>
+                    <Col>
+                      <ImageUploader />
+                    </Col>
                   </>
                 }
               />
