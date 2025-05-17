@@ -42,7 +42,7 @@ export const SignupView = () => {
         setIsLoading(false); 
         alert("Signup successful");
         navigate('/login'); 
-      } else if  (response.status=409) {
+      } else if  (response.status===409) {
         setIsLoading(false);
         alert("Signup failed: Username already exists");
         console.log("Signup failed: Username already exists");
