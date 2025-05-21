@@ -54,8 +54,8 @@ export const MovieView = () => {
       <h2>Similar Movies in the {Movie.Genre.Name} Genre</h2>
       <div className="movies-grid justify-content-md-center">
         {Movies.filter(
-          (Movie) =>
-            Movie.Genre.Name === Movie.Genre.Name && Movies._id !== Movie._id
+          (Movies) =>
+            Movies.Genre.Name === Movie.Genre.Name 
         ).map((Movie) => (
           <MovieCard
             key={Movie._id}
