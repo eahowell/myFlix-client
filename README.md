@@ -1,4 +1,4 @@
-![myFlix Logo](src\img\myFlixLogo-Light.png)
+![myFlix Logo](src/img/myFlixLogo-Light.png)
 # Welcome to the myFlix Client (React)
 
 ![GitHub issues](https://img.shields.io/github/issues/eahowell/myFlix-client?color=yellow)
