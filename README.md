@@ -8,7 +8,8 @@
 
 ## 📖 Overview
 
-This is the client side of myFlix. myFlix is a full-stack (MERN: MongoDB, Express, React, Node.js) single-page web application that serves as a movie database. Users can browse a curated list of movies with detailed information including descriptions, directors, and genre details. Registered users can create a profile, manage their account, and add movies to their favorites and watch lists.
+ The client side of the myFlix app using React that's using the server-side [movie_api](https://github.com/eahowell/movie_api) (REST API and Database).  
+ myFlix is a full-stack (MERN: MongoDB, Express, React, Node.js) single-page web application that serves as a movie database. Users can browse a curated list of movies with detailed information including descriptions, directors, and genre details. Registered users can create a profile, manage their account, and add movies to their favorites and watch lists.
 
 ## 📎 Table of Contents
 
@@ -23,8 +24,8 @@ This is the client side of myFlix. myFlix is a full-stack (MERN: MongoDB, Expres
     - [Main Flows](#main-flows)
   - [📦 Scripts](#-scripts)
   - [🔗 API Endpoints](#-api-endpoints)
-  - [🪙 Authentication](#-authentication)
   - [🗄️ Database](#️-database)
+  - [🪙 Authentication](#-authentication)
   - [📂 Folder Structure](#-folder-structure)
   - [📐 Deployment](#-deployment)
   - [🤝 Contributing](#-contributing)
@@ -72,8 +73,8 @@ The application follows a client-server architecture with a RESTful API. The fro
 
 ### Prerequisites
 
-- Node.js (version 14.0.0 or higher)
-- npm (version 6.0.0 or higher)
+- Node.js (>= 14.x)
+- npm (>= 6.x)
 - Parcel CLI (globally, if you prefer):  
   ```bash
   npm install -g parcel    
@@ -158,13 +159,6 @@ The client communicates with the [myFlix API](https://github.com/eahowell/movie_
 _For a complete list of endpoints and documentation, visit the [API Repository](https://github.com/eahowell/movie_api)._
   
 [🔝](#welcome-to-the-myflix-client-react)
-## 🪙 Authentication
-
-JWTs are stored in `localStorage`.  
-Send as header:  
-`Authorization: Bearer <token>`
-  
-[🔝](#welcome-to-the-myflix-client-react)
 ## 🗄️ Database
 - myFlixDB is stored in MongoDB
 
@@ -176,6 +170,14 @@ Send as header:
   - Actors  
   
 [🔝](#welcome-to-the-myflix-client-react)
+## 🪙 Authentication
+
+JWTs are stored in `localStorage`.  
+Send as header:  
+`Authorization: Bearer <token>`
+  
+[🔝](#welcome-to-the-myflix-client-react)
+
 ## 📂 Folder Structure
 
 ```text
